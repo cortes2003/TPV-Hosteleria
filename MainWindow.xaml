@@ -1,0 +1,118 @@
+﻿<Window x:Class="TPV_Hosteleria.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPV_Hosteleria"
+        mc:Ignorable="d"
+        Title="Inicio Sesión TPV" Height="500" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        Background="#F0F2F5">
+
+    <!-- Grid principal para centrar el contenido -->
+    <Grid>
+        <!-- Tarjeta de Login -->
+        <Border Background="White" 
+                Width="400" 
+                Height="Auto"
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center"
+                CornerRadius="15"
+                Padding="40">
+
+            <!-- Efecto de sombra suave para dar profundidad (Estilo moderno) -->
+            <Border.Effect>
+                <DropShadowEffect Color="#000000" 
+                                  Direction="270" 
+                                  BlurRadius="20" 
+                                  ShadowDepth="5" 
+                                  Opacity="0.15"/>
+            </Border.Effect>
+
+            <StackPanel>
+                <!-- Título -->
+                <TextBlock Text="Inicio de Sesión" 
+                           FontSize="28" 
+                           FontWeight="Bold" 
+                           Foreground="#333333"
+                           HorizontalAlignment="Center" 
+                           Margin="0,0,0,40"/>
+
+                <!-- Campo Usuario -->
+                <StackPanel Margin="0,0,0,20">
+                    <Label Content="Usuario:" 
+                           FontSize="14" 
+                           Foreground="#666666" 
+                           FontWeight="SemiBold"
+                           Padding="0,0,0,5"/>
+                    <TextBox x:Name="txtUsuario"
+                             Height="40"
+                             FontSize="16"
+                             Padding="5"
+                             VerticalContentAlignment="Center"
+                             BorderBrush="#DDDDDD"
+                             BorderThickness="1" TextChanged="txtUsuario_TextChanged">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+
+                <!-- Campo Contraseña -->
+                <StackPanel Margin="0,0,0,10">
+                    <Label Content="Contraseña:" 
+                           FontSize="14" 
+                           Foreground="#666666" 
+                           FontWeight="SemiBold"
+                           Padding="0,0,0,5"/>
+                    <PasswordBox x:Name="txtPassword"
+                                 Height="40"
+                                 FontSize="16"
+                                 Padding="5"
+                                 VerticalContentAlignment="Center"
+                                 BorderBrush="#DDDDDD"
+                                 BorderThickness="1">
+                        <PasswordBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </PasswordBox.Resources>
+                    </PasswordBox>
+                </StackPanel>
+
+                <!-- Mensaje de Error (Oculto por defecto) -->
+                <!-- Visibility se cambiará a 'Visible' desde C# si falla el login -->
+                <TextBlock x:Name="txtError"
+                           Text="Usuario o Contraseña incorrectos"
+                           Foreground="#D32F2F"
+                           FontSize="13"
+                           FontWeight="Medium"
+                           HorizontalAlignment="Center"
+                           Visibility="Collapsed" 
+                           Margin="0,10,0,0"/>
+
+                <!-- Botón Acceder -->
+                <Button x:Name="btnAcceder"
+                        Content="Acceder"
+                        Height="45"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Margin="0,30,0,0"
+                        Background="#2196F3" 
+                        Foreground="White"
+                        BorderThickness="0"
+                        Cursor="Hand" Click="btnAcceder_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

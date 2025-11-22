@@ -1,0 +1,316 @@
+﻿<Window x:Class="TPV_Hosteleria.Home"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPV_Hosteleria"
+        mc:Ignorable="d"
+        Title="Home" Height="768" Width="1024"
+        WindowState="Maximized"
+        Background="#F9F9F9">
+
+    <!-- Estilos rápidos para botones y textos -->
+    <Window.Resources>
+        <Style x:Key="CategoryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#0078D7"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,0,15,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" Padding="10,5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ProductCardStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#DDDDDD"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Width" Value="220"/>
+            <Setter Property="Height" Value="140"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#EEEEEE" BlurRadius="5" ShadowDepth="2"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <!-- Grid Principal: Divide la pantalla en Izquierda (Productos) y Derecha (Ticket) -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <!-- 75% para productos -->
+            <ColumnDefinition Width="1*"/>
+            <!-- 25% para ticket (ajusta según necesites) -->
+        </Grid.ColumnDefinitions>
+
+        <!-- ========================================== -->
+        <!-- COLUMNA IZQUIERDA: PRODUCTOS Y NAVEGACIÓN -->
+        <!-- ========================================== -->
+        <Grid Grid.Column="0" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- Título y Menú Superior -->
+                <RowDefinition Height="Auto"/>
+                <!-- Categorías -->
+                <RowDefinition Height="Auto"/>
+                <!-- Subcategorías -->
+                <RowDefinition Height="*"/>
+                <!-- Grid de Productos -->
+            </Grid.RowDefinitions>
+
+            <!-- 1. Cabecera -->
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20">
+                <TextBlock Text="Aplicación TPV" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,20,0"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Home" Style="{StaticResource CategoryButtonStyle}" Foreground="Black" FontWeight="Bold"/>
+                    <TextBlock Text="|" VerticalAlignment="Center" Foreground="#AAAAAA" Margin="0,0,15,0"/>
+                    <Button Content="Productos" Style="{StaticResource CategoryButtonStyle}"/>
+                    <TextBlock Text="|" VerticalAlignment="Center" Foreground="#AAAAAA" Margin="0,0,15,0"/>
+                    <Button Content="Pedidos" Style="{StaticResource CategoryButtonStyle}"/>
+                    <TextBlock Text="|" VerticalAlignment="Center" Foreground="#AAAAAA" Margin="0,0,15,0"/>
+                    <Button Content="Clientes" Style="{StaticResource CategoryButtonStyle}"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- 2. Categorías (Pestañas) -->
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+                <Border BorderBrush="#CCCCCC" BorderThickness="1,1,1,0" Background="White" CornerRadius="5,5,0,0" Padding="15,8" Margin="0,0,5,0">
+                    <TextBlock Text="Entrantes" FontWeight="Bold"/>
+                </Border>
+                <Border BorderBrush="Transparent" Background="Transparent" Padding="15,8" Margin="0,0,5,0">
+                    <TextBlock Text="Platos" Foreground="Gray"/>
+                </Border>
+                <Border BorderBrush="Transparent" Background="Transparent" Padding="15,8" Margin="0,0,5,0">
+                    <TextBlock Text="Postres" Foreground="Gray"/>
+                </Border>
+                <Border BorderBrush="Transparent" Background="Transparent" Padding="15,8" Margin="0,0,5,0">
+                    <TextBlock Text="Bebidas" Foreground="Gray"/>
+                </Border>
+            </StackPanel>
+
+            <!-- 3. Subcategorías -->
+            <Border Grid.Row="2" BorderBrush="#CCCCCC" BorderThickness="1" Background="White" Padding="10" Margin="0,0,0,15">
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Ensaladas" Margin="0,0,10,0" Padding="10,5" Background="#E0E0E0" BorderThickness="0"/>
+                    <Button Content="Huevos" Margin="0,0,10,0" Padding="10,5" Background="Transparent" BorderThickness="0"/>
+                    <Button Content="Arroces y pastas" Margin="0,0,10,0" Padding="10,5" Background="Transparent" BorderThickness="0"/>
+                    <Button Content="Asados" Margin="0,0,10,0" Padding="10,5" Background="Transparent" BorderThickness="0"/>
+                    <Button Content="Pescados" Margin="0,0,10,0" Padding="10,5" Background="Transparent" BorderThickness="0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- 4. Área de Productos (Scrollable) -->
+            <ScrollViewer Grid.Row="3" VerticalScrollBarVisibility="Auto">
+                <WrapPanel Orientation="Horizontal">
+
+                    <!-- PRODUCTO EJEMPLO 1 -->
+                    <Border Style="{StaticResource ProductCardStyle}">
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Foto (Placeholder) -->
+                            <Border Grid.Row="0" Grid.Column="0" Background="#EEEEEE" BorderBrush="#CCCCCC" BorderThickness="1" Margin="0,0,10,0">
+                                <TextBlock Text="Foto" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#AAAAAA"/>
+                            </Border>
+
+                            <!-- Info -->
+                            <StackPanel Grid.Row="0" Grid.Column="1">
+                                <TextBlock Text="Ensalada Mixta" FontWeight="Bold" TextWrapping="Wrap"/>
+                                <TextBlock Text="Lechuga, tomate..." FontSize="10" Foreground="Gray" TextWrapping="Wrap" Margin="0,2,0,0"/>
+                                <ComboBox Height="20" FontSize="10" Margin="0,5,0,0" SelectedIndex="0">
+                                    <ComboBoxItem Content="Sin Alérgenos"/>
+                                    <ComboBoxItem Content="Gluten"/>
+                                </ComboBox>
+                            </StackPanel>
+
+                            <!-- Precio -->
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="12 €" FontWeight="Bold" VerticalAlignment="Bottom" Margin="0,5,0,0"/>
+
+                            <!-- Botones Editar/Borrar -->
+                            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
+                                <Button Content="✏️" Width="25" Height="25" Margin="0,0,5,0" Background="White" BorderBrush="#CCCCCC" BorderThickness="1"/>
+                                <Button Content="🗑️" Width="25" Height="25" Background="White" BorderBrush="#CCCCCC" BorderThickness="1"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <!-- PRODUCTO EJEMPLO 2 -->
+                    <Border Style="{StaticResource ProductCardStyle}">
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Row="0" Grid.Column="0" Background="#EEEEEE" BorderBrush="#CCCCCC" BorderThickness="1" Margin="0,0,10,0">
+                                <TextBlock Text="Foto" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#AAAAAA"/>
+                            </Border>
+                            <StackPanel Grid.Row="0" Grid.Column="1">
+                                <TextBlock Text="Huevos Rotos" FontWeight="Bold" TextWrapping="Wrap"/>
+                                <ComboBox Height="20" FontSize="10" Margin="0,5,0,0">
+                                    <ComboBoxItem Content="Huevo"/>
+                                </ComboBox>
+                            </StackPanel>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="12 €" FontWeight="Bold" VerticalAlignment="Bottom" Margin="0,5,0,0"/>
+                            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
+                                <Button Content="✏️" Width="25" Height="25" Margin="0,0,5,0" Background="White" BorderBrush="#CCCCCC" BorderThickness="1"/>
+                                <Button Content="🗑️" Width="25" Height="25" Background="White" BorderBrush="#CCCCCC" BorderThickness="1"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <!-- Repite este bloque Border para más productos... -->
+
+                    <!-- BOTÓN AÑADIR PRODUCTO (+) -->
+                    <Button Width="60" Height="60" Margin="20" Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
+                        <TextBlock Text="+" FontSize="30" Foreground="#AAAAAA"/>
+                    </Button>
+
+                </WrapPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <!-- ========================================== -->
+        <!-- COLUMNA DERECHA: TICKET Y CONFIGURACIÓN -->
+        <!-- ========================================== -->
+        <Border Grid.Column="1" Background="White" BorderBrush="#DDDDDD" BorderThickness="1,0,0,0">
+            <Grid Margin="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!-- Info Usuario -->
+                    <RowDefinition Height="*"/>
+                    <!-- Lista Ticket -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Configuración -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Total y Botón -->
+                </Grid.RowDefinitions>
+
+                <!-- 1. Info Usuario -->
+                <StackPanel Grid.Row="0" Margin="0,0,0,10">
+                    <Grid>
+                        <StackPanel HorizontalAlignment="Left">
+                            <TextBlock Text="Usuario: Administrador" FontWeight="Bold"/>
+                            <TextBlock Text="Último acceso: 17/11/2025" FontSize="11" Foreground="Gray"/>
+                        </StackPanel>
+                        <Button Content="?" HorizontalAlignment="Right" Width="25" Height="25" Background="#EEEEEE" BorderThickness="0" FontWeight="Bold" Foreground="Gray"/>
+                    </Grid>
+                    <Separator Margin="0,10"/>
+                    <TextBlock Text="Ticket:" FontWeight="Bold" FontSize="16"/>
+                </StackPanel>
+
+                <!-- 2. Lista Ticket (Scrollable) -->
+                <ListView Grid.Row="1" BorderThickness="0" Background="Transparent">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Art" Width="120" DisplayMemberBinding="{Binding Nombre}"/>
+                            <GridViewColumn Header="Cant" Width="40" DisplayMemberBinding="{Binding Cantidad}"/>
+                            <GridViewColumn Header="Total" Width="50" DisplayMemberBinding="{Binding Total}"/>
+                        </GridView>
+                    </ListView.View>
+                    <!-- Items de ejemplo para visualizar -->
+                    <ListViewItem>
+                        <Grid Width="200">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Ensalada Mixta" />
+                            <TextBlock Grid.Column="1" Text="12 €" FontWeight="Bold"/>
+                        </Grid>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <Grid Width="200">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Huevos Rotos" />
+                            <TextBlock Grid.Column="1" Text="12 €" FontWeight="Bold"/>
+                        </Grid>
+                    </ListViewItem>
+                </ListView>
+
+                <!-- 3. Configuración del Pedido -->
+                <StackPanel Grid.Row="2" Margin="0,10,0,10">
+                    <Separator Margin="0,0,0,10"/>
+
+                    <!-- Tipo Entrega -->
+                    <Grid Margin="0,0,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" SelectedIndex="0" Margin="0,0,5,0">
+                            <ComboBoxItem Content="Recogida Local"/>
+                            <ComboBoxItem Content="A Domicilio (+3€)"/>
+                        </ComboBox>
+                        <DatePicker Grid.Column="1" Width="100"/>
+                    </Grid>
+
+                    <!-- Datos Envío -->
+                    <Grid Margin="0,5,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Grid.Column="0" Margin="0,0,5,0">
+                            <ComboBoxItem Content="Cliente: Juan Pérez"/>
+                        </ComboBox>
+                        <Button Grid.Column="1" Content="+" Width="25" Margin="0,0,2,0"/>
+                        <Button Grid.Column="2" Content="✏️" Width="25" Margin="0,0,2,0"/>
+                        <Button Grid.Column="3" Content="🗑️" Width="25"/>
+                    </Grid>
+
+                    <TextBox Text="Dirección: C/ Ejemplo, 123" Margin="0,0,0,5" IsReadOnly="True" Background="#F0F0F0"/>
+
+                    <!-- Forma de Pago -->
+                    <ComboBox Margin="0,5,0,5" SelectedIndex="0">
+                        <ComboBoxItem Content="Pago: Efectivo"/>
+                        <ComboBoxItem Content="Pago: Tarjeta"/>
+                    </ComboBox>
+
+                    <!-- Puntos -->
+                    <CheckBox Content="Canjear Puntos" Margin="0,5,0,0"/>
+                </StackPanel>
+
+                <!-- 4. Total y Botón Final -->
+                <StackPanel Grid.Row="3">
+                    <TextBlock Text="Total: 45 €" FontSize="20" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,0,0,10"/>
+                    <Button Content="Cobrar / Finalizar" Height="50" Background="#333333" Foreground="White" FontSize="18" FontWeight="Bold">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
