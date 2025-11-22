@@ -65,10 +65,5 @@ namespace TPV_Hosteleria
             }
         }
 
-        // (Opcional) Método para limpiar el error si el usuario escribe
-        private void txtUsuario_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            txtError.Visibility = Visibility.Collapsed;
-        }
     }
 }
