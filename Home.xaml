@@ -7,185 +7,326 @@
         mc:Ignorable="d"
         Title="Home" Height="768" Width="1024"
         WindowState="Maximized"
-        Background="#F9F9F9">
+        Background="#F4F7F6">
 
-    <!-- Estilos rápidos para botones y textos -->
     <Window.Resources>
-        <Style x:Key="CategoryButtonStyle" TargetType="Button">
+        <!-- COLORES -->
+        <SolidColorBrush x:Key="PrimaryColor" Color="#FF6F00"/>
+        <!-- Naranja Cálido -->
+        <SolidColorBrush x:Key="AccentColor" Color="#0078D7"/>
+        <!-- Azul Acento -->
+        <SolidColorBrush x:Key="DarkText" Color="#333333"/>
+        <SolidColorBrush x:Key="LightText" Color="#777777"/>
+        <SolidColorBrush x:Key="CardBackground" Color="White"/>
+
+        <!-- ESTILO BOTÓN CATEGORÍA (Menú Superior) -->
+        <Style x:Key="NavButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Foreground" Value="#0078D7"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="{StaticResource DarkText}"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Margin" Value="0,0,15,0"/>
+            <Setter Property="Margin" Value="0,0,20,0"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" Padding="10,5">
+                        <Border Background="{TemplateBinding Background}" Padding="10,5" CornerRadius="5">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="{StaticResource PrimaryColor}"/>
+                                <Setter Property="Background" Value="#FFF0E0"/>
+                                <!-- Naranja muy suave -->
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
 
-        <Style x:Key="ProductCardStyle" TargetType="Border">
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="BorderBrush" Value="#DDDDDD"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="5"/>
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="Width" Value="220"/>
-            <Setter Property="Height" Value="140"/>
-            <Setter Property="Effect">
+        <!-- ESTILO PESTAÑA CATEGORÍA (Entrantes, Platos...) -->
+        <Style x:Key="TabButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="{StaticResource LightText}"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
                 <Setter.Value>
-                    <DropShadowEffect Color="#EEEEEE" BlurRadius="5" ShadowDepth="2"/>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" 
+                                BorderBrush="Transparent" BorderThickness="0,0,0,3" 
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="{StaticResource PrimaryColor}"/>
+                            </Trigger>
+                            <!-- Simulación de seleccionado (puedes usar RadioButton en la lógica real) -->
+                            <Trigger Property="Tag" Value="Selected">
+                                <Setter Property="Foreground" Value="{StaticResource PrimaryColor}"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PrimaryColor}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <!-- ESTILO SUB-CATEGORÍA (Ensaladas, Huevos...) -->
+        <Style x:Key="SubCatButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="{StaticResource DarkText}"/>
+            <Setter Property="BorderBrush" Value="#DDDDDD"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="20" 
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="BorderBrush" Value="{StaticResource PrimaryColor}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ESTILO TARJETA PRODUCTO -->
+        <Style x:Key="ProductCardStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource CardBackground}"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Width" Value="240"/>
+            <Setter Property="Height" Value="160"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#CCCCCC" BlurRadius="15" ShadowDepth="3" Opacity="0.4"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ESTILO BOTÓN ACCIÓN (Editar/Borrar) -->
+        <Style x:Key="ActionIconButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#EEEEEE"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Window.Resources>
 
-    <!-- Grid Principal: Divide la pantalla en Izquierda (Productos) y Derecha (Ticket) -->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
-            <!-- 75% para productos -->
-            <ColumnDefinition Width="1*"/>
-            <!-- 25% para ticket (ajusta según necesites) -->
+            <ColumnDefinition Width="1.2*"/>
+            <!-- Un poco más ancho para el ticket -->
         </Grid.ColumnDefinitions>
 
         <!-- ========================================== -->
-        <!-- COLUMNA IZQUIERDA: PRODUCTOS Y NAVEGACIÓN -->
+        <!-- ZONA IZQUIERDA: NAVEGACIÓN Y PRODUCTOS -->
         <!-- ========================================== -->
-        <Grid Grid.Column="0" Margin="20">
+        <Grid Grid.Column="0" Margin="30,20,30,20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <!-- Título y Menú Superior -->
+                <!-- Título y Menú -->
                 <RowDefinition Height="Auto"/>
-                <!-- Categorías -->
+                <!-- Tabs Categorías -->
                 <RowDefinition Height="Auto"/>
-                <!-- Subcategorías -->
+                <!-- Chips Subcategorías -->
                 <RowDefinition Height="*"/>
-                <!-- Grid de Productos -->
+                <!-- Grid Productos -->
             </Grid.RowDefinitions>
 
-            <!-- 1. Cabecera -->
-            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20">
-                <TextBlock Text="Aplicación TPV" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,20,0"/>
-                <StackPanel Orientation="Horizontal">
-                    <Button Content="Home" Style="{StaticResource CategoryButtonStyle}" Foreground="Black" FontWeight="Bold"/>
-                    <TextBlock Text="|" VerticalAlignment="Center" Foreground="#AAAAAA" Margin="0,0,15,0"/>
-                    <Button Content="Productos" Style="{StaticResource CategoryButtonStyle}"/>
-                    <TextBlock Text="|" VerticalAlignment="Center" Foreground="#AAAAAA" Margin="0,0,15,0"/>
-                    <Button Content="Pedidos" Style="{StaticResource CategoryButtonStyle}"/>
-                    <TextBlock Text="|" VerticalAlignment="Center" Foreground="#AAAAAA" Margin="0,0,15,0"/>
-                    <Button Content="Clientes" Style="{StaticResource CategoryButtonStyle}"/>
+            <!-- 1. Cabecera y Navegación -->
+            <Grid Grid.Row="0" Margin="0,0,0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Border Background="{StaticResource PrimaryColor}" Width="40" Height="40" CornerRadius="10" Margin="0,0,10,0">
+                        <TextBlock Text="TPV" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                    <TextBlock Text="TPV Comida Casera" FontSize="20" FontWeight="Bold" Foreground="{StaticResource DarkText}" VerticalAlignment="Center"/>
                 </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Home" Style="{StaticResource NavButtonStyle}" Foreground="{StaticResource PrimaryColor}"/>
+                    <Button Content="Productos" Style="{StaticResource NavButtonStyle}"/>
+                    <Button Content="Pedidos" Style="{StaticResource NavButtonStyle}"/>
+                    <Button Content="Clientes" Style="{StaticResource NavButtonStyle}"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- 2. Pestañas Categorías -->
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,15">
+                <Button Content="Entrantes" Style="{StaticResource TabButtonStyle}" Tag="Selected"/>
+                <Button Content="Platos" Style="{StaticResource TabButtonStyle}"/>
+                <Button Content="Postres" Style="{StaticResource TabButtonStyle}"/>
+                <Button Content="Bebidas" Style="{StaticResource TabButtonStyle}"/>
             </StackPanel>
 
-            <!-- 2. Categorías (Pestañas) -->
-            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
-                <Border BorderBrush="#CCCCCC" BorderThickness="1,1,1,0" Background="White" CornerRadius="5,5,0,0" Padding="15,8" Margin="0,0,5,0">
-                    <TextBlock Text="Entrantes" FontWeight="Bold"/>
-                </Border>
-                <Border BorderBrush="Transparent" Background="Transparent" Padding="15,8" Margin="0,0,5,0">
-                    <TextBlock Text="Platos" Foreground="Gray"/>
-                </Border>
-                <Border BorderBrush="Transparent" Background="Transparent" Padding="15,8" Margin="0,0,5,0">
-                    <TextBlock Text="Postres" Foreground="Gray"/>
-                </Border>
-                <Border BorderBrush="Transparent" Background="Transparent" Padding="15,8" Margin="0,0,5,0">
-                    <TextBlock Text="Bebidas" Foreground="Gray"/>
-                </Border>
-            </StackPanel>
-
-            <!-- 3. Subcategorías -->
-            <Border Grid.Row="2" BorderBrush="#CCCCCC" BorderThickness="1" Background="White" Padding="10" Margin="0,0,0,15">
+            <!-- 3. Subcategorías (Estilo Chips) -->
+            <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Margin="0,0,0,20">
                 <StackPanel Orientation="Horizontal">
-                    <Button Content="Ensaladas" Margin="0,0,10,0" Padding="10,5" Background="#E0E0E0" BorderThickness="0"/>
-                    <Button Content="Huevos" Margin="0,0,10,0" Padding="10,5" Background="Transparent" BorderThickness="0"/>
-                    <Button Content="Arroces y pastas" Margin="0,0,10,0" Padding="10,5" Background="Transparent" BorderThickness="0"/>
-                    <Button Content="Asados" Margin="0,0,10,0" Padding="10,5" Background="Transparent" BorderThickness="0"/>
-                    <Button Content="Pescados" Margin="0,0,10,0" Padding="10,5" Background="Transparent" BorderThickness="0"/>
+                    <Button Content="Ensaladas" Style="{StaticResource SubCatButtonStyle}" Background="{StaticResource PrimaryColor}" Foreground="White" BorderBrush="{StaticResource PrimaryColor}"/>
+                    <Button Content="Huevos" Style="{StaticResource SubCatButtonStyle}"/>
+                    <Button Content="Arroces y pastas" Style="{StaticResource SubCatButtonStyle}"/>
+                    <Button Content="Asados" Style="{StaticResource SubCatButtonStyle}"/>
+                    <Button Content="Pescados" Style="{StaticResource SubCatButtonStyle}"/>
                 </StackPanel>
-            </Border>
+            </ScrollViewer>
 
-            <!-- 4. Área de Productos (Scrollable) -->
-            <ScrollViewer Grid.Row="3" VerticalScrollBarVisibility="Auto">
-                <WrapPanel Orientation="Horizontal">
+            <!-- 4. Grid de Productos -->
+            <ScrollViewer Grid.Row="3" VerticalScrollBarVisibility="Auto" Margin="-10">
+                <WrapPanel Orientation="Horizontal" Margin="10">
 
-                    <!-- PRODUCTO EJEMPLO 1 -->
+                    <!-- TARJETA 1: Ensalada -->
                     <Border Style="{StaticResource ProductCardStyle}">
-                        <Grid Margin="10">
+                        <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
 
-                            <!-- Foto (Placeholder) -->
-                            <Border Grid.Row="0" Grid.Column="0" Background="#EEEEEE" BorderBrush="#CCCCCC" BorderThickness="1" Margin="0,0,10,0">
-                                <TextBlock Text="Foto" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#AAAAAA"/>
-                            </Border>
+                            <Grid Grid.Row="0" Margin="15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <!-- Info -->
-                            <StackPanel Grid.Row="0" Grid.Column="1">
-                                <TextBlock Text="Ensalada Mixta" FontWeight="Bold" TextWrapping="Wrap"/>
-                                <TextBlock Text="Lechuga, tomate..." FontSize="10" Foreground="Gray" TextWrapping="Wrap" Margin="0,2,0,0"/>
-                                <ComboBox Height="20" FontSize="10" Margin="0,5,0,0" SelectedIndex="0">
-                                    <ComboBoxItem Content="Sin Alérgenos"/>
-                                    <ComboBoxItem Content="Gluten"/>
-                                </ComboBox>
-                            </StackPanel>
+                                <!-- Foto -->
+                                <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
+                                    <TextBlock Text="🥗" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
 
-                            <!-- Precio -->
-                            <TextBlock Grid.Row="1" Grid.Column="0" Text="12 €" FontWeight="Bold" VerticalAlignment="Bottom" Margin="0,5,0,0"/>
+                                <!-- Info -->
+                                <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                                    <TextBlock Text="Ensalada César" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                    <TextBlock Text="Lechuga, pollo, picatostes..." FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
 
-                            <!-- Botones Editar/Borrar -->
-                            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
-                                <Button Content="✏️" Width="25" Height="25" Margin="0,0,5,0" Background="White" BorderBrush="#CCCCCC" BorderThickness="1"/>
-                                <Button Content="🗑️" Width="25" Height="25" Background="White" BorderBrush="#CCCCCC" BorderThickness="1"/>
-                            </StackPanel>
+                                    <!-- Alérgenos (Tags visuales) -->
+                                    <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                        <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
+                                            <TextBlock Text="Gluten" FontSize="10" Foreground="#D32F2F"/>
+                                        </Border>
+                                        <Border Background="#E3F2FD" CornerRadius="4" Padding="5,2">
+                                            <TextBlock Text="Lácteos" FontSize="10" Foreground="#1976D2"/>
+                                        </Border>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+
+                            <!-- Pie de Tarjeta -->
+                            <Grid Grid.Row="1" Margin="15,0,15,15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="9.50 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
+                                    <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F"/>
+                                </StackPanel>
+                            </Grid>
                         </Grid>
                     </Border>
 
-                    <!-- PRODUCTO EJEMPLO 2 -->
+                    <!-- TARJETA 2: Huevos Rotos -->
                     <Border Style="{StaticResource ProductCardStyle}">
-                        <Grid Margin="10">
+                        <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Border Grid.Row="0" Grid.Column="0" Background="#EEEEEE" BorderBrush="#CCCCCC" BorderThickness="1" Margin="0,0,10,0">
-                                <TextBlock Text="Foto" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#AAAAAA"/>
-                            </Border>
-                            <StackPanel Grid.Row="0" Grid.Column="1">
-                                <TextBlock Text="Huevos Rotos" FontWeight="Bold" TextWrapping="Wrap"/>
-                                <ComboBox Height="20" FontSize="10" Margin="0,5,0,0">
-                                    <ComboBoxItem Content="Huevo"/>
-                                </ComboBox>
-                            </StackPanel>
-                            <TextBlock Grid.Row="1" Grid.Column="0" Text="12 €" FontWeight="Bold" VerticalAlignment="Bottom" Margin="0,5,0,0"/>
-                            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
-                                <Button Content="✏️" Width="25" Height="25" Margin="0,0,5,0" Background="White" BorderBrush="#CCCCCC" BorderThickness="1"/>
-                                <Button Content="🗑️" Width="25" Height="25" Background="White" BorderBrush="#CCCCCC" BorderThickness="1"/>
-                            </StackPanel>
+                            <Grid Grid.Row="0" Margin="15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
+                                    <TextBlock Text="🍳" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                                    <TextBlock Text="Huevos Rotos" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                    <TextBlock Text="Huevos, patatas, jamón..." FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
+                                    <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                        <Border Background="#FFF8E1" CornerRadius="4" Padding="5,2">
+                                            <TextBlock Text="Huevo" FontSize="10" Foreground="#FFA000"/>
+                                        </Border>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Row="1" Margin="15,0,15,15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="12.00 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
+                                    <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F"/>
+                                </StackPanel>
+                            </Grid>
                         </Grid>
                     </Border>
 
-                    <!-- Repite este bloque Border para más productos... -->
-
-                    <!-- BOTÓN AÑADIR PRODUCTO (+) -->
-                    <Button Width="60" Height="60" Margin="20" Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
-                        <TextBlock Text="+" FontSize="30" Foreground="#AAAAAA"/>
+                    <!-- TARJETA AÑADIR (+): CORREGIDA -->
+                    <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <!-- Rectángulo con Borde Discontinuo (Dashed) -->
+                                    <Rectangle Stroke="{TemplateBinding BorderBrush}"
+                                               StrokeThickness="2"
+                                               StrokeDashArray="4 4"
+                                               RadiusX="10" RadiusY="10"
+                                               Fill="{TemplateBinding Background}"/>
+                                    <!-- Contenido -->
+                                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBlock Text="+" FontSize="40" Foreground="#AAAAAA" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="Añadir Producto" FontSize="14" Foreground="#AAAAAA" FontWeight="SemiBold" Margin="0,5,0,0"/>
+                                    </StackPanel>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
                     </Button>
 
                 </WrapPanel>
@@ -193,10 +334,14 @@
         </Grid>
 
         <!-- ========================================== -->
-        <!-- COLUMNA DERECHA: TICKET Y CONFIGURACIÓN -->
+        <!-- ZONA DERECHA: TICKET Y PAGO (Blanco Puro) -->
         <!-- ========================================== -->
-        <Border Grid.Column="1" Background="White" BorderBrush="#DDDDDD" BorderThickness="1,0,0,0">
-            <Grid Margin="15">
+        <Border Grid.Column="1" Background="White">
+            <Border.Effect>
+                <DropShadowEffect Color="#000000" Direction="180" ShadowDepth="5" BlurRadius="20" Opacity="0.05"/>
+            </Border.Effect>
+
+            <Grid Margin="25">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <!-- Info Usuario -->
@@ -208,103 +353,128 @@
                     <!-- Total y Botón -->
                 </Grid.RowDefinitions>
 
-                <!-- 1. Info Usuario -->
-                <StackPanel Grid.Row="0" Margin="0,0,0,10">
+                <!-- 1. Header Ticket -->
+                <StackPanel Grid.Row="0" Margin="0,0,0,15">
                     <Grid>
-                        <StackPanel HorizontalAlignment="Left">
-                            <TextBlock Text="Usuario: Administrador" FontWeight="Bold"/>
-                            <TextBlock Text="Último acceso: 17/11/2025" FontSize="11" Foreground="Gray"/>
+                        <StackPanel>
+                            <TextBlock Text="Hola, Alberto" FontWeight="Bold" FontSize="16" Foreground="{StaticResource DarkText}"/>
+                            <TextBlock Text="17/11/2025 14:30" FontSize="12" Foreground="{StaticResource LightText}"/>
                         </StackPanel>
-                        <Button Content="?" HorizontalAlignment="Right" Width="25" Height="25" Background="#EEEEEE" BorderThickness="0" FontWeight="Bold" Foreground="Gray"/>
+                        <Button Content="?" Width="30" Height="30" HorizontalAlignment="Right" Background="#F5F5F5" BorderThickness="0" Foreground="{StaticResource DarkText}" FontWeight="Bold" Cursor="Hand">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="15"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
                     </Grid>
-                    <Separator Margin="0,10"/>
-                    <TextBlock Text="Ticket:" FontWeight="Bold" FontSize="16"/>
+                    <Separator Margin="0,15" Background="#EEEEEE"/>
+                    <TextBlock Text="Pedido Actual #1024" FontWeight="Bold" FontSize="18" Foreground="{StaticResource PrimaryColor}"/>
                 </StackPanel>
 
-                <!-- 2. Lista Ticket (Scrollable) -->
-                <ListView Grid.Row="1" BorderThickness="0" Background="Transparent">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Art" Width="120" DisplayMemberBinding="{Binding Nombre}"/>
-                            <GridViewColumn Header="Cant" Width="40" DisplayMemberBinding="{Binding Cantidad}"/>
-                            <GridViewColumn Header="Total" Width="50" DisplayMemberBinding="{Binding Total}"/>
-                        </GridView>
-                    </ListView.View>
-                    <!-- Items de ejemplo para visualizar -->
+                <!-- 2. Lista Ticket -->
+                <ListView Grid.Row="1" BorderThickness="0" Background="Transparent" Margin="-5,0">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Padding" Value="5,10"/>
+                            <Setter Property="BorderBrush" Value="#EEEEEE"/>
+                            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <!-- Items de ejemplo -->
                     <ListViewItem>
-                        <Grid Width="200">
+                        <Grid Width="280">
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Ensalada Mixta" />
-                            <TextBlock Grid.Column="1" Text="12 €" FontWeight="Bold"/>
+                            <TextBlock Text="1x" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}"/>
+                            <TextBlock Grid.Column="1" Text="Ensalada César" Foreground="{StaticResource DarkText}"/>
+                            <TextBlock Grid.Column="2" Text="9.50 €" FontWeight="Bold" Foreground="{StaticResource DarkText}"/>
                         </Grid>
                     </ListViewItem>
                     <ListViewItem>
-                        <Grid Width="200">
+                        <Grid Width="280">
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="Huevos Rotos" />
-                            <TextBlock Grid.Column="1" Text="12 €" FontWeight="Bold"/>
+                            <TextBlock Text="2x" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}"/>
+                            <TextBlock Grid.Column="1" Text="Huevos Rotos" Foreground="{StaticResource DarkText}"/>
+                            <TextBlock Grid.Column="2" Text="24.00 €" FontWeight="Bold" Foreground="{StaticResource DarkText}"/>
                         </Grid>
                     </ListViewItem>
                 </ListView>
 
-                <!-- 3. Configuración del Pedido -->
-                <StackPanel Grid.Row="2" Margin="0,10,0,10">
-                    <Separator Margin="0,0,0,10"/>
+                <!-- 3. Configuración -->
+                <StackPanel Grid.Row="2" Margin="0,15">
+                    <!-- Entrega -->
+                    <Label Content="Tipo de Entrega" FontSize="12" Foreground="{StaticResource LightText}"/>
+                    <ComboBox Height="35" Padding="10,5" Margin="0,0,0,10" BorderBrush="#DDDDDD">
+                        <ComboBoxItem Content="🍽️  Para tomar aquí"/>
+                        <ComboBoxItem Content="🏠  A Domicilio (+3.00€)" IsSelected="True"/>
+                    </ComboBox>
 
-                    <!-- Tipo Entrega -->
-                    <Grid Margin="0,0,0,5">
+                    <!-- Cliente -->
+                    <Label Content="Cliente" FontSize="12" Foreground="{StaticResource LightText}"/>
+                    <Grid Margin="0,0,0,10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <ComboBox Grid.Column="0" SelectedIndex="0" Margin="0,0,5,0">
-                            <ComboBoxItem Content="Recogida Local"/>
-                            <ComboBoxItem Content="A Domicilio (+3€)"/>
+                        <ComboBox Height="35" Padding="10,5" BorderBrush="#DDDDDD">
+                            <ComboBoxItem Content="Juan Pérez" IsSelected="True"/>
                         </ComboBox>
-                        <DatePicker Grid.Column="1" Width="100"/>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="5,0,0,0">
+                            <Button Content="+" Width="35" Height="35" Background="{StaticResource PrimaryColor}" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="16" Cursor="Hand">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </StackPanel>
                     </Grid>
 
-                    <!-- Datos Envío -->
-                    <Grid Margin="0,5,0,5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <ComboBox Grid.Column="0" Margin="0,0,5,0">
-                            <ComboBoxItem Content="Cliente: Juan Pérez"/>
-                        </ComboBox>
-                        <Button Grid.Column="1" Content="+" Width="25" Margin="0,0,2,0"/>
-                        <Button Grid.Column="2" Content="✏️" Width="25" Margin="0,0,2,0"/>
-                        <Button Grid.Column="3" Content="🗑️" Width="25"/>
-                    </Grid>
+                    <TextBlock Text="📍 C/ Gran Vía, 24, Madrid" FontSize="12" Foreground="{StaticResource LightText}" Margin="5,0,0,10" FontStyle="Italic"/>
 
-                    <TextBox Text="Dirección: C/ Ejemplo, 123" Margin="0,0,0,5" IsReadOnly="True" Background="#F0F0F0"/>
-
-                    <!-- Forma de Pago -->
-                    <ComboBox Margin="0,5,0,5" SelectedIndex="0">
-                        <ComboBoxItem Content="Pago: Efectivo"/>
-                        <ComboBoxItem Content="Pago: Tarjeta"/>
+                    <!-- Pago -->
+                    <Label Content="Método de Pago" FontSize="12" Foreground="{StaticResource LightText}"/>
+                    <ComboBox Height="35" Padding="10,5" Margin="0,0,0,10" BorderBrush="#DDDDDD" SelectedIndex="1">
+                        <ComboBoxItem Content="💶 Efectivo"/>
+                        <ComboBoxItem Content="💳 Tarjeta"/>
                     </ComboBox>
 
                     <!-- Puntos -->
-                    <CheckBox Content="Canjear Puntos" Margin="0,5,0,0"/>
+                    <CheckBox Content="Canjear 150 puntos (-5.00€)" FontSize="13" Foreground="{StaticResource DarkText}" Margin="5,5,0,0"/>
                 </StackPanel>
 
                 <!-- 4. Total y Botón Final -->
                 <StackPanel Grid.Row="3">
-                    <TextBlock Text="Total: 45 €" FontSize="20" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,0,0,10"/>
-                    <Button Content="Cobrar / Finalizar" Height="50" Background="#333333" Foreground="White" FontSize="18" FontWeight="Bold">
+                    <Separator Background="#EEEEEE" Margin="0,0,0,15"/>
+
+                    <Grid Margin="0,0,0,5">
+                        <TextBlock Text="Subtotal" Foreground="{StaticResource LightText}"/>
+                        <TextBlock Text="33.50 €" HorizontalAlignment="Right" Foreground="{StaticResource DarkText}"/>
+                    </Grid>
+                    <Grid Margin="0,0,0,5">
+                        <TextBlock Text="Envío" Foreground="{StaticResource LightText}"/>
+                        <TextBlock Text="+ 3.00 €" HorizontalAlignment="Right" Foreground="{StaticResource DarkText}"/>
+                    </Grid>
+                    <Grid Margin="0,0,0,15">
+                        <TextBlock Text="TOTAL" FontSize="20" FontWeight="Bold" Foreground="{StaticResource DarkText}"/>
+                        <TextBlock Text="36.50 €" FontSize="20" FontWeight="Bold" HorizontalAlignment="Right" Foreground="{StaticResource PrimaryColor}"/>
+                    </Grid>
+
+                    <Button Content="COBRAR" Height="55" Background="{StaticResource PrimaryColor}" Foreground="White" FontSize="18" FontWeight="Bold" BorderThickness="0" Cursor="Hand">
+                        <Button.Effect>
+                            <DropShadowEffect Color="#FF6F00" BlurRadius="15" ShadowDepth="5" Opacity="0.3"/>
+                        </Button.Effect>
                         <Button.Resources>
                             <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="5"/>
+                                <Setter Property="CornerRadius" Value="8"/>
                             </Style>
                         </Button.Resources>
                     </Button>
