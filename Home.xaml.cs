@@ -19,9 +19,16 @@ namespace TPV_Hosteleria
     /// </summary>
     public partial class Home : Window
     {
-        public Home()
+        // Modificamos el constructor para pedir el nombre del usuario
+        public Home(string nombreUsuario)
         {
             InitializeComponent();
+
+            // 1. Asignar el nombre del usuario al TextBlock
+            txtNombreUsuario.Text = "Hola, " + nombreUsuario;
+
+            // 2. Asignar la fecha y hora actual al TextBlock
+            txtUltimoAcceso.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
         }
     }
 }

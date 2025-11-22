@@ -18,9 +18,12 @@ namespace TPV_Hosteleria
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
-    ///
     public partial class MainWindow : Window
     {
+        // Credenciales harcodeadas (como pide el enunciado para probar)
+        private const string usuarioValido = "ipo";
+        private const string passwordValido = "ipo";
+
         public MainWindow()
         {
             InitializeComponent();
@@ -28,29 +31,44 @@ namespace TPV_Hosteleria
 
         private void btnAcceder_Click(object sender, RoutedEventArgs e)
         {
-            // Si no se ha introducido el login
-            if (String.IsNullOrEmpty(txtUsuario.Text)
-            || String.IsNullOrEmpty(passContrasena.Password))
+            // 1. Validar que no estén vacíos
+            if (string.IsNullOrEmpty(txtUsuario.Text) || string.IsNullOrEmpty(txtPassword.Password))
             {
-                // feedback al usuario
-                lblEstado.Foreground = Brushes.Red;
-                lblEstado.Content = "Introduzca el usuario y la contraseña";
+                txtError.Text = "Introduzca usuario y contraseña";
+                txtError.Visibility = Visibility.Visible;
+                return; // Salimos
+            }
+
+            // 2. Validar credenciales
+            if (txtUsuario.Text == usuarioValido && txtPassword.Password == passwordValido)
+            {
+                // --- LOGIN CORRECTO ---
+
+                // A. Crear la ventana Home pasándole el nombre del usuario
+                Home ventanaHome = new Home(txtUsuario.Text);
+
+                // B. Mostrar la ventana Home
+                ventanaHome.Show();
+
+                // C. Cerrar la ventana actual (Login)
+                this.Close();
             }
             else
             {
-                if (txtUsuario.Text.Equals(usuario)
-                && passContrasena.Password.Equals(password))
-                {
-                    Application.Current.Shutdown();
-                }
-                else
-                {
-                    // feedback al usuario
-                    lblEstado.Foreground = Brushes.Red;
-                    lblEstado.Content = "Combinación usuario-contraseña incorrecta";
-                }
+                // --- LOGIN INCORRECTO ---
+                txtError.Text = "Usuario o contraseña incorrectos";
+                txtError.Visibility = Visibility.Visible;
+
+                // Opcional: Limpiar contraseña
+                txtPassword.Password = "";
+                txtPassword.Focus();
             }
         }
 
+        // (Opcional) Método para limpiar el error si el usuario escribe
+        private void txtUsuario_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            txtError.Visibility = Visibility.Collapsed;
+        }
     }
 }
