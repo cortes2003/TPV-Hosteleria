@@ -171,19 +171,7 @@
 
             <!-- 1. Cabecera y Menú Superior -->
             <Grid Grid.Row="0" Margin="0,0,0,10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <Border Background="{StaticResource PrimaryColor}" Width="40" Height="40" CornerRadius="10" Margin="0,0,10,0">
-                        <TextBlock Text="TPV" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    </Border>
-                    <TextBlock Text="TPV Comida Casera" FontSize="20" FontWeight="Bold" Foreground="{StaticResource DarkText}" VerticalAlignment="Center"/>
-                </StackPanel>
-
-                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                     <Button Content="Home" Style="{StaticResource NavButtonStyle}" Foreground="{StaticResource PrimaryColor}"/>
                     <Button Content="Productos" Style="{StaticResource NavButtonStyle}"/>
                     <Button Content="Pedidos" Style="{StaticResource NavButtonStyle}"/>
@@ -383,26 +371,78 @@
                     </ListView.ItemContainerStyle>
                     <ListViewItem>
                         <Grid Width="280">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="1x" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}"/>
-                            <TextBlock Grid.Column="1" Text="Ensalada César" Foreground="{StaticResource DarkText}"/>
-                            <TextBlock Grid.Column="2" Text="9.50 €" FontWeight="Bold" Foreground="{StaticResource DarkText}"/>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <!-- Primera fila: Cantidad, Nombre y Precio -->
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="1x" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="Ensalada César" Foreground="{StaticResource DarkText}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="2" Text="9.50 €" FontWeight="Bold" Foreground="{StaticResource DarkText}" VerticalAlignment="Center"/>
+                            </Grid>
+                            
+                            <!-- Segunda fila: Botones de control -->
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
+                                <Button Content="−" Width="25" Height="25" Background="#E0E0E0" Foreground="{StaticResource DarkText}" BorderThickness="0" FontWeight="Bold" FontSize="14" Cursor="Hand" Margin="0,0,5,0" ToolTip="Reducir cantidad">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="4"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                                <Button Content="+" Width="25" Height="25" Background="{StaticResource PrimaryColor}" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="14" Cursor="Hand" ToolTip="Añadir unidad">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="4"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                            </StackPanel>
                         </Grid>
                     </ListViewItem>
                     <ListViewItem>
                         <Grid Width="280">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="30"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="2x" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}"/>
-                            <TextBlock Grid.Column="1" Text="Huevos Rotos" Foreground="{StaticResource DarkText}"/>
-                            <TextBlock Grid.Column="2" Text="24.00 €" FontWeight="Bold" Foreground="{StaticResource DarkText}"/>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <!-- Primera fila: Cantidad, Nombre y Precio -->
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="2x" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="Huevos Rotos" Foreground="{StaticResource DarkText}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="2" Text="24.00 €" FontWeight="Bold" Foreground="{StaticResource DarkText}" VerticalAlignment="Center"/>
+                            </Grid>
+                            
+                            <!-- Segunda fila: Botones de control -->
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
+                                <Button Content="−" Width="25" Height="25" Background="#E0E0E0" Foreground="{StaticResource DarkText}" BorderThickness="0" FontWeight="Bold" FontSize="14" Cursor="Hand" Margin="0,0,5,0" ToolTip="Reducir cantidad">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="4"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                                <Button Content="+" Width="25" Height="25" Background="{StaticResource PrimaryColor}" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="14" Cursor="Hand" ToolTip="Añadir unidad">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="4"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                            </StackPanel>
                         </Grid>
                     </ListViewItem>
                 </ListView>
