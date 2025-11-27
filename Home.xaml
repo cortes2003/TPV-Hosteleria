@@ -425,7 +425,21 @@
                             <ComboBoxItem Content="Juan Pérez" IsSelected="True"/>
                         </ComboBox>
                         <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="5,0,0,0">
-                            <Button Content="+" Width="35" Height="35" Background="{StaticResource PrimaryColor}" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="16" Cursor="Hand">
+                            <Button Content="✏️" Width="35" Height="35" Background="#757575" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="14" Cursor="Hand" Margin="0,0,5,0" ToolTip="Editar cliente">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button Content="🗑️" Width="35" Height="35" Background="#D32F2F" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="14" Cursor="Hand" Margin="0,0,5,0" ToolTip="Eliminar cliente">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button Content="+" Width="35" Height="35" Background="{StaticResource PrimaryColor}" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="16" Cursor="Hand" ToolTip="Añadir cliente">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="5"/>
