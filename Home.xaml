@@ -162,6 +162,9 @@
         <!-- ZONA IZQUIERDA: NAVEGACIÓN Y PRODUCTOS -->
         <!-- ========================================== -->
         <Grid Grid.Column="0" Margin="30,20,30,20">
+            <Grid.Background>
+                <ImageBrush/>
+            </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <!-- Título y Menú -->
@@ -173,7 +176,7 @@
             <Grid Grid.Row="0" Margin="0,0,0,10">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                     <Button Content="Home" Style="{StaticResource NavButtonStyle}" Foreground="{StaticResource PrimaryColor}"/>
-                    <Button Content="Productos" Style="{StaticResource NavButtonStyle}"/>
+                    <Button Content="Productos" Style="{StaticResource NavButtonStyle}" Cursor=""/>
                     <Button Content="Pedidos" Style="{StaticResource NavButtonStyle}"/>
                     <Button Content="Clientes" Style="{StaticResource NavButtonStyle}"/>
                 </StackPanel>
@@ -340,7 +343,6 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-
                 <!-- Header Ticket -->
                 <StackPanel Grid.Row="0" Margin="0,0,0,15">
                     <Grid>
@@ -375,7 +377,7 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            
+
                             <!-- Primera fila: Cantidad, Nombre y Precio -->
                             <Grid Grid.Row="0">
                                 <Grid.ColumnDefinitions>
@@ -387,7 +389,7 @@
                                 <TextBlock Grid.Column="1" Text="Ensalada César" Foreground="{StaticResource DarkText}" VerticalAlignment="Center"/>
                                 <TextBlock Grid.Column="2" Text="9.50 €" FontWeight="Bold" Foreground="{StaticResource DarkText}" VerticalAlignment="Center"/>
                             </Grid>
-                            
+
                             <!-- Segunda fila: Botones de control -->
                             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
                                 <Button Content="−" Width="25" Height="25" Background="#E0E0E0" Foreground="{StaticResource DarkText}" BorderThickness="0" FontWeight="Bold" FontSize="14" Cursor="Hand" Margin="0,0,5,0" ToolTip="Reducir cantidad">
@@ -413,7 +415,7 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            
+
                             <!-- Primera fila: Cantidad, Nombre y Precio -->
                             <Grid Grid.Row="0">
                                 <Grid.ColumnDefinitions>
@@ -425,7 +427,7 @@
                                 <TextBlock Grid.Column="1" Text="Huevos Rotos" Foreground="{StaticResource DarkText}" VerticalAlignment="Center"/>
                                 <TextBlock Grid.Column="2" Text="24.00 €" FontWeight="Bold" Foreground="{StaticResource DarkText}" VerticalAlignment="Center"/>
                             </Grid>
-                            
+
                             <!-- Segunda fila: Botones de control -->
                             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
                                 <Button Content="−" Width="25" Height="25" Background="#E0E0E0" Foreground="{StaticResource DarkText}" BorderThickness="0" FontWeight="Bold" FontSize="14" Cursor="Hand" Margin="0,0,5,0" ToolTip="Reducir cantidad">
@@ -530,5 +532,13 @@
 
             </Grid>
         </Border>
+        <TabControl Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="579,29,0,0" VerticalAlignment="Top" Width="652">
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

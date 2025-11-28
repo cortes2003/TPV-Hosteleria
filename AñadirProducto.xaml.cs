@@ -28,5 +28,15 @@ namespace TPV_Hosteleria
         {
 
         }
+
+        private void btnGuardar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
