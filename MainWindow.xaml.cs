@@ -65,5 +65,21 @@ namespace TPV_Hosteleria
             }
         }
 
+        private void txtUsuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return) //Para cuando pulsemos enter mientras estamos escribiendo el usuario
+            {
+                txtPassword.IsEnabled = true;
+                txtPassword.Focus();
+            }
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                btnAcceder_Click(sender, e);
+            }
+        }
     }
 }

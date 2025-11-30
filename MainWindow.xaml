@@ -7,53 +7,72 @@ xmlns:local="clr-namespace:TPV_Hosteleria"
 mc:Ignorable="d"
 Title="Inicio Sesión TPV" Height="768" Width="1024"
 WindowState="Maximized"
-WindowStartupLocation="CenterScreen"
-Background="#F4F7F6">
+WindowStartupLocation="CenterScreen">
 
-<Window.Resources>
-    <!-- COLORES (Consistentes con Home.xaml) -->
-    <SolidColorBrush x:Key="PrimaryColor" Color="#FF6F00"/>
-    <!-- Naranja Cálido -->
-    <SolidColorBrush x:Key="AccentColor" Color="#0078D7"/>
-    <SolidColorBrush x:Key="DarkText" Color="#333333"/>
-    <SolidColorBrush x:Key="LightText" Color="#777777"/>
-    <SolidColorBrush x:Key="CardBackground" Color="White"/>
-</Window.Resources>
+    <Window.Resources>
+        <!-- COLORES (Consistentes con Home.xaml) -->
+        <SolidColorBrush x:Key="PrimaryColor" Color="#FF6F00"/>
+        <!-- Naranja Cálido -->
+        <SolidColorBrush x:Key="AccentColor" Color="#0078D7"/>
+        <SolidColorBrush x:Key="DarkText" Color="#333333"/>
+        <SolidColorBrush x:Key="LightText" Color="#777777"/>
+        <SolidColorBrush x:Key="CardBackground" Color="White"/>
+    </Window.Resources>
 
     <Grid>
+        <!-- Imagen de fondo -->
+        <Grid.Background>
+            <ImageBrush ImageSource="/Imagenes/Login.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+        
+        <!-- Capa de overlay semitransparente para mejor contraste -->
+        <Border Background="#F4F7F6" Opacity="0.7"/>
+        
         <!-- Tarjeta de Login -->
         <Border Background="{StaticResource CardBackground}" 
-                Width="400" 
+                Width="450" 
                 Height="Auto"
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center"
                 CornerRadius="15"
-                Padding="40">
+                Padding="50">
 
             <Border.Effect>
-                <DropShadowEffect Color="#CCCCCC" Direction="270" BlurRadius="20" ShadowDepth="5" Opacity="0.3"/>
+                <DropShadowEffect Color="#000000" Direction="270" BlurRadius="30" ShadowDepth="8" Opacity="0.4"/>
             </Border.Effect>
 
             <StackPanel>
-                <TextBlock Text="Inicio de Sesión" FontSize="28" FontWeight="Bold" Foreground="{StaticResource DarkText}" HorizontalAlignment="Center" Margin="0,0,0,40"/>
+                <TextBlock Text="Inicio de Sesión" FontSize="32" FontWeight="Bold" Foreground="{StaticResource DarkText}" HorizontalAlignment="Center" Margin="0,0,0,50"/>
 
                 <!-- Usuario -->
-                <StackPanel Margin="0,0,0,20">
+                <StackPanel Margin="0,0,0,25">
                     <Label Content="Usuario:" FontSize="14" Foreground="{StaticResource LightText}" FontWeight="SemiBold"/>
-                    <TextBox x:Name="txtUsuario" Height="40" FontSize="16" Padding="5" VerticalContentAlignment="Center" BorderBrush="#DDDDDD" BorderThickness="1"/>
+                    <TextBox x:Name="txtUsuario" Height="45" FontSize="16" Padding="10" VerticalContentAlignment="Center" BorderBrush="#DDDDDD" BorderThickness="1" KeyDown="txtUsuario_KeyDown">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="8"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
                 </StackPanel>
 
                 <!-- Contraseña -->
-                <StackPanel Margin="0,0,0,10">
+                <StackPanel Margin="0,0,0,15">
                     <Label Content="Contraseña:" FontSize="14" Foreground="{StaticResource LightText}" FontWeight="SemiBold"/>
-                    <PasswordBox x:Name="txtPassword" Height="40" FontSize="16" Padding="5" VerticalContentAlignment="Center" BorderBrush="#DDDDDD" BorderThickness="1"/>
+                    <PasswordBox x:Name="txtPassword" Height="45" FontSize="16" Padding="10" VerticalContentAlignment="Center" BorderBrush="#DDDDDD" BorderThickness="1" KeyDown="txtPassword_KeyDown">
+                        <PasswordBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="8"/>
+                            </Style>
+                        </PasswordBox.Resources>
+                    </PasswordBox>
                 </StackPanel>
 
                 <!-- Error -->
-                <TextBlock x:Name="txtError" Text="Usuario o Contraseña incorrectos" Foreground="#D32F2F" FontSize="13" HorizontalAlignment="Center" Visibility="Collapsed" Margin="0,10,0,0"/>
+                <TextBlock x:Name="txtError" Text="Usuario o Contraseña incorrectos" Foreground="#D32F2F" FontSize="13" HorizontalAlignment="Center" Visibility="Collapsed" Margin="0,15,0,0"/>
 
                 <!-- Botón -->
-                <Button x:Name="btnAcceder" Content="Acceder" Height="45" FontSize="16" FontWeight="Bold" Margin="0,30,0,0" Background="{StaticResource PrimaryColor}" Foreground="White" BorderThickness="0" Cursor="Hand" Click="btnAcceder_Click">
+                <Button x:Name="btnAcceder" Content="Acceder" Height="50" FontSize="16" FontWeight="Bold" Margin="0,35,0,0" Background="{StaticResource PrimaryColor}" Foreground="White" BorderThickness="0" Cursor="Hand" Click="btnAcceder_Click">
                     <Button.Effect>
                         <DropShadowEffect Color="#FF6F00" BlurRadius="15" ShadowDepth="5" Opacity="0.3"/>
                     </Button.Effect>
