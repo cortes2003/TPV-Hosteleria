@@ -30,5 +30,10 @@ namespace TPV_Hosteleria
             // 2. Asignar la fecha y hora actual al TextBlock
             txtUltimoAcceso.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
         }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -161,10 +161,7 @@
         <!-- ========================================== -->
         <!-- ZONA IZQUIERDA: NAVEGACIÓN Y PRODUCTOS -->
         <!-- ========================================== -->
-        <Grid Grid.Column="0" Margin="30,20,30,20">
-            <Grid.Background>
-                <ImageBrush/>
-            </Grid.Background>
+        <Grid Grid.Column="0" Margin="30,40,30,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <!-- Título y Menú -->
@@ -173,159 +170,8 @@
             </Grid.RowDefinitions>
 
             <!-- 1. Cabecera y Menú Superior -->
-            <Grid Grid.Row="0" Margin="0,0,0,10">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Button Content="Home" Style="{StaticResource NavButtonStyle}" Foreground="{StaticResource PrimaryColor}"/>
-                    <Button Content="Productos" Style="{StaticResource NavButtonStyle}" Cursor=""/>
-                    <Button Content="Pedidos" Style="{StaticResource NavButtonStyle}"/>
-                    <Button Content="Clientes" Style="{StaticResource NavButtonStyle}"/>
-                </StackPanel>
-            </Grid>
 
             <!-- 2. TabControl: Gestiona las Categorías Principales -->
-            <TabControl Grid.Row="1" Margin="0,10,0,0">
-
-                <!-- ================= PESTAÑA ENTRANTES ================= -->
-                <TabItem Header="Entrantes">
-                    <Grid Margin="0,15,0,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <!-- Subcategorías -->
-                            <RowDefinition Height="*"/>
-                            <!-- Grid Productos -->
-                        </Grid.RowDefinitions>
-
-                        <!-- Subcategorías de Entrantes -->
-                        <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Margin="0,0,0,20">
-                            <StackPanel Orientation="Horizontal">
-                                <Button Content="Ensaladas" Style="{StaticResource SubCatButtonStyle}" Background="{StaticResource PrimaryColor}" Foreground="White" BorderBrush="{StaticResource PrimaryColor}"/>
-                                <Button Content="Huevos" Style="{StaticResource SubCatButtonStyle}"/>
-                                <Button Content="Arroces y Pastas" Style="{StaticResource SubCatButtonStyle}"/>
-                                <Button Content="Asados" Style="{StaticResource SubCatButtonStyle}"/>
-                                <Button Content="Pescados" Style="{StaticResource SubCatButtonStyle}"/>
-                            </StackPanel>
-                        </ScrollViewer>
-
-                        <!-- Grid Productos de Entrantes -->
-                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="-10">
-                            <WrapPanel Orientation="Horizontal" Margin="10">
-
-                                <!-- PRODUCTO EJEMPLO: Ensalada -->
-                                <Border Style="{StaticResource ProductCardStyle}">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid Grid.Row="0" Margin="15">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="90"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                                <TextBlock Text="🥗" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </Border>
-                                            <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                                <TextBlock Text="Ensalada César" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
-                                                <TextBlock Text="Lechuga, pollo..." FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
-                                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
-                                                        <TextBlock Text="Gluten" FontSize="10" Foreground="#D32F2F"/>
-                                                    </Border>
-                                                </StackPanel>
-                                            </StackPanel>
-                                        </Grid>
-                                        <Grid Grid.Row="1" Margin="15,0,15,15">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <TextBlock Text="9.50 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
-                                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                <Button Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
-                                                <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F"/>
-                                            </StackPanel>
-                                        </Grid>
-                                    </Grid>
-                                </Border>
-
-                                <!-- PRODUCTO EJEMPLO: Huevos -->
-                                <Border Style="{StaticResource ProductCardStyle}">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="*"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid Grid.Row="0" Margin="15">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="90"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                                <TextBlock Text="🍳" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </Border>
-                                            <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                                <TextBlock Text="Huevos Rotos" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
-                                                <TextBlock Text="Jamón y patatas" FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
-                                            </StackPanel>
-                                        </Grid>
-                                        <Grid Grid.Row="1" Margin="15,0,15,15">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <TextBlock Text="12.00 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
-                                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                <Button Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
-                                                <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F"/>
-                                            </StackPanel>
-                                        </Grid>
-                                    </Grid>
-                                </Border>
-
-                                <!-- Botón AÑADIR -->
-                                <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand">
-                                    <Button.Template>
-                                        <ControlTemplate TargetType="Button">
-                                            <Grid>
-                                                <Rectangle Stroke="{TemplateBinding BorderBrush}" StrokeThickness="2" StrokeDashArray="4 4" RadiusX="10" RadiusY="10" Fill="{TemplateBinding Background}"/>
-                                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <TextBlock Text="+" FontSize="40" Foreground="#AAAAAA" HorizontalAlignment="Center"/>
-                                                    <TextBlock Text="Añadir Producto" FontSize="14" Foreground="#AAAAAA" FontWeight="SemiBold" Margin="0,5,0,0"/>
-                                                </StackPanel>
-                                            </Grid>
-                                        </ControlTemplate>
-                                    </Button.Template>
-                                </Button>
-
-                            </WrapPanel>
-                        </ScrollViewer>
-                    </Grid>
-                </TabItem>
-
-                <!-- ================= PESTAÑA PLATOS ================= -->
-                <TabItem Header="Platos">
-                    <!-- Contenido diferente para Platos -->
-                    <Grid Margin="0,15,0,0">
-                        <TextBlock Text="Aquí irían los Platos principales..." FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#AAAAAA"/>
-                    </Grid>
-                </TabItem>
-
-                <!-- ================= PESTAÑA POSTRES ================= -->
-                <TabItem Header="Postres">
-                    <Grid Margin="0,15,0,0">
-                        <TextBlock Text="Aquí irían los Postres..." FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#AAAAAA"/>
-                    </Grid>
-                </TabItem>
-
-                <!-- ================= PESTAÑA BEBIDAS ================= -->
-                <TabItem Header="Bebidas">
-                    <Grid Margin="0,15,0,0">
-                        <TextBlock Text="Aquí irían las Bebidas..." FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#AAAAAA"/>
-                    </Grid>
-                </TabItem>
-
-            </TabControl>
         </Grid>
 
         <!-- ========================================== -->
@@ -343,6 +189,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
+
                 <!-- Header Ticket -->
                 <StackPanel Grid.Row="0" Margin="0,0,0,15">
                     <Grid>
@@ -532,13 +379,158 @@
 
             </Grid>
         </Border>
-        <TabControl Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="579,29,0,0" VerticalAlignment="Top" Width="652">
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+        <TabControl x:Name="tabContolHome" HorizontalAlignment="Center" Height="717" Margin="0,10,0,0" VerticalAlignment="Top" Width="671" BorderBrush="#FFFF6F00" BorderThickness="2,2,2,2">
+            <TabItem x:Name="ventanaProductos" Header="Productos">
+                <Grid Background="#FFF4F7F6">
+                    <TabControl Margin="0,10,0,-161">
+
+                        <!-- ================= PESTAÑA ENTRANTES ================= -->
+                        <TabItem Header="Entrantes">
+                            <Grid Margin="0,15,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <!-- Grid Productos -->
+                                    <!-- Subcategorías -->
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Subcategorías de Entrantes -->
+                                <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Margin="0,0,0,20">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Ensaladas" Style="{StaticResource SubCatButtonStyle}" Background="{StaticResource PrimaryColor}" Foreground="White" BorderBrush="{StaticResource PrimaryColor}"/>
+                                        <Button Content="Huevos" Style="{StaticResource SubCatButtonStyle}"/>
+                                        <Button Content="Arroces y Pastas" Style="{StaticResource SubCatButtonStyle}"/>
+                                        <Button Content="Asados" Style="{StaticResource SubCatButtonStyle}"/>
+                                        <Button Content="Pescados" Style="{StaticResource SubCatButtonStyle}"/>
+                                    </StackPanel>
+                                </ScrollViewer>
+
+                                <!-- Grid Productos de Entrantes -->
+                                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="-10">
+                                    <WrapPanel Orientation="Horizontal" Margin="10">
+
+                                        <!-- PRODUCTO EJEMPLO: Ensalada -->
+                                        <Border Style="{StaticResource ProductCardStyle}">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid Grid.Row="0" Margin="15">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="90"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
+                                                        <TextBlock Text="🥗" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                    <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                                                        <TextBlock Text="Ensalada César" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                                        <TextBlock Text="Lechuga, pollo..." FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
+                                                        <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                                            <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
+                                                                <TextBlock Text="Gluten" FontSize="10" Foreground="#D32F2F"/>
+                                                            </Border>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </Grid>
+                                                <Grid Grid.Row="1" Margin="15,0,15,15">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="9.50 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                        <Button Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
+                                                        <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F"/>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Grid>
+                                        </Border>
+
+                                        <!-- PRODUCTO EJEMPLO: Huevos -->
+                                        <Border Style="{StaticResource ProductCardStyle}">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid Grid.Row="0" Margin="15">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="90"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
+                                                        <TextBlock Text="🍳" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                    <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                                                        <TextBlock Text="Huevos Rotos" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                                        <TextBlock Text="Jamón y patatas" FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
+                                                    </StackPanel>
+                                                </Grid>
+                                                <Grid Grid.Row="1" Margin="15,0,15,15">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="12.00 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                        <Button Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
+                                                        <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F"/>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Grid>
+                                        </Border>
+
+                                        <!-- Botón AÑADIR -->
+                                        <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="{x:Type Button}">
+                                                    <Grid>
+                                                        <Rectangle Stroke="{TemplateBinding BorderBrush}" StrokeThickness="2" StrokeDashArray="4 4" RadiusX="10" RadiusY="10" Fill="{TemplateBinding Background}"/>
+                                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                            <TextBlock Text="+" FontSize="40" Foreground="#AAAAAA" HorizontalAlignment="Center"/>
+                                                            <TextBlock Text="Añadir Producto" FontSize="14" Foreground="#AAAAAA" FontWeight="SemiBold" Margin="0,5,0,0"/>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+
+                                    </WrapPanel>
+                                </ScrollViewer>
+                            </Grid>
+                        </TabItem>
+
+                        <!-- ================= PESTAÑA PLATOS ================= -->
+                        <TabItem Header="Platos">
+                            <!-- Contenido diferente para Platos -->
+                            <Grid Margin="0,15,0,0">
+                                <TextBlock Text="Aquí irían los Platos principales..." FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#AAAAAA"/>
+                            </Grid>
+                        </TabItem>
+
+                        <!-- ================= PESTAÑA POSTRES ================= -->
+                        <TabItem Header="Postres">
+                            <Grid Margin="0,15,0,0">
+                                <TextBlock Text="Aquí irían los Postres..." FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#AAAAAA"/>
+                            </Grid>
+                        </TabItem>
+
+                        <!-- ================= PESTAÑA BEBIDAS ================= -->
+                        <TabItem Header="Bebidas">
+                            <Grid Margin="0,15,0,0">
+                                <TextBlock Text="Aquí irían las Bebidas..." FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#AAAAAA"/>
+                            </Grid>
+                        </TabItem>
+
+                    </TabControl>
+                </Grid>
             </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+            <TabItem x:Name="ventanaPedidos" Header="Pedidos">
+                <Grid Background="#FFF4F7F6"/>
             </TabItem>
+
         </TabControl>
     </Grid>
 </Window>
