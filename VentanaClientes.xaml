@@ -1,0 +1,534 @@
+﻿<Window x:Class="TPV_Hosteleria.VentanaClientes"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:local="clr-namespace:TPV_Hosteleria"
+mc:Ignorable="d"
+Title="Aplicacion TPV" Height="768" Width="1024"
+WindowState="Maximized"
+Background="#F4F7F6">
+
+    <Window.Resources>
+        <!-- COLORES -->
+        <SolidColorBrush x:Key="PrimaryColor" Color="#FF6F00"/>
+        <!-- Naranja Cálido -->
+        <SolidColorBrush x:Key="AccentColor" Color="#0078D7"/>
+        <SolidColorBrush x:Key="DarkText" Color="#333333"/>
+        <SolidColorBrush x:Key="LightText" Color="#777777"/>
+        <SolidColorBrush x:Key="CardBackground" Color="White"/>
+
+        <!-- ESTILO PARA EL TABCONTROL (Ocultar borde y fondo) -->
+        <Style TargetType="TabControl">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+
+        <!-- ESTILO PARA LOS TABITEMS (Pestañas de Categorías) -->
+        <Style TargetType="TabItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Border x:Name="border" Background="Transparent" 
+                                BorderBrush="Transparent" BorderThickness="0,0,0,3" 
+                                Padding="20,10" Margin="0,0,5,0" Cursor="Hand">
+                            <ContentPresenter x:Name="content" 
+                                              ContentSource="Header" 
+                                              HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center"
+                                              TextElement.Foreground="{StaticResource LightText}"
+                                              TextElement.FontSize="16"
+                                              TextElement.FontWeight="Bold"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PrimaryColor}"/>
+                                <Setter TargetName="content" Property="TextElement.Foreground" Value="{StaticResource PrimaryColor}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="content" Property="TextElement.Foreground" Value="{StaticResource PrimaryColor}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ESTILO SUB-CATEGORÍA (Chips) -->
+        <Style x:Key="SubCatButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="{StaticResource DarkText}"/>
+            <Setter Property="BorderBrush" Value="#DDDDDD"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="20" 
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="BorderBrush" Value="{StaticResource PrimaryColor}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ESTILO TARJETA PRODUCTO -->
+        <Style x:Key="ProductCardStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource CardBackground}"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Width" Value="240"/>
+            <Setter Property="Height" Value="160"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#CCCCCC" BlurRadius="15" ShadowDepth="3" Opacity="0.4"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ESTILO BOTÓN ACCIÓN (Editar/Borrar) -->
+        <Style x:Key="ActionIconButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#EEEEEE"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ESTILO BOTÓN MENÚ SUPERIOR -->
+        <Style x:Key="NavButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="{StaticResource DarkText}"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,0,20,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" Padding="10,5" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="{StaticResource PrimaryColor}"/>
+                                <Setter Property="Background" Value="#FFF0E0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1.2*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ========================================== -->
+        <!-- ZONA IZQUIERDA: NAVEGACIÓN Y PRODUCTOS -->
+        <!-- ========================================== -->
+        <Grid Grid.Column="0" Margin="30,20,30,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- Título y Menú -->
+                <RowDefinition Height="*"/>
+                <!-- Contenido Principal (Tabs) -->
+            </Grid.RowDefinitions>
+
+            <!-- 1. Cabecera y Menú Superior -->
+            <Grid Grid.Row="0" Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button Content="Home" Style="{StaticResource NavButtonStyle}"/>
+                    <Button Content="Productos" Style="{StaticResource NavButtonStyle}"/>
+                    <Button Content="Pedidos" Style="{StaticResource NavButtonStyle}"/>
+                    <Button Content="Clientes" Style="{StaticResource NavButtonStyle}" Foreground="{StaticResource PrimaryColor}"/>
+                </StackPanel>
+            </Grid>
+            <WrapPanel Grid.Row="1" Margin="0,10,0,-10">
+                <!-- TARJETA CLIENTE: Alberto Cortés -->
+                <Border Style="{StaticResource ProductCardStyle}" Height="200">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
+                                <TextBlock Text="👤" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                                <TextBlock Text="Alberto Cortés" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                <TextBlock Text="📍 C/Finlandia, 27" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,3,0,0"/>
+                                <TextBlock Text="📞 606428412" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
+                                <TextBlock Text="📧 Alberto.Cortes1@alu.uclm.es" FontSize="9" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
+                                <WrapPanel Margin="0,6,0,0">
+                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="4,2" Margin="0,0,4,3">
+                                        <TextBlock Text="Gluten" FontSize="9" Foreground="#D32F2F"/>
+                                    </Border>
+                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="4,2" Margin="0,0,4,3">
+                                        <TextBlock Text="Lácteos" FontSize="9" Foreground="#D32F2F"/>
+                                    </Border>
+                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="4,2" Margin="0,0,4,3">
+                                        <TextBlock Text="Frutos Secos" FontSize="9" Foreground="#D32F2F"/>
+                                    </Border>
+                                </WrapPanel>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="15,0,15,15">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" ToolTip="Editar cliente"/>
+                                <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" ToolTip="Eliminar cliente"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Border>
+
+                <!-- TARJETA CLIENTE: Iván Jesús Mora -->
+                <Border Style="{StaticResource ProductCardStyle}" Height="200">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
+                                <TextBlock Text="👤" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                                <TextBlock Text="Iván Jesús Mora" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                <TextBlock Text="📍 Av. de España, 15, 3ºB" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,3,0,0"/>
+                                <TextBlock Text="📞 695847231" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
+                                <TextBlock Text="📧 ivan.mora@outlook.es" FontSize="9" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
+                                <WrapPanel Margin="0,6,0,0">
+                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="4,2" Margin="0,0,4,3">
+                                        <TextBlock Text="Pescado" FontSize="9" Foreground="#D32F2F"/>
+                                    </Border>
+                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="4,2" Margin="0,0,4,3">
+                                        <TextBlock Text="Huevos" FontSize="9" Foreground="#D32F2F"/>
+                                    </Border>
+                                </WrapPanel>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="15,0,15,15">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" ToolTip="Editar cliente"/>
+                                <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" ToolTip="Eliminar cliente"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Border>
+
+                <!-- TARJETA CLIENTE: Márquez -->
+                <Border Style="{StaticResource ProductCardStyle}" Height="200">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
+                                <TextBlock Text="👤" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                                <TextBlock Text="Márquez García" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                <TextBlock Text="📍 C/ Toledo, 42, 1ºA" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,3,0,0"/>
+                                <TextBlock Text="📞 612395847" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
+                                <TextBlock Text="📧 marquez.garcia@gmail.com" FontSize="9" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
+                                <WrapPanel Margin="0,6,0,0">
+                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="4,2" Margin="0,0,4,3">
+                                        <TextBlock Text="Mariscos" FontSize="9" Foreground="#D32F2F"/>
+                                    </Border>
+                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="4,2" Margin="0,0,4,3">
+                                        <TextBlock Text="Soja" FontSize="9" Foreground="#D32F2F"/>
+                                    </Border>
+                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="4,2" Margin="0,0,4,3">
+                                        <TextBlock Text="Gluten" FontSize="9" Foreground="#D32F2F"/>
+                                    </Border>
+                                </WrapPanel>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="15,0,15,15">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" ToolTip="Editar cliente"/>
+                                <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" ToolTip="Eliminar cliente"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Border>
+
+                <!-- Botón AÑADIR CLIENTE -->
+                <Button Width="240" Height="200" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand" ToolTip="Añadir nuevo cliente">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Rectangle Stroke="{TemplateBinding BorderBrush}" StrokeThickness="2" StrokeDashArray="4 4" RadiusX="10" RadiusY="10" Fill="{TemplateBinding Background}"/>
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock Text="+" FontSize="40" Foreground="#AAAAAA" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="Añadir Cliente" FontSize="14" Foreground="#AAAAAA" FontWeight="SemiBold" Margin="0,5,0,0"/>
+                                </StackPanel>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </WrapPanel>
+
+
+        </Grid>
+
+        <!-- ========================================== -->
+        <!-- ZONA DERECHA: TICKET Y PAGO (Igual que antes) -->
+        <!-- ========================================== -->
+        <Border Grid.Column="1" Background="White">
+            <Border.Effect>
+                <DropShadowEffect Color="#000000" Direction="180" ShadowDepth="5" BlurRadius="20" Opacity="0.05"/>
+            </Border.Effect>
+
+            <Grid Margin="25">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Header Ticket -->
+                <StackPanel Grid.Row="0" Margin="0,0,0,15">
+                    <Grid>
+                        <StackPanel>
+                            <TextBlock x:Name="txtNombreUsuario" Text="Hola, Usuario" FontWeight="Bold" FontSize="16" Foreground="{StaticResource DarkText}"/>
+                            <TextBlock x:Name="txtUltimoAcceso" Text="Fecha Acceso" FontSize="12" Foreground="{StaticResource LightText}"/>
+                        </StackPanel>
+                        <Button Content="?" Width="30" Height="30" HorizontalAlignment="Right" Background="#F5F5F5" BorderThickness="0" Foreground="{StaticResource DarkText}" FontWeight="Bold" Cursor="Hand">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="15"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                    </Grid>
+                    <Separator Margin="0,15" Background="#EEEEEE"/>
+                    <TextBlock Text="Pedido Actual #1024" FontWeight="Bold" FontSize="18" Foreground="{StaticResource PrimaryColor}"/>
+                </StackPanel>
+
+                <!-- Lista Ticket -->
+                <ListView Grid.Row="1" BorderThickness="0" Background="Transparent" Margin="-5,0">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Padding" Value="5,10"/>
+                            <Setter Property="BorderBrush" Value="#EEEEEE"/>
+                            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListViewItem>
+                        <Grid Width="280">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Primera fila: Cantidad, Nombre y Precio -->
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="1x" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="Ensalada César" Foreground="{StaticResource DarkText}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="2" Text="9.50 €" FontWeight="Bold" Foreground="{StaticResource DarkText}" VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <!-- Segunda fila: Botones de control -->
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
+                                <Button Content="−" Width="25" Height="25" Background="#E0E0E0" Foreground="{StaticResource DarkText}" BorderThickness="0" FontWeight="Bold" FontSize="14" Cursor="Hand" Margin="0,0,5,0" ToolTip="Reducir cantidad">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="4"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                                <Button Content="+" Width="25" Height="25" Background="{StaticResource PrimaryColor}" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="14" Cursor="Hand" ToolTip="Añadir unidad">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="4"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <Grid Width="280">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Primera fila: Cantidad, Nombre y Precio -->
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="2x" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="Huevos Rotos" Foreground="{StaticResource DarkText}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="2" Text="24.00 €" FontWeight="Bold" Foreground="{StaticResource DarkText}" VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <!-- Segunda fila: Botones de control -->
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
+                                <Button Content="−" Width="25" Height="25" Background="#E0E0E0" Foreground="{StaticResource DarkText}" BorderThickness="0" FontWeight="Bold" FontSize="14" Cursor="Hand" Margin="0,0,5,0" ToolTip="Reducir cantidad">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="4"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                                <Button Content="+" Width="25" Height="25" Background="{StaticResource PrimaryColor}" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="14" Cursor="Hand" ToolTip="Añadir unidad">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="4"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </ListViewItem>
+                </ListView>
+
+                <!-- Configuración -->
+                <StackPanel Grid.Row="2" Margin="0,15">
+                    <Label Content="Tipo de Entrega" FontSize="12" Foreground="{StaticResource LightText}"/>
+                    <ComboBox Height="35" Padding="10,5" Margin="0,0,0,10" BorderBrush="#DDDDDD">
+                        <ComboBoxItem Content="🍽️  Para tomar aquí"/>
+                        <ComboBoxItem Content="🏠  A Domicilio (+3.00€)" IsSelected="True"/>
+                    </ComboBox>
+
+                    <Label Content="Cliente" FontSize="12" Foreground="{StaticResource LightText}"/>
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox Height="35" Padding="10,5" BorderBrush="#DDDDDD">
+                            <ComboBoxItem Content="Juan Pérez" IsSelected="True"/>
+                        </ComboBox>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="5,0,0,0">
+                            <Button Content="✏️" Width="35" Height="35" Background="#757575" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="14" Cursor="Hand" Margin="0,0,5,0" ToolTip="Editar cliente">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button Content="🗑️" Width="35" Height="35" Background="#D32F2F" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="14" Cursor="Hand" Margin="0,0,5,0" ToolTip="Eliminar cliente">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button Content="+" Width="35" Height="35" Background="{StaticResource PrimaryColor}" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="16" Cursor="Hand" ToolTip="Añadir cliente">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+
+                    <TextBlock Text="📍 C/ Gran Vía, 24, Madrid" FontSize="12" Foreground="{StaticResource LightText}" Margin="5,0,0,10" FontStyle="Italic"/>
+
+                    <Label Content="Método de Pago" FontSize="12" Foreground="{StaticResource LightText}"/>
+                    <ComboBox Height="35" Padding="10,5" Margin="0,0,0,10" BorderBrush="#DDDDDD" SelectedIndex="1">
+                        <ComboBoxItem Content="💶 Efectivo"/>
+                        <ComboBoxItem Content="💳 Tarjeta"/>
+                    </ComboBox>
+
+                    <CheckBox Content="Canjear 150 puntos (-5.00€)" FontSize="13" Foreground="{StaticResource DarkText}" Margin="5,5,0,0"/>
+                </StackPanel>
+
+                <!-- Total y Botón Final -->
+                <StackPanel Grid.Row="3">
+                    <Separator Background="#EEEEEE" Margin="0,0,0,15"/>
+                    <Grid Margin="0,0,0,5">
+                        <TextBlock Text="Subtotal" Foreground="{StaticResource LightText}"/>
+                        <TextBlock Text="33.50 €" HorizontalAlignment="Right" Foreground="{StaticResource DarkText}"/>
+                    </Grid>
+                    <Grid Margin="0,0,0,5">
+                        <TextBlock Text="Envío" Foreground="{StaticResource LightText}"/>
+                        <TextBlock Text="+ 3.00 €" HorizontalAlignment="Right" Foreground="{StaticResource DarkText}"/>
+                    </Grid>
+                    <Grid Margin="0,0,0,15">
+                        <TextBlock Text="TOTAL" FontSize="20" FontWeight="Bold" Foreground="{StaticResource DarkText}"/>
+                        <TextBlock Text="36.50 €" FontSize="20" FontWeight="Bold" HorizontalAlignment="Right" Foreground="{StaticResource PrimaryColor}"/>
+                    </Grid>
+
+                    <Button Content="COBRAR" Height="55" Background="{StaticResource PrimaryColor}" Foreground="White" FontSize="18" FontWeight="Bold" BorderThickness="0" Cursor="Hand">
+                        <Button.Effect>
+                            <DropShadowEffect Color="#FF6F00" BlurRadius="15" ShadowDepth="5" Opacity="0.3"/>
+                        </Button.Effect>
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="8"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
