@@ -200,18 +200,18 @@ Background="#F4F7F6">
                             </Border>
                             <StackPanel Grid.Column="1" Margin="15,0,0,0">
                                 <TextBlock Text="Alberto Cortés" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
-                                <TextBlock Text="📍 C/Finlandia, 27" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,3,0,0"/>
-                                <TextBlock Text="📞 606428412" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
-                                <TextBlock Text="📧 Alberto.Cortes1@alu.uclm.es" FontSize="9" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
-                                <WrapPanel Margin="0,6,0,0">
-                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="4,2" Margin="0,0,4,3">
-                                        <TextBlock Text="Gluten" FontSize="9" Foreground="#D32F2F"/>
+                                <TextBlock Text="📍 C/Finlandia, 27" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
+                                <TextBlock Text="📞 606428412" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,1,0,0"/>
+                                <TextBlock Text="📧 Alberto.Cortes1@alu.uclm.es" FontSize="9" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,1,0,0"/>
+                                <WrapPanel Margin="0,4,0,0">
+                                    <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
+                                        <TextBlock Text="Gluten" FontSize="8" Foreground="#D32F2F"/>
                                     </Border>
-                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="4,2" Margin="0,0,4,3">
-                                        <TextBlock Text="Lácteos" FontSize="9" Foreground="#D32F2F"/>
+                                    <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
+                                        <TextBlock Text="Lácteos" FontSize="8" Foreground="#D32F2F"/>
                                     </Border>
-                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="4,2" Margin="0,0,4,3">
-                                        <TextBlock Text="Frutos Secos" FontSize="9" Foreground="#D32F2F"/>
+                                    <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
+                                        <TextBlock Text="Frutos Secos" FontSize="8" Foreground="#D32F2F"/>
                                     </Border>
                                 </WrapPanel>
                             </StackPanel>
@@ -242,15 +242,15 @@ Background="#F4F7F6">
                             </Border>
                             <StackPanel Grid.Column="1" Margin="15,0,0,0">
                                 <TextBlock Text="Iván Jesús Mora" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
-                                <TextBlock Text="📍 Av. de España, 15, 3ºB" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,3,0,0"/>
-                                <TextBlock Text="📞 695847231" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
-                                <TextBlock Text="📧 ivan.mora@outlook.es" FontSize="9" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
-                                <WrapPanel Margin="0,6,0,0">
-                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="4,2" Margin="0,0,4,3">
-                                        <TextBlock Text="Pescado" FontSize="9" Foreground="#D32F2F"/>
+                                <TextBlock Text="📍 Av. de España, 15, 3ºB" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
+                                <TextBlock Text="📞 695847231" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,1,0,0"/>
+                                <TextBlock Text="📧 ivan.mora@outlook.es" FontSize="9" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,1,0,0"/>
+                                <WrapPanel Margin="0,4,0,0">
+                                    <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
+                                        <TextBlock Text="Pescado" FontSize="8" Foreground="#D32F2F"/>
                                     </Border>
-                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="4,2" Margin="0,0,4,3">
-                                        <TextBlock Text="Huevos" FontSize="9" Foreground="#D32F2F"/>
+                                    <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
+                                        <TextBlock Text="Huevos" FontSize="8" Foreground="#D32F2F"/>
                                     </Border>
                                 </WrapPanel>
                             </StackPanel>
@@ -280,19 +280,19 @@ Background="#F4F7F6">
                                 <TextBlock Text="👤" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                             <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                <TextBlock Text="Márquez García" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
-                                <TextBlock Text="📍 C/ Toledo, 42, 1ºA" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,3,0,0"/>
-                                <TextBlock Text="📞 612395847" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
-                                <TextBlock Text="📧 marquez.garcia@gmail.com" FontSize="9" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
-                                <WrapPanel Margin="0,6,0,0">
-                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="4,2" Margin="0,0,4,3">
-                                        <TextBlock Text="Mariscos" FontSize="9" Foreground="#D32F2F"/>
+                                <TextBlock Text="Jesus Márquez" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                <TextBlock Text="📍 C/ Toledo, 42, 1ºA" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
+                                <TextBlock Text="📞 612395847" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,1,0,0"/>
+                                <TextBlock Text="📧 marquez.garcia@gmail.com" FontSize="9" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,1,0,0"/>
+                                <WrapPanel Margin="0,4,0,0">
+                                    <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
+                                        <TextBlock Text="Mariscos" FontSize="8" Foreground="#D32F2F"/>
                                     </Border>
-                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="4,2" Margin="0,0,4,3">
-                                        <TextBlock Text="Soja" FontSize="9" Foreground="#D32F2F"/>
+                                    <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
+                                        <TextBlock Text="Soja" FontSize="8" Foreground="#D32F2F"/>
                                     </Border>
-                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="4,2" Margin="0,0,4,3">
-                                        <TextBlock Text="Gluten" FontSize="9" Foreground="#D32F2F"/>
+                                    <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
+                                        <TextBlock Text="Gluten" FontSize="8" Foreground="#D32F2F"/>
                                     </Border>
                                 </WrapPanel>
                             </StackPanel>
