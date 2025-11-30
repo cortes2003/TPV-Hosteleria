@@ -109,9 +109,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Imagenes\alergenos.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Editar.jpg" />
   </ItemGroup>
   <ItemGroup>
