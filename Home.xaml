@@ -161,7 +161,7 @@
         <!-- ========================================== -->
         <!-- ZONA IZQUIERDA: NAVEGACIÓN Y PRODUCTOS -->
         <!-- ========================================== -->
-        <Grid Grid.Column="0" Margin="30,40,30,0">
+        <Grid Grid.Column="0" Margin="10,10,10,10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <!-- Título y Menú -->
@@ -357,10 +357,10 @@
 
             </Grid>
         </Border>
-        <TabControl x:Name="tabContolHome" HorizontalAlignment="Center" Height="717" Margin="0,10,0,0" VerticalAlignment="Top" Width="671" BorderBrush="#FFF4F7F6" BorderThickness="2,2,2,2">
+        <TabControl x:Name="tabContolHome" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10" BorderBrush="#FFF4F7F6" BorderThickness="0">
             <TabItem x:Name="ventanaProductos" Header="Productos">
                 <Grid Background="#FFF4F7F6">
-                    <TabControl Margin="0,0,0,-151">
+                    <TabControl Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
                         <!-- ================= PESTAÑA ENTRANTES ================= -->
                         <TabItem Header="Entrantes">
@@ -506,15 +506,71 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="ventanaPedidos" Header="Pedidos">
-                <Grid Background="#FFF4F7F6"/>
+                <Grid Background="#FFF4F7F6">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <!-- Fila para los botones -->
+                        <RowDefinition Height="*"/>
+                        <!-- Fila para el DataGrid -->
+                    </Grid.RowDefinitions>
+
+                    <!-- Botones arriba -->
+                    <Grid Grid.Row="0" Margin="0,10,0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- FILA 1 -->
+                        <Button Content="Fecha" 
+                                Grid.Row="0" Grid.Column="0"
+                                Style="{StaticResource SubCatButtonStyle}"
+                                Background="{StaticResource PrimaryColor}"
+                                Foreground="White"
+                                BorderBrush="{StaticResource PrimaryColor}"/>
+
+                        <DatePicker Grid.Row="0" Grid.Column="1" Margin="5,0"/>
+
+                        <Button Content="Cliente" 
+                                Grid.Row="0" Grid.Column="2"
+                                Style="{StaticResource SubCatButtonStyle}"
+                                Margin="10,0,0,0"/>
+
+                        <TextBox x:Name="txtClientePedidos" Grid.Row="0" Grid.Column="3" Height="40" Width="120" FontSize="16" BorderBrush="Black" BorderThickness="1" Margin="5,0"/>
+
+                        <!-- FILA 2 -->
+                        <Button Content="Estado" Grid.Row="1" Grid.Column="0" Style="{StaticResource SubCatButtonStyle}" Margin="0,10,10,0"/>
+                        <ComboBox Width="60" Grid.Row="1" Grid.Column="1" Margin="0,10,0,0"/>
+                        <Button Content="Tipo de Entrega" Grid.Row="1" Grid.Column="2" Style="{StaticResource SubCatButtonStyle}" Margin="0,10,10,0"/>
+                        <ComboBox Width="60" Grid.Row="1" Grid.Column="3" Margin="0,10,0,0"/>
+                    </Grid>
+
+                    <!-- DataGrid abajo -->
+                    <DataGrid Grid.Row="1" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,10,0,0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Número de Pedido" Width="*"/>
+                            <DataGridTextColumn Header="Fecha y Hora" Width="*"/>
+                            <DataGridTextColumn Header="Cliente" Width="*"/>
+                            <DataGridTextColumn Header="Importe Total" Width="*"/>
+                            <DataGridTextColumn Header="Estado" Width="*"/>
+                            <DataGridTextColumn Header="Tipo de Entrega" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </TabItem>
             <TabItem x:Name="ventanaClientes" Header="Clientes">
-                <Grid Background="#FFF4F7F6">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="48*"/>
-                        <ColumnDefinition Width="619*"/>
-                    </Grid.ColumnDefinitions>
-                    <Border Style="{StaticResource ProductCardStyle}" Height="NaN" Margin="10,10,417,457" Grid.ColumnSpan="2">
+                <Grid Background="#FFF4F7F6" Margin="10">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <WrapPanel Orientation="Horizontal">
+                            <!-- TARJETA CLIENTE: Alberto Cortés -->
+                            <Border Style="{StaticResource ProductCardStyle}" Height="200">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -554,96 +610,103 @@
                             </Grid>
                         </Grid>
                     </Border>
-                    <Border Style="{StaticResource ProductCardStyle}" Height="NaN" Margin="222,10,157,457" Grid.Column="1">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" Margin="15">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="90"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                    <TextBlock Text="👤" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                                <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                    <TextBlock Text="Iván Jesús Mora" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
-                                    <TextBlock Text="📍 Av. de España, 15, 3ºB" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
-                                    <TextBlock Text="📞 695847231" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,1,0,0"/>
-                                    <TextBlock Text="📧 ivan.mora@outlook.es" FontSize="9" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,1,0,0"/>
-                                    <WrapPanel Margin="0,4,0,0">
-                                        <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
-                                            <TextBlock Text="Pescado" FontSize="8" Foreground="#D32F2F"/>
-                                        </Border>
-                                        <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
-                                            <TextBlock Text="Huevos" FontSize="8" Foreground="#D32F2F"/>
-                                        </Border>
-                                    </WrapPanel>
-                                </StackPanel>
-                            </Grid>
-                            <Grid Grid.Row="1" Margin="15,0,15,15">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <Button Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" ToolTip="Editar cliente"/>
-                                    <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" ToolTip="Eliminar cliente"/>
-                                </StackPanel>
-                            </Grid>
-                        </Grid>
-                    </Border>
-                    <Button Margin="222,230,157,237" Background="White" BorderBrush="#DDDDDD" Cursor="Hand" ToolTip="Añadir nuevo cliente" Grid.Column="1">
-                        <Button.Template>
-                            <ControlTemplate TargetType="{x:Type Button}">
+                            <!-- TARJETA CLIENTE: Iván Jesús Mora -->
+                            <Border Style="{StaticResource ProductCardStyle}" Height="200">
                                 <Grid>
-                                    <Rectangle Stroke="{TemplateBinding BorderBrush}" StrokeThickness="2" StrokeDashArray="4 4" RadiusX="10" RadiusY="10" Fill="{TemplateBinding Background}"/>
-                                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <TextBlock Text="+" FontSize="40" Foreground="#AAAAAA" HorizontalAlignment="Center"/>
-                                        <TextBlock Text="Añadir Cliente" FontSize="14" Foreground="#AAAAAA" FontWeight="SemiBold" Margin="0,5,0,0"/>
-                                    </StackPanel>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0" Margin="15">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
+                                            <TextBlock Text="👤" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                                            <TextBlock Text="Iván Jesús Mora" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                            <TextBlock Text="📍 Av. de España, 15, 3ºB" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
+                                            <TextBlock Text="📞 695847231" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,1,0,0"/>
+                                            <TextBlock Text="📧 ivan.mora@outlook.es" FontSize="9" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,1,0,0"/>
+                                            <WrapPanel Margin="0,4,0,0">
+                                                <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
+                                                    <TextBlock Text="Pescado" FontSize="8" Foreground="#D32F2F"/>
+                                                </Border>
+                                                <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
+                                                    <TextBlock Text="Huevos" FontSize="8" Foreground="#D32F2F"/>
+                                                </Border>
+                                            </WrapPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Row="1" Margin="15,0,15,15">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <Button Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" ToolTip="Editar cliente"/>
+                                            <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" ToolTip="Eliminar cliente"/>
+                                        </StackPanel>
+                                    </Grid>
                                 </Grid>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                    <Border Style="{StaticResource ProductCardStyle}" Height="NaN" Margin="10,230,417,237" Grid.ColumnSpan="2">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" Margin="15">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="90"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                    <TextBlock Text="👤" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                                <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                    <TextBlock Text="Jesus Márquez" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
-                                    <TextBlock Text="📍 C/ Toledo, 42, 1ºA" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
-                                    <TextBlock Text="📞 612395847" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,1,0,0"/>
-                                    <TextBlock Text="📧 marquez.garcia@gmail.com" FontSize="9" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,1,0,0"/>
-                                    <WrapPanel Margin="0,4,0,0">
-                                        <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
-                                            <TextBlock Text="Mariscos" FontSize="8" Foreground="#D32F2F"/>
+                            </Border>
+
+                            <!-- TARJETA CLIENTE: Jesus Márquez -->
+                            <Border Style="{StaticResource ProductCardStyle}" Height="200">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0" Margin="15">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
+                                            <TextBlock Text="👤" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         </Border>
-                                        <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
-                                            <TextBlock Text="Soja" FontSize="8" Foreground="#D32F2F"/>
-                                        </Border>
-                                        <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
-                                            <TextBlock Text="Gluten" FontSize="8" Foreground="#D32F2F"/>
-                                        </Border>
-                                    </WrapPanel>
-                                </StackPanel>
-                            </Grid>
-                            <Grid Grid.Row="1" Margin="15,0,15,15">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <Button Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" ToolTip="Editar cliente"/>
-                                    <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" ToolTip="Eliminar cliente"/>
-                                </StackPanel>
-                            </Grid>
-                        </Grid>
-                    </Border>
+                                        <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                                            <TextBlock Text="Jesus Márquez" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                            <TextBlock Text="📍 C/ Toledo, 42, 1ºA" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
+                                            <TextBlock Text="📞 612395847" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,1,0,0"/>
+                                            <TextBlock Text="📧 marquez.garcia@gmail.com" FontSize="9" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,1,0,0"/>
+                                            <WrapPanel Margin="0,4,0,0">
+                                                <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
+                                                    <TextBlock Text="Mariscos" FontSize="8" Foreground="#D32F2F"/>
+                                                </Border>
+                                                <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
+                                                    <TextBlock Text="Soja" FontSize="8" Foreground="#D32F2F"/>
+                                                </Border>
+                                                <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
+                                                    <TextBlock Text="Gluten" FontSize="8" Foreground="#D32F2F"/>
+                                                </Border>
+                                            </WrapPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Row="1" Margin="15,0,15,15">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <Button Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" ToolTip="Editar cliente"/>
+                                            <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" ToolTip="Eliminar cliente"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+
+                            <!-- Botón AÑADIR CLIENTE -->
+                            <Button Width="240" Height="200" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand" ToolTip="Añadir nuevo cliente">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <Rectangle Stroke="{TemplateBinding BorderBrush}" StrokeThickness="2" StrokeDashArray="4 4" RadiusX="10" RadiusY="10" Fill="{TemplateBinding Background}"/>
+                                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <TextBlock Text="+" FontSize="40" Foreground="#AAAAAA" HorizontalAlignment="Center"/>
+                                                <TextBlock Text="Añadir Cliente" FontSize="14" Foreground="#AAAAAA" FontWeight="SemiBold" Margin="0,5,0,0"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </WrapPanel>
+                    </ScrollViewer>
                 </Grid>
             </TabItem>
         </TabControl>
