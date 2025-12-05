@@ -35,5 +35,12 @@ namespace TPV_Hosteleria
         {
 
         }
+
+        private void btnAyuda_Click(object sender, RoutedEventArgs e)
+        {
+            // Crear y mostrar la ventana de información
+            VentanaInformacion ventanaInfo = new VentanaInformacion();
+            ventanaInfo.ShowDialog(); // ShowDialog la muestra como ventana modal
+        }
     }
 }
