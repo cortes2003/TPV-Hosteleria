@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,20 +17,103 @@ using System.Windows.Shapes;
 namespace TPV_Hosteleria
 {
     /// <summary>
+    /// Clase para representar un producto en el ticket
+    /// </summary>
+    public class ProductoTicket : INotifyPropertyChanged
+    {
+        private int _cantidad;
+        private string _nombre;
+        private decimal _precioUnitario;
+
+        public int Cantidad
+        {
+            get { return _cantidad; }
+            set
+            {
+                if (_cantidad != value)
+                {
+                    _cantidad = value;
+                    OnPropertyChanged("Cantidad");
+                    OnPropertyChanged("CantidadTexto");
+                    OnPropertyChanged("PrecioTotal");
+                    OnPropertyChanged("PrecioTotalTexto");
+                }
+            }
+        }
+
+        public string Nombre
+        {
+            get { return _nombre; }
+            set
+            {
+                if (_nombre != value)
+                {
+                    _nombre = value;
+                    OnPropertyChanged("Nombre");
+                }
+            }
+        }
+
+        public decimal PrecioUnitario
+        {
+            get { return _precioUnitario; }
+            set
+            {
+                if (_precioUnitario != value)
+                {
+                    _precioUnitario = value;
+                    OnPropertyChanged("PrecioUnitario");
+                    OnPropertyChanged("PrecioTotal");
+                    OnPropertyChanged("PrecioTotalTexto");
+                }
+            }
+        }
+
+        public string CantidadTexto
+        {
+            get { return $"{Cantidad}x"; }
+        }
+
+        public decimal PrecioTotal
+        {
+            get { return Cantidad * PrecioUnitario; }
+        }
+
+        public string PrecioTotalTexto
+        {
+            get { return $"{PrecioTotal:F2} €"; }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+
+    /// <summary>
     /// Lógica de interacción para Home.xaml
     /// </summary>
     public partial class Home : Window
     {
-        // Modificamos el constructor para pedir el nombre del usuario
+        private ObservableCollection<ProductoTicket> productosTicket;
+
         public Home(string nombreUsuario)
         {
             InitializeComponent();
-
-            // 1. Asignar el nombre del usuario al TextBlock
             txtNombreUsuario.Text = "Hola, " + nombreUsuario;
-
-            // 2. Asignar la fecha y hora actual al TextBlock
             txtUltimoAcceso.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+
+            // Inicializar la lista de productos del ticket (datos de ejemplo)
+            productosTicket = new ObservableCollection<ProductoTicket>
+            {
+                new ProductoTicket { Cantidad = 1, Nombre = "Ensalada César", PrecioUnitario = 9.50m },
+                new ProductoTicket { Cantidad = 2, Nombre = "Huevos Rotos", PrecioUnitario = 12.00m }
+            };
+
+            // Asignar el ItemsSource del ListView
+            lstTicket.ItemsSource = productosTicket;
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -40,7 +125,38 @@ namespace TPV_Hosteleria
         {
             // Crear y mostrar la ventana de información
             VentanaInformacion ventanaInfo = new VentanaInformacion();
-            ventanaInfo.ShowDialog(); // ShowDialog la muestra como ventana modal
+            ventanaInfo.ShowDialog();
+        }
+
+        /// <summary>
+        /// Evento para aumentar la cantidad de un producto
+        /// </summary>
+        private void btnSumarProducto_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn != null && btn.Tag is ProductoTicket producto)
+            {
+                producto.Cantidad++;
+            }
+        }
+
+        /// <summary>
+        /// Evento para reducir la cantidad de un producto
+        /// Si la cantidad llega a 0, se elimina del ticket
+        /// </summary>
+        private void btnRestarProducto_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn != null && btn.Tag is ProductoTicket producto)
+            {
+                producto.Cantidad--;
+                
+                // Si la cantidad llega a 0, eliminar el producto del ticket
+                if (producto.Cantidad <= 0)
+                {
+                    productosTicket.Remove(producto);
+                }
+            }
         }
     }
 }
