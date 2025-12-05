@@ -1,0 +1,58 @@
+﻿<Window x:Class="TPV_Hosteleria.AñadirCliente"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPV_Hosteleria"
+        mc:Ignorable="d"
+        Title="Gestión de clientes" Height="550" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblNombreApellidosCliente" Content="Nombre y apellidos:" HorizontalAlignment="Left" Margin="43,39,0,0" VerticalAlignment="Top" FontSize="20" Height="50" Width="197"/>
+        <TextBox x:Name="txtNombreApellidosCliente" HorizontalAlignment="Left" Height="34" Margin="243,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="505" FontSize="20"/>
+        <Label x:Name="lblTelefonosClientes" Content="Teléfono(s):" HorizontalAlignment="Left" Margin="43,94,0,0" VerticalAlignment="Top" FontSize="20" Height="34" Width="100"/>
+        <Label x:Name="lblEmailCliente" Content="Email(s):" HorizontalAlignment="Left" Margin="43,145,0,0" VerticalAlignment="Top" FontSize="20" Height="34" Width="99"/>
+        <Label x:Name="lblDireccionCliente" Content="Dirección:" HorizontalAlignment="Left" Margin="43,184,0,0" VerticalAlignment="Top" FontSize="20" Height="34" Width="100"/>
+        <Label x:Name="lblPagoCliente" Content="Forma de pago:" HorizontalAlignment="Left" Margin="43,223,0,0" VerticalAlignment="Top" FontSize="20" Height="44" Width="169"/>
+        <Label x:Name="lblPuntosCliente" Content="Puntos acumulados:" HorizontalAlignment="Left" Margin="43,272,0,0" VerticalAlignment="Top" FontSize="20" Height="34" Width="195"/>
+        <TextBox x:Name="txtPuntosCliente" HorizontalAlignment="Left" Height="34" Margin="243,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" FontSize="20"/>
+        <TextBox x:Name="txtDireccionCliente" HorizontalAlignment="Left" Height="34" Margin="243,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="505" FontSize="20"/>
+        <TextBox x:Name="txtEmailsCliente" HorizontalAlignment="Left" Height="34" Margin="243,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="284" FontSize="20"/>
+        <TextBox x:Name="txtTelefonosCliente" HorizontalAlignment="Left" Height="34" Margin="243,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" FontSize="20"/>
+        <Label x:Name="lblAlergiasCliente" Content="Alergias:" HorizontalAlignment="Left" Margin="43,374,0,0" VerticalAlignment="Top" FontSize="20" Height="52" Width="100"/>
+        <CheckBox x:Name="chkGluten" Content="Gluten" HorizontalAlignment="Left" Margin="179,353,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <CheckBox x:Name="chkLacteos" Content="Lácteos" HorizontalAlignment="Left" Margin="470,400,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <CheckBox x:Name="chkFrutosSecos" Content="Frutos secos" HorizontalAlignment="Left" Margin="308,400,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <CheckBox x:Name="chkMaiz" Content="Maiz" HorizontalAlignment="Left" Margin="179,400,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <CheckBox x:Name="chkHuevos" Content="Huevos" HorizontalAlignment="Left" Margin="434,353,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <CheckBox x:Name="chkPescado" Content="Pescado" HorizontalAlignment="Left" Margin="308,353,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Button x:Name="btnGuardar" Content="GUARDAR" FontSize="18" FontWeight="Bold" BorderThickness="0" Cursor="Hand" Click="btnGuardar_Click" Margin="599,486,108,2" Foreground="White" Background="#FFFF6F00">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+            <Button.Effect>
+                <DropShadowEffect Color="#FF6F00" BlurRadius="15" ShadowDepth="5" Opacity="0.3"/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="btnCancelar" Content="CANCELAR" FontSize="18" FontWeight="Bold" BorderThickness="0" Cursor="Hand" Click="btnCancelar_Click" Margin="697,486,10,2" Foreground="White" Background="#FFFF6F00">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+            <Button.Effect>
+                <DropShadowEffect Color="#FF6F00" BlurRadius="15" ShadowDepth="5" Opacity="0.3"/>
+            </Button.Effect>
+        </Button>
+        <ComboBox x:Name="cbxFormasPagoCliente" Padding="10,5" BorderBrush="#DDDDDD" SelectedIndex="1" Margin="243,227,446,271">
+            <ComboBoxItem Content="💶 Efectivo"/>
+            <ComboBoxItem Content="💳 Tarjeta"/>
+        </ComboBox>
+    </Grid>
+</Window>

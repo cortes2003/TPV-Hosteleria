@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TPV_Hosteleria"
         mc:Ignorable="d"
-        Title="AñadirProducto" Height="550" Width="800">
+        Title="Gestión de productos" Height="550" Width="800">
     <Grid>
         <Label x:Name="lblNombreProducto" Content="Nombre: " HorizontalAlignment="Left" Margin="181,71,0,0" VerticalAlignment="Top" FontSize="24" Height="38" Width="112" RenderTransformOrigin="0.769,-0.719" FontFamily="Segoe UI"/>
         <Image x:Name="imgProducto" HorizontalAlignment="Left" Height="161" Margin="10,28,0,0" VerticalAlignment="Top" Width="163" RenderTransformOrigin="0.489,0.48" Stretch="Fill" Loaded="cargarImagen"/>
