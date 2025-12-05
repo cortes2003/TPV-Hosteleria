@@ -300,8 +300,9 @@
                 <StackPanel Grid.Row="2" Margin="0,15">
                     <Label Content="Tipo de Entrega" FontSize="12" Foreground="{StaticResource LightText}"/>
                     <ComboBox Height="35" Padding="10,5" Margin="0,0,0,10" BorderBrush="#DDDDDD">
-                        <ComboBoxItem Content="🍽️  Para tomar aquí"/>
-                        <ComboBoxItem Content="🏠  A Domicilio (+3.00€)" IsSelected="True"/>
+                        <ComboBoxItem Content="🍽️ Para tomar aquí"/>
+                        <ComboBoxItem Content="🛒 Para recoger en el establecimiento"/> 
+                        <ComboBoxItem Content="🏠 A Domicilio (+3.00€)" IsSelected="True"/>
                     </ComboBox>
 
                     <Label Content="Cliente" FontSize="12" Foreground="{StaticResource LightText}"/>
@@ -532,9 +533,7 @@
                         <Button Content="Fecha" 
                                 Grid.Row="0" Grid.Column="0"
                                 Style="{StaticResource SubCatButtonStyle}"
-                                Background="{StaticResource PrimaryColor}"
-                                Foreground="White"
-                                BorderBrush="{StaticResource PrimaryColor}"/>
+                                Foreground="Black"/>
 
                         <DatePicker Grid.Row="0" Grid.Column="1" Margin="5,0"/>
 
@@ -549,7 +548,12 @@
                         <Button Content="Estado" Grid.Row="1" Grid.Column="0" Style="{StaticResource SubCatButtonStyle}" Margin="0,10,10,0"/>
                         <ComboBox Width="60" Grid.Row="1" Grid.Column="1" Margin="0,10,0,0"/>
                         <Button Content="Tipo de Entrega" Grid.Row="1" Grid.Column="2" Style="{StaticResource SubCatButtonStyle}" Margin="0,10,10,0"/>
-                        <ComboBox Width="60" Grid.Row="1" Grid.Column="3" Margin="0,10,0,0"/>
+                        <ComboBox Grid.Row="1" Grid.Column="3" Margin="35,10,5,0">
+                            <ComboBoxItem Content="Para tomar aquí"/>
+                            <ComboBoxItem Content="Para recoger en el establecimiento"/>
+                            <ComboBoxItem Content="A Domicilio" IsSelected="True"/>
+                        </ComboBox>
+
                     </Grid>
 
                     <!-- DataGrid abajo -->
@@ -571,45 +575,45 @@
                         <WrapPanel Orientation="Horizontal">
                             <!-- TARJETA CLIENTE: Alberto Cortés -->
                             <Border Style="{StaticResource ProductCardStyle}" Height="200">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" Margin="15">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="90"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                    <TextBlock Text="👤" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                                <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                    <TextBlock Text="Alberto Cortés" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
-                                    <TextBlock Text="📍 C/Finlandia, 27" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
-                                    <TextBlock Text="📞 606428412" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,1,0,0"/>
-                                    <TextBlock Text="📧 Alberto.Cortes1@alu.uclm.es" FontSize="9" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,1,0,0"/>
-                                    <WrapPanel Margin="0,4,0,0">
-                                        <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
-                                            <TextBlock Text="Gluten" FontSize="8" Foreground="#D32F2F"/>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0" Margin="15">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
+                                            <TextBlock Text="👤" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         </Border>
-                                        <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
-                                            <TextBlock Text="Lácteos" FontSize="8" Foreground="#D32F2F"/>
-                                        </Border>
-                                        <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
-                                            <TextBlock Text="Frutos Secos" FontSize="8" Foreground="#D32F2F"/>
-                                        </Border>
-                                    </WrapPanel>
-                                </StackPanel>
-                            </Grid>
-                            <Grid Grid.Row="1" Margin="15,0,15,15">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <Button Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" ToolTip="Editar cliente"/>
-                                    <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" ToolTip="Eliminar cliente"/>
-                                </StackPanel>
-                            </Grid>
-                        </Grid>
-                    </Border>
+                                        <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                                            <TextBlock Text="Alberto Cortés" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                            <TextBlock Text="📍 C/Finlandia, 27" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,2,0,0"/>
+                                            <TextBlock Text="📞 606428412" FontSize="10" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,1,0,0"/>
+                                            <TextBlock Text="📧 Alberto.Cortes1@alu.uclm.es" FontSize="9" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,1,0,0"/>
+                                            <WrapPanel Margin="0,4,0,0">
+                                                <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
+                                                    <TextBlock Text="Gluten" FontSize="8" Foreground="#D32F2F"/>
+                                                </Border>
+                                                <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
+                                                    <TextBlock Text="Lácteos" FontSize="8" Foreground="#D32F2F"/>
+                                                </Border>
+                                                <Border Background="#FFEBEE" CornerRadius="3" Padding="3,1" Margin="0,0,3,2">
+                                                    <TextBlock Text="Frutos Secos" FontSize="8" Foreground="#D32F2F"/>
+                                                </Border>
+                                            </WrapPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Row="1" Margin="15,0,15,15">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                            <Button Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" ToolTip="Editar cliente"/>
+                                            <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" ToolTip="Eliminar cliente"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </Border>
                             <!-- TARJETA CLIENTE: Iván Jesús Mora -->
                             <Border Style="{StaticResource ProductCardStyle}" Height="200">
                                 <Grid>
