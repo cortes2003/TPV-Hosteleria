@@ -10,9 +10,7 @@ WindowState="Maximized"
 WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
-        <!-- COLORES (Consistentes con Home.xaml) -->
         <SolidColorBrush x:Key="PrimaryColor" Color="#FF6F00"/>
-        <!-- Naranja Cálido -->
         <SolidColorBrush x:Key="AccentColor" Color="#0078D7"/>
         <SolidColorBrush x:Key="DarkText" Color="#333333"/>
         <SolidColorBrush x:Key="LightText" Color="#777777"/>
@@ -25,7 +23,7 @@ WindowStartupLocation="CenterScreen">
             <ImageBrush ImageSource="/Imagenes/Login.png" Stretch="UniformToFill"/>
         </Grid.Background>
         
-        <!-- Capa de overlay semitransparente para mejor contraste -->
+        <!-- Capa de overlay semitransparente -->
         <Border Background="#F4F7F6" Opacity="0.7"/>
         
         <!-- Tarjeta de Login -->

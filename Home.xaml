@@ -10,22 +10,20 @@
         Background="#F4F7F6">
 
     <Window.Resources>
-        <!-- COLORES -->
         <SolidColorBrush x:Key="PrimaryColor" Color="#FF6F00"/>
-        <!-- Naranja Cálido -->
         <SolidColorBrush x:Key="AccentColor" Color="#0078D7"/>
         <SolidColorBrush x:Key="DarkText" Color="#333333"/>
         <SolidColorBrush x:Key="LightText" Color="#777777"/>
         <SolidColorBrush x:Key="CardBackground" Color="White"/>
 
-        <!-- ESTILO PARA EL TABCONTROL (Ocultar borde y fondo) -->
+        <!-- Estilo para el TabControl (Ocultar borde y fondo) -->
         <Style TargetType="TabControl">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="0"/>
         </Style>
 
-        <!-- ESTILO PARA LOS TABITEMS (Pestañas de Categorías) -->
+        <!-- Estilo para los TabItems (Pestañas de Categorías) -->
         <Style TargetType="TabItem">
             <Setter Property="Template">
                 <Setter.Value>
@@ -55,7 +53,7 @@
             </Setter>
         </Style>
 
-        <!-- ESTILO SUB-CATEGORÍA (Chips) -->
+        <!-- Estilo sub-categoría -->
         <Style x:Key="SubCatButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="White"/>
             <Setter Property="Foreground" Value="{StaticResource DarkText}"/>
@@ -87,7 +85,7 @@
             </Setter>
         </Style>
 
-        <!-- ESTILO TARJETA PRODUCTO -->
+        <!-- Estilo para tarjeta producto -->
         <Style x:Key="ProductCardStyle" TargetType="Border">
             <Setter Property="Background" Value="{StaticResource CardBackground}"/>
             <Setter Property="CornerRadius" Value="10"/>
@@ -101,7 +99,7 @@
             </Setter>
         </Style>
 
-        <!-- ESTILO BOTÓN ACCIÓN (Editar/Borrar) -->
+        <!-- Estilo botón de acción (Editar/Borrar) -->
         <Style x:Key="ActionIconButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -124,7 +122,7 @@
             </Setter>
         </Style>
 
-        <!-- ESTILO BOTÓN MENÚ SUPERIOR -->
+        <!-- Estilo botón menú superior -->
         <Style x:Key="NavButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -158,25 +156,15 @@
             <ColumnDefinition Width="1.2*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- ========================================== -->
-        <!-- ZONA IZQUIERDA: NAVEGACIÓN Y PRODUCTOS -->
-        <!-- ========================================== -->
+        <!-- Zona izquierda: productos, pedidos y clientes -->
         <Grid Grid.Column="0" Margin="10,10,10,10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <!-- Título y Menú -->
                 <RowDefinition Height="*"/>
-                <!-- Contenido Principal (Tabs) -->
             </Grid.RowDefinitions>
-
-            <!-- 1. Cabecera y Menú Superior -->
-
-            <!-- 2. TabControl: Gestiona las Categorías Principales -->
         </Grid>
 
-        <!-- ========================================== -->
-        <!-- ZONA DERECHA: TICKET Y PAGO (Igual que antes) -->
-        <!-- ========================================== -->
+        <!-- Zona derecha: ticket y pago -->
         <Border Grid.Column="1" Background="White">
             <Border.Effect>
                 <DropShadowEffect Color="#000000" Direction="180" ShadowDepth="5" BlurRadius="20" Opacity="0.05"/>
@@ -190,7 +178,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Header Ticket -->
+                <!-- Header ticket -->
                 <StackPanel Grid.Row="0" Margin="0,0,0,15">
                     <Grid>
                         <StackPanel>
@@ -209,7 +197,7 @@
                     <TextBlock Text="Pedido Actual #1024" FontWeight="Bold" FontSize="18" Foreground="{StaticResource PrimaryColor}"/>
                 </StackPanel>
 
-                <!-- Lista Ticket -->
+                <!-- Lista ticket -->
                 <ListView Grid.Row="1" BorderThickness="0" Background="Transparent" Margin="-5,0">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
@@ -225,7 +213,7 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <!-- Primera fila: Cantidad, Nombre y Precio -->
+                            <!-- Primera fila: cantidad, nombre y precio -->
                             <Grid Grid.Row="0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="30"/>
@@ -237,7 +225,7 @@
                                 <TextBlock Grid.Column="2" Text="9.50 €" FontWeight="Bold" Foreground="{StaticResource DarkText}" VerticalAlignment="Center"/>
                             </Grid>
 
-                            <!-- Segunda fila: Botones de control -->
+                            <!-- Segunda fila: botones de control -->
                             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
                                 <Button Content="−" Width="25" Height="25" Background="#E0E0E0" Foreground="{StaticResource DarkText}" BorderThickness="0" FontWeight="Bold" FontSize="14" Cursor="Hand" Margin="0,0,5,0" ToolTip="Reducir cantidad">
                                     <Button.Resources>
@@ -263,7 +251,7 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <!-- Primera fila: Cantidad, Nombre y Precio -->
+                            <!-- Primera fila: cantidad, nombre y precio -->
                             <Grid Grid.Row="0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="30"/>
@@ -275,7 +263,7 @@
                                 <TextBlock Grid.Column="2" Text="24.00 €" FontWeight="Bold" Foreground="{StaticResource DarkText}" VerticalAlignment="Center"/>
                             </Grid>
 
-                            <!-- Segunda fila: Botones de control -->
+                            <!-- Segunda fila: botones de control -->
                             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
                                 <Button Content="−" Width="25" Height="25" Background="#E0E0E0" Foreground="{StaticResource DarkText}" BorderThickness="0" FontWeight="Bold" FontSize="14" Cursor="Hand" Margin="0,0,5,0" ToolTip="Reducir cantidad">
                                     <Button.Resources>
@@ -328,7 +316,7 @@
                     <CheckBox Content="Canjear 150 puntos (-5.00€)" FontSize="13" Foreground="{StaticResource DarkText}" Margin="5,5,0,0"/>
                 </StackPanel>
 
-                <!-- Total y Botón Final -->
+                <!-- Total y botón cobrar -->
                 <StackPanel Grid.Row="3">
                     <Separator Background="#EEEEEE" Margin="0,0,0,15"/>
                     <Grid Margin="0,0,0,5">
@@ -363,17 +351,15 @@
                 <Grid Background="#FFF4F7F6">
                     <TabControl Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
-                        <!-- ================= PESTAÑA ENTRANTES ================= -->
+                        <!-- Pestaña entrantes -->
                         <TabItem Header="Entrantes">
                             <Grid Margin="0,15,0,0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
-                                    <!-- Grid Productos -->
-                                    <!-- Subcategorías -->
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
-                                <!-- Subcategorías de Entrantes -->
+                                <!-- Subcategorías de entrantes -->
                                 <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Margin="0,0,0,20">
                                     <StackPanel Orientation="Horizontal">
                                         <Button Content="Ensaladas" Style="{StaticResource SubCatButtonStyle}" Background="{StaticResource PrimaryColor}" Foreground="White" BorderBrush="{StaticResource PrimaryColor}"/>
@@ -384,11 +370,11 @@
                                     </StackPanel>
                                 </ScrollViewer>
 
-                                <!-- Grid Productos de Entrantes -->
+                                <!-- Grid productos de entrantes -->
                                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="-10">
                                     <WrapPanel Orientation="Horizontal" Margin="10">
 
-                                        <!-- PRODUCTO EJEMPLO: Ensalada -->
+                                        <!-- Producto de ejemplo: ensalada -->
                                         <Border Style="{StaticResource ProductCardStyle}">
                                             <Grid>
                                                 <Grid.RowDefinitions>
@@ -427,7 +413,7 @@
                                             </Grid>
                                         </Border>
 
-                                        <!-- PRODUCTO EJEMPLO: Huevos -->
+                                        <!-- Producto de ejemplo: huevos -->
                                         <Border Style="{StaticResource ProductCardStyle}">
                                             <Grid>
                                                 <Grid.RowDefinitions>
@@ -461,7 +447,7 @@
                                             </Grid>
                                         </Border>
 
-                                        <!-- Botón AÑADIR -->
+                                        <!-- Botón añadir -->
                                         <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="{x:Type Button}">
@@ -481,22 +467,21 @@
                             </Grid>
                         </TabItem>
 
-                        <!-- ================= PESTAÑA PLATOS ================= -->
+                        <!-- Pestaña platos -->
                         <TabItem Header="Platos">
-                            <!-- Contenido diferente para Platos -->
                             <Grid Margin="0,15,0,0">
                                 <TextBlock Text="Aquí irían los Platos principales..." FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#AAAAAA"/>
                             </Grid>
                         </TabItem>
 
-                        <!-- ================= PESTAÑA POSTRES ================= -->
+                        <!-- Pestaña postres -->
                         <TabItem Header="Postres">
                             <Grid Margin="0,15,0,0">
                                 <TextBlock Text="Aquí irían los Postres..." FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#AAAAAA"/>
                             </Grid>
                         </TabItem>
 
-                        <!-- ================= PESTAÑA BEBIDAS ================= -->
+                        <!-- Pestaña bebidas -->
                         <TabItem Header="Bebidas">
                             <Grid Margin="0,15,0,0">
                                 <TextBlock Text="Aquí irían las Bebidas..." FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#AAAAAA"/>
@@ -510,12 +495,9 @@
                 <Grid Background="#FFF4F7F6">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
-                        <!-- Fila para los botones -->
                         <RowDefinition Height="*"/>
-                        <!-- Fila para el DataGrid -->
                     </Grid.RowDefinitions>
 
-                    <!-- Botones arriba -->
                     <Grid Grid.Row="0" Margin="0,10,0,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -529,7 +511,6 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <!-- FILA 1 -->
                         <Button Content="Fecha" 
                                 Grid.Row="0" Grid.Column="0"
                                 Style="{StaticResource SubCatButtonStyle}"
@@ -544,7 +525,6 @@
 
                         <TextBox x:Name="txtClientePedidos" Grid.Row="0" Grid.Column="3" Height="40" Width="120" FontSize="16" BorderBrush="Black" BorderThickness="1" Margin="5,0"/>
 
-                        <!-- FILA 2 -->
                         <Button Content="Estado" Grid.Row="1" Grid.Column="0" Style="{StaticResource SubCatButtonStyle}" Margin="0,10,10,0"/>
                         <ComboBox Width="60" Grid.Row="1" Grid.Column="1" Margin="0,10,0,0"/>
                         <Button Content="Tipo de Entrega" Grid.Row="1" Grid.Column="2" Style="{StaticResource SubCatButtonStyle}" Margin="0,10,10,0"/>
@@ -556,7 +536,6 @@
 
                     </Grid>
 
-                    <!-- DataGrid abajo -->
                     <DataGrid Grid.Row="1" AutoGenerateColumns="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,10,0,0">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Número de Pedido" Width="*"/>
@@ -573,7 +552,7 @@
                 <Grid Background="#FFF4F7F6" Margin="10">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <WrapPanel Orientation="Horizontal">
-                            <!-- TARJETA CLIENTE: Alberto Cortés -->
+                            <!-- Tarjeta cliente: Alberto Cortés -->
                             <Border Style="{StaticResource ProductCardStyle}" Height="200">
                                 <Grid>
                                     <Grid.RowDefinitions>
@@ -614,7 +593,7 @@
                                     </Grid>
                                 </Grid>
                             </Border>
-                            <!-- TARJETA CLIENTE: Iván Jesús Mora -->
+                            <!-- Tarjeta cliente: Iván Jesús Mora -->
                             <Border Style="{StaticResource ProductCardStyle}" Height="200">
                                 <Grid>
                                     <Grid.RowDefinitions>
@@ -653,7 +632,7 @@
                                 </Grid>
                             </Border>
 
-                            <!-- TARJETA CLIENTE: Jesus Márquez -->
+                            <!-- Tarjeta cliente: Jesus Márquez -->
                             <Border Style="{StaticResource ProductCardStyle}" Height="200">
                                 <Grid>
                                     <Grid.RowDefinitions>
@@ -695,7 +674,7 @@
                                 </Grid>
                             </Border>
 
-                            <!-- Botón AÑADIR CLIENTE -->
+                            <!-- Botón añadir cliente -->
                             <Button Width="240" Height="200" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand" ToolTip="Añadir nuevo cliente">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
