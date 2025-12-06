@@ -5,7 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:TPV_Hosteleria"
     mc:Ignorable="d"
-    Title="Gestión de clientes" Height="600" Width="850"
+    Title="Gestión de clientes" Height="600" Width="943"
     WindowStartupLocation="CenterScreen"
     Background="#F4F7F6">
 
@@ -15,7 +15,7 @@
     <SolidColorBrush x:Key="LightText" Color="#777777"/>
 </Window.Resources>
 
-<Grid Background="White" Margin="1">
+<Grid Background="White" Margin="1,1,0,1">
     <Grid.Effect>
         <DropShadowEffect Color="#000000" Direction="0" ShadowDepth="0" BlurRadius="20" Opacity="0.1"/>
     </Grid.Effect>
