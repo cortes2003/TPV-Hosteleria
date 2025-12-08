@@ -158,5 +158,36 @@ namespace TPV_Hosteleria
                 }
             }
         }
+        
+        //se podria hacer un metodo para no repetir el mismo codigo tanto
+        private void btnEliminarP1_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaEliminar ventanaEliminar = new VentanaEliminar();
+            ventanaEliminar.ShowDialog();
+        }
+
+        private void btnEliminarP2_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaEliminar ventanaEliminar = new VentanaEliminar();
+            ventanaEliminar.ShowDialog();
+        }
+
+        private void btnEliminarC1_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaEliminar ventanaEliminar = new VentanaEliminar();
+            ventanaEliminar.ShowDialog();
+        }
+
+        private void btnEliminarC2_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaEliminar ventanaEliminar = new VentanaEliminar();
+            ventanaEliminar.ShowDialog();
+        }
+
+        private void btnEliminarC3_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaEliminar ventanaEliminar = new VentanaEliminar();
+            ventanaEliminar.ShowDialog();
+        }
     }
 }
