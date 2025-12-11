@@ -189,5 +189,47 @@ namespace TPV_Hosteleria
             VentanaEliminar ventanaEliminar = new VentanaEliminar();
             ventanaEliminar.ShowDialog();
         }
+
+        private void btnEliminarP3_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaEliminar ventanaEliminar = new VentanaEliminar();
+            ventanaEliminar.ShowDialog();
+        }
+
+        private void btnEliminarP4_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaEliminar ventanaEliminar = new VentanaEliminar();
+            ventanaEliminar.ShowDialog();
+        }
+
+        private void btnEliminarP5_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaEliminar ventanaEliminar = new VentanaEliminar();
+            ventanaEliminar.ShowDialog();
+        }
+
+        private void btnEliminarP6_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaEliminar ventanaEliminar = new VentanaEliminar();
+            ventanaEliminar.ShowDialog();
+        }
+
+        private void btnEliminarP7_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaEliminar ventanaEliminar = new VentanaEliminar();
+            ventanaEliminar.ShowDialog();
+        }
+
+        private void btnEliminarP8_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaEliminar ventanaEliminar = new VentanaEliminar();
+            ventanaEliminar.ShowDialog();
+        }
+
+        private void btnEliminarP9_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaEliminar ventanaEliminar = new VentanaEliminar();
+            ventanaEliminar.ShowDialog();
+        }
     }
 }
