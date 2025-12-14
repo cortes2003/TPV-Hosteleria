@@ -454,7 +454,7 @@
                                                                 <ColumnDefinition Width="Auto"/>
                                                                 <ColumnDefinition Width="*"/>
                                                             </Grid.ColumnDefinitions>
-                                                            <TextBlock x:Name="txtPrecioP1" Text="9,50" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                                            <TextBlock x:Name="txtPrecioP1" Text="9,50 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
                                                             
                                                             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                                                                 <Button x:Name="btnAñadirP1" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Click="btnAñadirP1_Click"/>
@@ -564,7 +564,7 @@
                                                                 <TextBlock Text="🥘" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                             </Border>
                                                             <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                                                <TextBlock Text="Paella" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                                                <TextBlock x:Name="txtNombreP3" Text="Paella" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
                                                                 <TextBlock Text="Arroz, mariscos..." FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
                                                                 <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                                                     <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
@@ -578,9 +578,9 @@
                                                                 <ColumnDefinition Width="Auto"/>
                                                                 <ColumnDefinition Width="*"/>
                                                             </Grid.ColumnDefinitions>
-                                                            <TextBlock Text="15,50 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                                            <TextBlock x:Name ="txtPrecioP3" Text="15,50 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
                                                             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                                <Button x:Name="btnAñadirP3" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
+                                                                <Button x:Name="btnAñadirP3" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Click="btnAñadirP3_Click"/>
                                                                 <Button x:Name="btnEditarP3" Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
                                                                 <Button x:Name="btnEliminarP3" Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Click="btnEliminarP3_Click"/>
                                                             </StackPanel>
@@ -604,7 +604,7 @@
                                                                 <TextBlock Text="🍝" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                             </Border>
                                                             <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                                                <TextBlock Text="Espaguetis Carbonara" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                                                <TextBlock x:Name="txtNombreP4" Text="Espaguetis Carbonara" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
                                                                 <TextBlock Text="Pasta, huevo, bacon" FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
                                                                 <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                                                     <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
@@ -621,9 +621,9 @@
                                                                 <ColumnDefinition Width="Auto"/>
                                                                 <ColumnDefinition Width="*"/>
                                                             </Grid.ColumnDefinitions>
-                                                            <TextBlock Text="11,00 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                                            <TextBlock x:Name ="txtPrecioP4" Text="11,00 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
                                                             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                                <Button x:Name="btnAñadirP4" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
+                                                                <Button x:Name="btnAñadirP4" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Click="btnAñadirP4_Click"/>
                                                                 <Button x:Name="btnEditarP4" Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
                                                                 <Button x:Name="btnEliminarP4" Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Click="btnEliminarP4_Click"/>
                                                             </StackPanel>
@@ -671,7 +671,7 @@
                                                                 <TextBlock Text="🍗" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                             </Border>
                                                             <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                                                <TextBlock Text="Pollo Asado" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                                                <TextBlock x:Name="txtNombreP5" Text="Pollo Asado" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
                                                                 <TextBlock Text="Pollo, especias..." FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
                                                             </StackPanel>
                                                         </Grid>
@@ -680,9 +680,9 @@
                                                                 <ColumnDefinition Width="Auto"/>
                                                                 <ColumnDefinition Width="*"/>
                                                             </Grid.ColumnDefinitions>
-                                                            <TextBlock Text="13,50 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                                            <TextBlock x:Name ="txtPrecioP5" Text="13,50 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
                                                             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                                <Button x:Name="btnAñadirP5" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
+                                                                <Button x:Name="btnAñadirP5" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Click="btnAñadirP5_Click"/>
                                                                 <Button x:Name="btnEditarP5" Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
                                                                 <Button x:Name="btnEliminarP5" Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Click="btnEliminarP5_Click"/>
                                                             </StackPanel>
@@ -730,7 +730,7 @@
                                                                 <TextBlock Text="🐟" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                             </Border>
                                                             <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                                                <TextBlock Text="Bacalao al Pil Pil" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                                                <TextBlock x:Name="txtNombreP6" Text="Bacalao al Pil Pil" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
                                                                 <TextBlock Text="Bacalao, ajo, aceite" FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
                                                                 <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                                                     <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
@@ -744,9 +744,9 @@
                                                                 <ColumnDefinition Width="Auto"/>
                                                                 <ColumnDefinition Width="*"/>
                                                             </Grid.ColumnDefinitions>
-                                                            <TextBlock Text="18,00 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                                            <TextBlock x:Name ="txtPrecioP6" Text="18,00 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
                                                             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                                <Button x:Name="btnAñadirP6" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
+                                                                <Button x:Name="btnAñadirP6" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Click="btnAñadirP6_Click"/>
                                                                 <Button x:Name="btnEditarP6" Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
                                                                 <Button x:Name="btnEliminarP6" Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Click="btnEliminarP6_Click"/>
                                                             </StackPanel>
@@ -799,7 +799,7 @@
                                                         <TextBlock Text="🍲" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                     </Border>
                                                     <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                                        <TextBlock Text="Cocido Madrileño" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                                        <TextBlock x:Name="txtNombreP7" Text="Cocido Madrileño" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
                                                         <TextBlock Text="Garbanzos, carne..." FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
                                                         <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                                             <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
@@ -813,9 +813,10 @@
                                                         <ColumnDefinition Width="Auto"/>
                                                         <ColumnDefinition Width="*"/>
                                                     </Grid.ColumnDefinitions>
-                                                    <TextBlock Text="14.50 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                                    <TextBlock x:Name ="txtPrecioP7" Text="14,50 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
                                                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                        <Button x:Name="btnEditarP7" Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
+                                                        <Button x:Name="btnAñadirP7" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Click="btnAñadirP7_Click"/>
+                                                        <Button x:Name="btnEditarP7" Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
                                                         <Button x:Name="btnEliminarP7" Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Click="btnEliminarP7_Click"/>
                                                     </StackPanel>
                                                 </Grid>
@@ -865,7 +866,7 @@
                                                         <TextBlock Text="🍰" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                     </Border>
                                                     <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                                        <TextBlock Text="Tarta de Queso" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                                        <TextBlock x:Name="txtNombreP8" Text="Tarta de Queso" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
                                                         <TextBlock Text="Queso, galleta..." FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
                                                         <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                                             <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
@@ -882,9 +883,10 @@
                                                         <ColumnDefinition Width="Auto"/>
                                                         <ColumnDefinition Width="*"/>
                                                     </Grid.ColumnDefinitions>
-                                                    <TextBlock Text="5.50 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                                    <TextBlock x:Name ="txtPrecioP8" Text="5,50 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
                                                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                        <Button x:Name="btnEditarP8" Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
+                                                        <Button x:Name="btnAñadirP8" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Click="btnAñadirP8_Click"/>
+                                                        <Button x:Name="btnEditarP8" Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
                                                         <Button x:Name="btnEliminarP8" Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Click="btnEliminarP8_Click"/>
                                                     </StackPanel>
                                                 </Grid>
@@ -934,7 +936,7 @@
                                                         <TextBlock Text="🍺" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                     </Border>
                                                     <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                                        <TextBlock Text="Cerveza" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                                        <TextBlock x:Name="txtNombreP9" Text="Cerveza" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
                                                         <TextBlock Text="Caña, 0.5L" FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
                                                         <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                                                             <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
@@ -948,9 +950,10 @@
                                                         <ColumnDefinition Width="Auto"/>
                                                         <ColumnDefinition Width="*"/>
                                                     </Grid.ColumnDefinitions>
-                                                    <TextBlock Text="2.50 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                                    <TextBlock x:Name ="txtPrecioP9" Text="2,50 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
                                                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                        <Button x:Name="btnEditarP9" Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
+                                                        <Button x:Name="btnAñadirP9" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Click="btnAñadirP9_Click"/>
+                                                        <Button x:Name="btnEditarP9" Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
                                                         <Button x:Name="btnEliminarP9" Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Click="btnEliminarP9_Click"/>
                                                     </StackPanel>
                                                 </Grid>
