@@ -342,9 +342,9 @@
                 <!-- Configuración -->
                 <StackPanel Grid.Row="2" Margin="0,15">
                     <Label Content="Tipo de Entrega" FontSize="12" Foreground="{StaticResource LightText}"/>
-                    <CheckBox Content="🍽️ Para tomar aquí"/>
-                    <CheckBox Content="🛒 Para recoger en el establecimiento"/>
-                    <CheckBox Content="🏠 A Domicilio (+3.00€)"/>
+                    <CheckBox x:Name="cbTomarAqui" Content="🍽️ Para tomar aquí" Checked="cbTomarAqui_Checked" FontSize="12"/>
+                    <CheckBox x:Name="cbRecoger" Content="🛍️ Para recoger en el establecimiento" Checked="cbRecoger_Checked" FontSize="12"/>
+                    <CheckBox x:Name="cbDomicilio" Content="🏠 A Domicilio (+3.00€)" Checked="cbDomicilio_Checked" FontSize="12"/>
                     <Label Content="Cliente" FontSize="12" Foreground="{StaticResource LightText}"/>
                     <Grid Margin="0,0,0,10">
                         <Grid.ColumnDefinitions>
@@ -456,7 +456,8 @@
                                                             </Grid.ColumnDefinitions>
                                                             <TextBlock Text="9.50 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
                                                             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                                <Button x:Name="btnEditarP1" Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
+                                                                <Button x:Name="btnAñadirP1" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
+                                                                <Button x:Name="btnEditarP1" Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
                                                                 <Button x:Name="btnEliminarP1" Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Click="btnEliminarP1_Click"/>
                                                             </StackPanel>
                                                         </Grid>
@@ -973,7 +974,7 @@
                     </TabControl>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="ventanaPedidos" Header="Pedidos">
+            <TabItem x:Name="ventanaPedidos" Header="Pedidos" Margin="0,-2,0,2">
                 <Grid Background="#FFF4F7F6">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>

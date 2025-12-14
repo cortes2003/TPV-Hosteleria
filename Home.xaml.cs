@@ -239,5 +239,32 @@ namespace TPV_Hosteleria
               txtClientes.Text = "Juan Pérez"; //Esto simula que se elige un cliente haciendo una busqueda
             } 
         }
+
+        private void cbTomarAqui_Checked(object sender, RoutedEventArgs e)
+        {
+            if (cbTomarAqui.IsChecked == true)
+            {
+                cbRecoger.IsChecked = false;
+                cbDomicilio.IsChecked = false;
+            }
+        }
+
+        private void cbRecoger_Checked(object sender, RoutedEventArgs e)
+        {
+            if (cbRecoger.IsChecked == true)
+            {
+                cbTomarAqui.IsChecked = false;
+                cbDomicilio.IsChecked = false;
+            }
+        }
+
+        private void cbDomicilio_Checked(object sender, RoutedEventArgs e)
+        {
+            if (cbDomicilio.IsChecked == true)
+            {
+                cbTomarAqui.IsChecked = false;
+                cbRecoger.IsChecked = false;
+            }
+        }
     }
 }
