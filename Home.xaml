@@ -342,21 +342,16 @@
                 <!-- Configuración -->
                 <StackPanel Grid.Row="2" Margin="0,15">
                     <Label Content="Tipo de Entrega" FontSize="12" Foreground="{StaticResource LightText}"/>
-                    <ComboBox Height="35" Padding="10,5" Margin="0,0,0,10" BorderBrush="#DDDDDD">
-                        <ComboBoxItem Content="🍽️ Para tomar aquí"/>
-                        <ComboBoxItem Content="🛒 Para recoger en el establecimiento"/>
-                        <ComboBoxItem Content="🏠 A Domicilio (+3.00€)" IsSelected="True"/>
-                    </ComboBox>
-
+                    <CheckBox Content="🍽️ Para tomar aquí"/>
+                    <CheckBox Content="🛒 Para recoger en el establecimiento"/>
+                    <CheckBox Content="🏠 A Domicilio (+3.00€)"/>
                     <Label Content="Cliente" FontSize="12" Foreground="{StaticResource LightText}"/>
                     <Grid Margin="0,0,0,10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <ComboBox Height="35" Padding="10,5" BorderBrush="#DDDDDD">
-                            <ComboBoxItem Content="Juan Pérez" IsSelected="True"/>
-                        </ComboBox>
+                        <TextBox x:Name="txtClientes" Height="45" FontSize="16" Padding="10" VerticalContentAlignment="Center" BorderBrush="#DDDDDD" BorderThickness="2" KeyDown="txtClientes_KeyDown" />
                         <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="5,0,0,0"/>
                     </Grid>
 

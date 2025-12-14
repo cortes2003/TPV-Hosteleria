@@ -231,5 +231,13 @@ namespace TPV_Hosteleria
             VentanaEliminar ventanaEliminar = new VentanaEliminar();
             ventanaEliminar.ShowDialog();
         }
+
+        private void txtClientes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return) 
+            { 
+              txtClientes.Text = "Juan Pérez";
+            } 
+        }
     }
 }
