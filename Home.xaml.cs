@@ -159,77 +159,69 @@ namespace TPV_Hosteleria
             }
         }
         
-        //se podria hacer un metodo para no repetir el mismo codigo tanto
-        private void btnEliminarP1_Click(object sender, RoutedEventArgs e)
+        private void mostrarVentanaEliminar()
         {
             VentanaEliminar ventanaEliminar = new VentanaEliminar();
             ventanaEliminar.ShowDialog();
+        }
+        private void btnEliminarP1_Click(object sender, RoutedEventArgs e)
+        {
+            mostrarVentanaEliminar();
         }
 
         private void btnEliminarP2_Click(object sender, RoutedEventArgs e)
         {
-            VentanaEliminar ventanaEliminar = new VentanaEliminar();
-            ventanaEliminar.ShowDialog();
+            mostrarVentanaEliminar();
         }
 
         private void btnEliminarC1_Click(object sender, RoutedEventArgs e)
         {
-            VentanaEliminar ventanaEliminar = new VentanaEliminar();
-            ventanaEliminar.ShowDialog();
+            mostrarVentanaEliminar();
         }
 
         private void btnEliminarC2_Click(object sender, RoutedEventArgs e)
         {
-            VentanaEliminar ventanaEliminar = new VentanaEliminar();
-            ventanaEliminar.ShowDialog();
+            mostrarVentanaEliminar();
         }
 
         private void btnEliminarC3_Click(object sender, RoutedEventArgs e)
         {
-            VentanaEliminar ventanaEliminar = new VentanaEliminar();
-            ventanaEliminar.ShowDialog();
+            mostrarVentanaEliminar();
         }
 
         private void btnEliminarP3_Click(object sender, RoutedEventArgs e)
         {
-            VentanaEliminar ventanaEliminar = new VentanaEliminar();
-            ventanaEliminar.ShowDialog();
+            mostrarVentanaEliminar();
         }
 
         private void btnEliminarP4_Click(object sender, RoutedEventArgs e)
         {
-            VentanaEliminar ventanaEliminar = new VentanaEliminar();
-            ventanaEliminar.ShowDialog();
+            mostrarVentanaEliminar();
         }
 
         private void btnEliminarP5_Click(object sender, RoutedEventArgs e)
         {
-            VentanaEliminar ventanaEliminar = new VentanaEliminar();
-            ventanaEliminar.ShowDialog();
+            mostrarVentanaEliminar();
         }
 
         private void btnEliminarP6_Click(object sender, RoutedEventArgs e)
         {
-            VentanaEliminar ventanaEliminar = new VentanaEliminar();
-            ventanaEliminar.ShowDialog();
+            mostrarVentanaEliminar();
         }
 
         private void btnEliminarP7_Click(object sender, RoutedEventArgs e)
         {
-            VentanaEliminar ventanaEliminar = new VentanaEliminar();
-            ventanaEliminar.ShowDialog();
+            mostrarVentanaEliminar();
         }
 
         private void btnEliminarP8_Click(object sender, RoutedEventArgs e)
         {
-            VentanaEliminar ventanaEliminar = new VentanaEliminar();
-            ventanaEliminar.ShowDialog();
+            mostrarVentanaEliminar();
         }
 
         private void btnEliminarP9_Click(object sender, RoutedEventArgs e)
         {
-            VentanaEliminar ventanaEliminar = new VentanaEliminar();
-            ventanaEliminar.ShowDialog();
+            mostrarVentanaEliminar();
         }
 
         private void txtClientes_KeyDown(object sender, KeyEventArgs e)
@@ -265,6 +257,34 @@ namespace TPV_Hosteleria
                 cbTomarAqui.IsChecked = false;
                 cbRecoger.IsChecked = false;
             }
+        }
+
+        private void btnAñadirP1_Click(object sender, RoutedEventArgs e)
+        {
+            string textoCompleto = txtPrecioP1.Text; //Ejemplo: "9.50 €"
+            string precioLimpio = textoCompleto.Replace("€", "").Trim(); //He tenido que hacer esto, porque no puedo hacer decimal.Parse si tengo el símbolo de euro
+            ProductoTicket productoNuevo = new ProductoTicket  
+            {
+                Cantidad = 1,
+                Nombre = txtNombreP1.Text, //Binding
+                PrecioUnitario = decimal.Parse(precioLimpio)
+            };
+            productosTicket.Add(productoNuevo);
+            lstTicket.ItemsSource = productosTicket;
+        }
+
+        private void btnAñadirP2_Click(object sender, RoutedEventArgs e)
+        {
+            string textoCompleto = txtPrecioP2.Text; //Ejemplo: "9.50 €"
+            string precioLimpio = textoCompleto.Replace("€", "").Trim(); //He tenido que hacer esto, porque no puedo hacer decimal.Parse si tengo el símbolo de euro
+            ProductoTicket productoNuevo = new ProductoTicket
+            {
+                Cantidad = 1,
+                Nombre = txtNombreP2.Text, //Binding
+                PrecioUnitario = decimal.Parse(precioLimpio)
+            };
+            productosTicket.Add(productoNuevo);
+            lstTicket.ItemsSource = productosTicket;
         }
     }
 }
