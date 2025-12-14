@@ -236,7 +236,7 @@ namespace TPV_Hosteleria
         {
             if (e.Key == Key.Return) 
             { 
-              txtClientes.Text = "Juan Pérez";
+              txtClientes.Text = "Juan Pérez"; //Esto simula que se elige un cliente haciendo una busqueda
             } 
         }
     }

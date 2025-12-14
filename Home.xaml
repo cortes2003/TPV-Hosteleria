@@ -351,18 +351,19 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox x:Name="txtClientes" Height="45" FontSize="16" Padding="10" VerticalContentAlignment="Center" BorderBrush="#DDDDDD" BorderThickness="2" KeyDown="txtClientes_KeyDown" />
-                        <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="5,0,0,0"/>
+                        <TextBox x:Name="txtClientes" Height="45" FontSize="16" Padding="10" VerticalContentAlignment="Center" BorderBrush="#DDDDDD" BorderThickness="2" KeyDown="txtClientes_KeyDown"/>
                     </Grid>
 
-                    <TextBlock Text="📍 C/ Gran Vía, 24, Madrid" FontSize="12" Foreground="{StaticResource LightText}" Margin="5,0,0,10" FontStyle="Italic"/>
-
                     <Label Content="Método de Pago" FontSize="12" Foreground="{StaticResource LightText}"/>
-                    <ComboBox Height="35" Padding="10,5" Margin="0,0,0,10" BorderBrush="#DDDDDD" SelectedIndex="1">
-                        <ComboBoxItem Content="💶 Efectivo"/>
-                        <ComboBoxItem Content="💳 Tarjeta"/>
-                    </ComboBox>
 
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Content="💶 Efectivo" Grid.Column="0" HorizontalAlignment="Stretch" Margin="0,0,5,0"/>
+                        <Button Content="💳 Tarjeta" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,0,0,0"/>
+                    </Grid>
                     <CheckBox Content="Canjear 150 puntos (-5.00€)" FontSize="13" Foreground="{StaticResource DarkText}" Margin="5,5,0,0"/>
                 </StackPanel>
 
