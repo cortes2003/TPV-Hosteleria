@@ -424,46 +424,65 @@
                                         <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-10">
                                             <WrapPanel Orientation="Horizontal" Margin="10">
                                                 
-                                                <!-- Producto: Ensalada César -->
-                                                <Border Style="{StaticResource ProductCardStyle}">
-                                                    <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="*"/>
-                                                            <RowDefinition Height="Auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Grid Grid.Row="0" Margin="15">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="90"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                                                <TextBlock Text="🥗" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                <!-- ItemsControl para generar tarjetas de productos dinámicamente -->
+                                                <ItemsControl x:Name="itemsEnsaladas">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <WrapPanel Orientation="Horizontal"/>
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border Style="{StaticResource ProductCardStyle}">
+                                                                <Grid>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="*"/>
+                                                                        <RowDefinition Height="Auto"/>
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid Grid.Row="0" Margin="15">
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="90"/>
+                                                                            <ColumnDefinition Width="*"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
+                                                                            <TextBlock Text="{Binding Emoji}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                        </Border>
+                                                                        <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                                                                            <TextBlock Text="{Binding Nombre}" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                                                            <TextBlock Text="{Binding Descripcion}" FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
+                                                                            <ItemsControl ItemsSource="{Binding Alergenos}" Margin="0,8,0,0">
+                                                                                <ItemsControl.ItemsPanel>
+                                                                                    <ItemsPanelTemplate>
+                                                                                        <StackPanel Orientation="Horizontal"/>
+                                                                                    </ItemsPanelTemplate>
+                                                                                </ItemsControl.ItemsPanel>
+                                                                                <ItemsControl.ItemTemplate>
+                                                                                    <DataTemplate>
+                                                                                        <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
+                                                                                            <TextBlock Text="{Binding}" FontSize="10" Foreground="#D32F2F"/>
+                                                                                        </Border>
+                                                                                    </DataTemplate>
+                                                                                </ItemsControl.ItemTemplate>
+                                                                            </ItemsControl>
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                    <Grid Grid.Row="1" Margin="15,0,15,15">
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="Auto"/>
+                                                                            <ColumnDefinition Width="*"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <TextBlock Text="{Binding PrecioFormateado}" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                                                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                                            <Button Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Tag="{Binding}" Click="btnAñadirProducto_Click"/>
+                                                                            <Button Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Tag="{Binding}"/>
+                                                                            <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Tag="{Binding}" Click="btnEliminarProducto_Click"/>
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                </Grid>
                                                             </Border>
-                                                            <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                                                <TextBlock x:Name="txtNombreP1" Text="Ensalada César" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
-                                                                <TextBlock Text="Lechuga, pollo..." FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
-                                                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
-                                                                        <TextBlock Text="Gluten" FontSize="10" Foreground="#D32F2F"/>
-                                                                    </Border>
-                                                                </StackPanel>
-                                                            </StackPanel>
-                                                        </Grid>
-                                                        <Grid Grid.Row="1" Margin="15,0,15,15">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="Auto"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <TextBlock x:Name="txtPrecioP1" Text="9,50 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
-                                                            
-                                                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                                <Button x:Name="btnAñadirP1" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Click="btnAñadirP1_Click"/>
-                                                                <Button x:Name="btnEditarP1" Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
-                                                                <Button x:Name="btnEliminarP1" Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Click="btnEliminarP1_Click"/>
-                                                            </StackPanel>
-                                                        </Grid>
-                                                    </Grid>
-                                                </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
 
                                                 <!-- Botón añadir -->
                                                 <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand">
@@ -489,40 +508,65 @@
                                         <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-10">
                                             <WrapPanel Orientation="Horizontal" Margin="10">
                                                 
-                                                <!-- Producto: Huevos Rotos -->
-                                                <Border Style="{StaticResource ProductCardStyle}">
-                                                    <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="*"/>
-                                                            <RowDefinition Height="Auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Grid Grid.Row="0" Margin="15">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="90"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                                                <TextBlock Text="🍳" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                <!-- ItemsControl para generar tarjetas de productos dinámicamente -->
+                                                <ItemsControl x:Name="itemsHuevos">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <WrapPanel Orientation="Horizontal"/>
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border Style="{StaticResource ProductCardStyle}">
+                                                                <Grid>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="*"/>
+                                                                        <RowDefinition Height="Auto"/>
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid Grid.Row="0" Margin="15">
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="90"/>
+                                                                            <ColumnDefinition Width="*"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
+                                                                            <TextBlock Text="{Binding Emoji}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                        </Border>
+                                                                        <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                                                                            <TextBlock Text="{Binding Nombre}" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                                                            <TextBlock Text="{Binding Descripcion}" FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
+                                                                            <ItemsControl ItemsSource="{Binding Alergenos}" Margin="0,8,0,0">
+                                                                                <ItemsControl.ItemsPanel>
+                                                                                    <ItemsPanelTemplate>
+                                                                                        <StackPanel Orientation="Horizontal"/>
+                                                                                    </ItemsPanelTemplate>
+                                                                                </ItemsControl.ItemsPanel>
+                                                                                <ItemsControl.ItemTemplate>
+                                                                                    <DataTemplate>
+                                                                                        <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
+                                                                                            <TextBlock Text="{Binding}" FontSize="10" Foreground="#D32F2F"/>
+                                                                                        </Border>
+                                                                                    </DataTemplate>
+                                                                                </ItemsControl.ItemTemplate>
+                                                                            </ItemsControl>
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                    <Grid Grid.Row="1" Margin="15,0,15,15">
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="Auto"/>
+                                                                            <ColumnDefinition Width="*"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <TextBlock Text="{Binding PrecioFormateado}" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                                                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                                            <Button Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Tag="{Binding}" Click="btnAñadirProducto_Click"/>
+                                                                            <Button Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Tag="{Binding}"/>
+                                                                            <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Tag="{Binding}" Click="btnEliminarProducto_Click"/>
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                </Grid>
                                                             </Border>
-                                                            <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                                                <TextBlock x:Name="txtNombreP2" Text="Huevos Rotos" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
-                                                                <TextBlock Text="Jamón y patatas" FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
-                                                            </StackPanel>
-                                                        </Grid>
-                                                        <Grid Grid.Row="1" Margin="15,0,15,15">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="Auto"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <TextBlock x:Name ="txtPrecioP2" Text="12,00 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
-                                                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                                <Button x:Name="btnAñadirP2" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Click="btnAñadirP2_Click"/>
-                                                                <Button x:Name="btnEditarP2" Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
-                                                                <Button x:Name="btnEliminarP2" Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Click="btnEliminarP2_Click"/>
-                                                            </StackPanel>
-                                                        </Grid>
-                                                    </Grid>
-                                                </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
 
                                                 <!-- Botón añadir -->
                                                 <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand">
@@ -548,88 +592,65 @@
                                         <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-10">
                                             <WrapPanel Orientation="Horizontal" Margin="10">
                                                 
-                                                <!-- Producto: Paella -->
-                                                <Border Style="{StaticResource ProductCardStyle}">
-                                                    <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="*"/>
-                                                            <RowDefinition Height="Auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Grid Grid.Row="0" Margin="15">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="90"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                                                <TextBlock Text="🥘" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                <!-- ItemsControl para generar tarjetas de productos dinámicamente -->
+                                                <ItemsControl x:Name="itemsArrocesPastas">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <WrapPanel Orientation="Horizontal"/>
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border Style="{StaticResource ProductCardStyle}">
+                                                                <Grid>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="*"/>
+                                                                        <RowDefinition Height="Auto"/>
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid Grid.Row="0" Margin="15">
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="90"/>
+                                                                            <ColumnDefinition Width="*"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
+                                                                            <TextBlock Text="{Binding Emoji}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                        </Border>
+                                                                        <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                                                                            <TextBlock Text="{Binding Nombre}" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                                                            <TextBlock Text="{Binding Descripcion}" FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
+                                                                            <ItemsControl ItemsSource="{Binding Alergenos}" Margin="0,8,0,0">
+                                                                                <ItemsControl.ItemsPanel>
+                                                                                    <ItemsPanelTemplate>
+                                                                                        <StackPanel Orientation="Horizontal"/>
+                                                                                    </ItemsPanelTemplate>
+                                                                                </ItemsControl.ItemsPanel>
+                                                                                <ItemsControl.ItemTemplate>
+                                                                                    <DataTemplate>
+                                                                                        <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
+                                                                                            <TextBlock Text="{Binding}" FontSize="10" Foreground="#D32F2F"/>
+                                                                                        </Border>
+                                                                                    </DataTemplate>
+                                                                                </ItemsControl.ItemTemplate>
+                                                                            </ItemsControl>
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                    <Grid Grid.Row="1" Margin="15,0,15,15">
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="Auto"/>
+                                                                            <ColumnDefinition Width="*"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <TextBlock Text="{Binding PrecioFormateado}" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                                                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                                            <Button Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Tag="{Binding}" Click="btnAñadirProducto_Click"/>
+                                                                            <Button Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Tag="{Binding}"/>
+                                                                            <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Tag="{Binding}" Click="btnEliminarProducto_Click"/>
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                </Grid>
                                                             </Border>
-                                                            <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                                                <TextBlock x:Name="txtNombreP3" Text="Paella" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
-                                                                <TextBlock Text="Arroz, mariscos..." FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
-                                                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
-                                                                        <TextBlock Text="Pescado" FontSize="10" Foreground="#D32F2F"/>
-                                                                    </Border>
-                                                                </StackPanel>
-                                                            </StackPanel>
-                                                        </Grid>
-                                                        <Grid Grid.Row="1" Margin="15,0,15,15">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="Auto"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <TextBlock x:Name ="txtPrecioP3" Text="15,50 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
-                                                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                                <Button x:Name="btnAñadirP3" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Click="btnAñadirP3_Click"/>
-                                                                <Button x:Name="btnEditarP3" Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
-                                                                <Button x:Name="btnEliminarP3" Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Click="btnEliminarP3_Click"/>
-                                                            </StackPanel>
-                                                        </Grid>
-                                                    </Grid>
-                                                </Border>
-
-                                                <!-- Producto: Espaguetis a la Carbonara -->
-                                                <Border Style="{StaticResource ProductCardStyle}">
-                                                    <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="*"/>
-                                                            <RowDefinition Height="Auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Grid Grid.Row="0" Margin="15">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="90"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                                                <TextBlock Text="🍝" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                            </Border>
-                                                            <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                                                <TextBlock x:Name="txtNombreP4" Text="Espaguetis Carbonara" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
-                                                                <TextBlock Text="Pasta, huevo, bacon" FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
-                                                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
-                                                                        <TextBlock Text="Gluten" FontSize="10" Foreground="#D32F2F"/>
-                                                                    </Border>
-                                                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
-                                                                        <TextBlock Text="Huevos" FontSize="10" Foreground="#D32F2F"/>
-                                                                    </Border>
-                                                                </StackPanel>
-                                                            </StackPanel>
-                                                        </Grid>
-                                                        <Grid Grid.Row="1" Margin="15,0,15,15">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="Auto"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <TextBlock x:Name ="txtPrecioP4" Text="11,00 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
-                                                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                                <Button x:Name="btnAñadirP4" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Click="btnAñadirP4_Click"/>
-                                                                <Button x:Name="btnEditarP4" Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
-                                                                <Button x:Name="btnEliminarP4" Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Click="btnEliminarP4_Click"/>
-                                                            </StackPanel>
-                                                        </Grid>
-                                                    </Grid>
-                                                </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
 
                                                 <!-- Botón añadir -->
                                                 <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand">
@@ -655,40 +676,65 @@
                                         <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-10">
                                             <WrapPanel Orientation="Horizontal" Margin="10">
                                                 
-                                                <!-- Producto: Pollo Asado -->
-                                                <Border Style="{StaticResource ProductCardStyle}">
-                                                    <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="*"/>
-                                                            <RowDefinition Height="Auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Grid Grid.Row="0" Margin="15">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="90"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                                                <TextBlock Text="🍗" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                <!-- ItemsControl para generar tarjetas de productos dinámicamente -->
+                                                <ItemsControl x:Name="itemsAsados">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <WrapPanel Orientation="Horizontal"/>
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border Style="{StaticResource ProductCardStyle}">
+                                                                <Grid>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="*"/>
+                                                                        <RowDefinition Height="Auto"/>
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid Grid.Row="0" Margin="15">
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="90"/>
+                                                                            <ColumnDefinition Width="*"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
+                                                                            <TextBlock Text="{Binding Emoji}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                        </Border>
+                                                                        <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                                                                            <TextBlock Text="{Binding Nombre}" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                                                            <TextBlock Text="{Binding Descripcion}" FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
+                                                                            <ItemsControl ItemsSource="{Binding Alergenos}" Margin="0,8,0,0">
+                                                                                <ItemsControl.ItemsPanel>
+                                                                                    <ItemsPanelTemplate>
+                                                                                        <StackPanel Orientation="Horizontal"/>
+                                                                                    </ItemsPanelTemplate>
+                                                                                </ItemsControl.ItemsPanel>
+                                                                                <ItemsControl.ItemTemplate>
+                                                                                    <DataTemplate>
+                                                                                        <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
+                                                                                            <TextBlock Text="{Binding}" FontSize="10" Foreground="#D32F2F"/>
+                                                                                        </Border>
+                                                                                    </DataTemplate>
+                                                                                </ItemsControl.ItemTemplate>
+                                                                            </ItemsControl>
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                    <Grid Grid.Row="1" Margin="15,0,15,15">
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="Auto"/>
+                                                                            <ColumnDefinition Width="*"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <TextBlock Text="{Binding PrecioFormateado}" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                                                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                                            <Button Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Tag="{Binding}" Click="btnAñadirProducto_Click"/>
+                                                                            <Button Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Tag="{Binding}"/>
+                                                                            <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Tag="{Binding}" Click="btnEliminarProducto_Click"/>
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                </Grid>
                                                             </Border>
-                                                            <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                                                <TextBlock x:Name="txtNombreP5" Text="Pollo Asado" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
-                                                                <TextBlock Text="Pollo, especias..." FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
-                                                            </StackPanel>
-                                                        </Grid>
-                                                        <Grid Grid.Row="1" Margin="15,0,15,15">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="Auto"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <TextBlock x:Name ="txtPrecioP5" Text="13,50 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
-                                                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                                <Button x:Name="btnAñadirP5" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Click="btnAñadirP5_Click"/>
-                                                                <Button x:Name="btnEditarP5" Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
-                                                                <Button x:Name="btnEliminarP5" Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Click="btnEliminarP5_Click"/>
-                                                            </StackPanel>
-                                                        </Grid>
-                                                    </Grid>
-                                                </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
 
                                                 <!-- Botón añadir -->
                                                 <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand">
@@ -714,45 +760,65 @@
                                         <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-10">
                                             <WrapPanel Orientation="Horizontal" Margin="10">
                                                 
-                                                <!-- Producto: Bacalao al Pil Pil -->
-                                                <Border Style="{StaticResource ProductCardStyle}">
-                                                    <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="*"/>
-                                                            <RowDefinition Height="Auto"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Grid Grid.Row="0" Margin="15">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="90"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                                                <TextBlock Text="🐟" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                <!-- ItemsControl para generar tarjetas de productos dinámicamente -->
+                                                <ItemsControl x:Name="itemsPescados">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <WrapPanel Orientation="Horizontal"/>
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border Style="{StaticResource ProductCardStyle}">
+                                                                <Grid>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="*"/>
+                                                                        <RowDefinition Height="Auto"/>
+                                                                    </Grid.RowDefinitions>
+                                                                    <Grid Grid.Row="0" Margin="15">
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="90"/>
+                                                                            <ColumnDefinition Width="*"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
+                                                                            <TextBlock Text="{Binding Emoji}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                        </Border>
+                                                                        <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                                                                            <TextBlock Text="{Binding Nombre}" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
+                                                                            <TextBlock Text="{Binding Descripcion}" FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
+                                                                            <ItemsControl ItemsSource="{Binding Alergenos}" Margin="0,8,0,0">
+                                                                                <ItemsControl.ItemsPanel>
+                                                                                    <ItemsPanelTemplate>
+                                                                                        <StackPanel Orientation="Horizontal"/>
+                                                                                    </ItemsPanelTemplate>
+                                                                                </ItemsControl.ItemsPanel>
+                                                                                <ItemsControl.ItemTemplate>
+                                                                                    <DataTemplate>
+                                                                                        <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
+                                                                                            <TextBlock Text="{Binding}" FontSize="10" Foreground="#D32F2F"/>
+                                                                                        </Border>
+                                                                                    </DataTemplate>
+                                                                                </ItemsControl.ItemTemplate>
+                                                                            </ItemsControl>
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                    <Grid Grid.Row="1" Margin="15,0,15,15">
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="Auto"/>
+                                                                            <ColumnDefinition Width="*"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <TextBlock Text="{Binding PrecioFormateado}" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
+                                                                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                                            <Button Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Tag="{Binding}" Click="btnAñadirProducto_Click"/>
+                                                                            <Button Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Tag="{Binding}"/>
+                                                                            <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Tag="{Binding}" Click="btnEliminarProducto_Click"/>
+                                                                        </StackPanel>
+                                                                    </Grid>
+                                                                </Grid>
                                                             </Border>
-                                                            <StackPanel Grid.Column="1" Margin="15,0,0,0">
-                                                                <TextBlock x:Name="txtNombreP6" Text="Bacalao al Pil Pil" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
-                                                                <TextBlock Text="Bacalao, ajo, aceite" FontSize="11" Foreground="{StaticResource LightText}" TextWrapping="Wrap" Margin="0,5,0,0"/>
-                                                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                                                                    <Border Background="#FFEBEE" CornerRadius="4" Padding="5,2" Margin="0,0,5,0">
-                                                                        <TextBlock Text="Pescado" FontSize="10" Foreground="#D32F2F"/>
-                                                                    </Border>
-                                                                </StackPanel>
-                                                            </StackPanel>
-                                                        </Grid>
-                                                        <Grid Grid.Row="1" Margin="15,0,15,15">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="Auto"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <TextBlock x:Name ="txtPrecioP6" Text="18,00 €" FontSize="18" FontWeight="Bold" Foreground="{StaticResource PrimaryColor}" VerticalAlignment="Center"/>
-                                                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                                <Button x:Name="btnAñadirP6" Content="🛒" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" Click="btnAñadirP6_Click"/>
-                                                                <Button x:Name="btnEditarP6" Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575"/>
-                                                                <Button x:Name="btnEliminarP6" Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" Click="btnEliminarP6_Click"/>
-                                                            </StackPanel>
-                                                        </Grid>
-                                                    </Grid>
-                                                </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
 
                                                 <!-- Botón añadir -->
                                                 <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand">

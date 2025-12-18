@@ -136,6 +136,13 @@ namespace TPV_Hosteleria
             itemsBebidas.ItemsSource = listaProductos.Where(p => p.Categoria == "Bebidas").ToList();
             itemsPostres.ItemsSource = listaProductos.Where(p => p.Categoria == "Postres").ToList();
             itemsPlatos.ItemsSource = listaProductos.Where(p => p.Categoria == "Platos").ToList();
+
+            // Vincular productos por subcategoría de Entrantes
+            itemsEnsaladas.ItemsSource = listaProductos.Where(p => p.Subcategoria == "Ensaladas").ToList();
+            itemsHuevos.ItemsSource = listaProductos.Where(p => p.Subcategoria == "Huevos").ToList();
+            itemsArrocesPastas.ItemsSource = listaProductos.Where(p => p.Subcategoria == "Arroces y Pastas").ToList();
+            itemsAsados.ItemsSource = listaProductos.Where(p => p.Subcategoria == "Asados").ToList();
+            itemsPescados.ItemsSource = listaProductos.Where(p => p.Subcategoria == "Pescados").ToList();
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -181,41 +188,8 @@ namespace TPV_Hosteleria
             }
         }
         
-        /// <summary>
-        /// Método genérico para manejar la eliminación de productos y clientes
-        /// Busca el Border contenedor y lo oculta si el usuario confirma
-        /// </summary>
-        private void EliminarElemento(object sender)
-        {
-            Button btn = sender as Button;
-            if (btn != null)
-            {
-                // Navegar hacia arriba en el árbol visual para encontrar el Border
-                DependencyObject parent = VisualTreeHelper.GetParent(btn);
-                while (parent != null && !(parent is Border))
-                {
-                    parent = VisualTreeHelper.GetParent(parent);
-                }
-                
-                // Mostrar ventana de confirmación
-                VentanaEliminar ventanaEliminar = new VentanaEliminar();
-                ventanaEliminar.ShowDialog();
-                
-                // Si el usuario confirmó la eliminación, ocultar el elemento
-                if (ventanaEliminar.Confirmado && parent != null)
-                {
-                    ((UIElement)parent).Visibility = Visibility.Collapsed;
-                }
-            }
-        }
-        
-        // Eventos de eliminación de productos
-        private void btnEliminarP1_Click(object sender, RoutedEventArgs e) => EliminarElemento(sender);
-        private void btnEliminarP2_Click(object sender, RoutedEventArgs e) => EliminarElemento(sender);
-        private void btnEliminarP3_Click(object sender, RoutedEventArgs e) => EliminarElemento(sender);
-        private void btnEliminarP4_Click(object sender, RoutedEventArgs e) => EliminarElemento(sender);
-        private void btnEliminarP5_Click(object sender, RoutedEventArgs e) => EliminarElemento(sender);
-        private void btnEliminarP6_Click(object sender, RoutedEventArgs e) => EliminarElemento(sender);
+        // Métodos obsoletos de eliminación de productos eliminados
+        // Los productos ahora usan btnEliminarProducto_Click genérico
         
         /// <summary>
         /// Evento para eliminar un cliente desde la tarjeta generada dinámicamente
@@ -326,142 +300,5 @@ namespace TPV_Hosteleria
             }
         }
 
-        private void btnAñadirP1_Click(object sender, RoutedEventArgs e)
-        {
-            string textoCompleto = txtPrecioP1.Text; //Ejemplo: "9.50 €"
-            string precioLimpio = textoCompleto.Replace(" €", ""); //He tenido que hacer esto, porque no puedo hacer decimal.Parse si tengo el símbolo de euro
-            //Esto es para comprobar que el producto ya esta en la lista o no
-            foreach (var producto in productosTicket)
-            {
-                if (producto.Nombre == txtNombreP1.Text)
-                {
-                    producto.Cantidad++;
-                    return;
-                }
-            }
-            ProductoTicket productoNuevo = new ProductoTicket  
-            {
-                Cantidad = 1,
-                Nombre = txtNombreP1.Text,
-                PrecioUnitario = decimal.Parse(precioLimpio)
-            };            
-            productosTicket.Add(productoNuevo);                        
-            lstTicket.ItemsSource = productosTicket;
-        }
-
-        private void btnAñadirP2_Click(object sender, RoutedEventArgs e)
-        {
-            string textoCompleto = txtPrecioP2.Text;
-            string precioLimpio = textoCompleto.Replace(" €", ""); //He tenido que hacer esto, porque no puedo hacer decimal.Parse si tengo el símbolo de euro
-            //Esto es para comprobar que el producto ya esta en la lista o no
-            foreach (var producto in productosTicket)
-            {
-                if (producto.Nombre == txtNombreP2.Text)
-                {
-                    producto.Cantidad++;
-                    return;
-                }
-            }
-            ProductoTicket productoNuevo = new ProductoTicket
-            {
-                Cantidad = 1,
-                Nombre = txtNombreP2.Text, 
-                PrecioUnitario = decimal.Parse(precioLimpio)
-            };
-            productosTicket.Add(productoNuevo);
-            lstTicket.ItemsSource = productosTicket;
-        }
-
-        private void btnAñadirP3_Click(object sender, RoutedEventArgs e)
-        {
-            string textoCompleto = txtPrecioP3.Text;
-            string precioLimpio = textoCompleto.Replace(" €", ""); //He tenido que hacer esto, porque no puedo hacer decimal.Parse si tengo el símbolo de euro
-            //Esto es para comprobar que el producto ya esta en la lista o no
-            foreach (var producto in productosTicket)
-            {
-                if (producto.Nombre == txtNombreP3.Text)
-                {
-                    producto.Cantidad++;
-                    return;
-                }
-            }
-            ProductoTicket productoNuevo = new ProductoTicket
-            {
-                Cantidad = 1,
-                Nombre = txtNombreP3.Text, //Binding
-                PrecioUnitario = decimal.Parse(precioLimpio)
-            };
-            productosTicket.Add(productoNuevo);
-            lstTicket.ItemsSource = productosTicket;
-        }
-
-        private void btnAñadirP4_Click(object sender, RoutedEventArgs e)
-        {
-            string textoCompleto = txtPrecioP4.Text;
-            string precioLimpio = textoCompleto.Replace(" €", ""); //He tenido que hacer esto, porque no puedo hacer decimal.Parse si tengo el símbolo de euro
-            //Esto es para comprobar que el producto ya esta en la lista o no
-            foreach (var producto in productosTicket)
-            {
-                if (producto.Nombre == txtNombreP4.Text)
-                {
-                    producto.Cantidad++;
-                    return;
-                }
-            }
-            ProductoTicket productoNuevo = new ProductoTicket
-            {
-                Cantidad = 1,
-                Nombre = txtNombreP4.Text, //Binding
-                PrecioUnitario = decimal.Parse(precioLimpio)
-            };
-            productosTicket.Add(productoNuevo);
-            lstTicket.ItemsSource = productosTicket;
-        }
-
-        private void btnAñadirP5_Click(object sender, RoutedEventArgs e)
-        {
-            string textoCompleto = txtPrecioP5.Text;
-            string precioLimpio = textoCompleto.Replace(" €", ""); //He tenido que hacer esto, porque no puedo hacer decimal.Parse si tengo el símbolo de euro
-            //Esto es para comprobar que el producto ya esta en la lista o no
-            foreach (var producto in productosTicket)
-            {
-                if (producto.Nombre == txtNombreP5.Text)
-                {
-                    producto.Cantidad++;
-                    return;
-                }
-            }
-            ProductoTicket productoNuevo = new ProductoTicket
-            {
-                Cantidad = 1,
-                Nombre = txtNombreP5.Text, //Binding
-                PrecioUnitario = decimal.Parse(precioLimpio)
-            };
-            productosTicket.Add(productoNuevo);
-            lstTicket.ItemsSource = productosTicket;
-        }
-
-        private void btnAñadirP6_Click(object sender, RoutedEventArgs e)
-        {
-            string textoCompleto = txtPrecioP6.Text;
-            string precioLimpio = textoCompleto.Replace(" €", ""); //He tenido que hacer esto, porque no puedo hacer decimal.Parse si tengo el símbolo de euro
-            //Esto es para comprobar que el producto ya esta en la lista o no
-            foreach (var producto in productosTicket)
-            {
-                if (producto.Nombre == txtNombreP6.Text)
-                {
-                    producto.Cantidad++;
-                    return;
-                }
-            }
-            ProductoTicket productoNuevo = new ProductoTicket
-            {
-                Cantidad = 1,
-                Nombre = txtNombreP6.Text, //Binding
-                PrecioUnitario = decimal.Parse(precioLimpio)
-            };
-            productosTicket.Add(productoNuevo);
-            lstTicket.ItemsSource = productosTicket;
-        }
     }
 }
