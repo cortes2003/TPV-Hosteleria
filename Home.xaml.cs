@@ -259,10 +259,42 @@ namespace TPV_Hosteleria
                 if (ventanaEliminar.Confirmado)
                 {
                     listaProductos.Remove(producto);
-                    // Refrescar los ItemsControls de productos
-                    CargarDatosEjemplo();
+                    // Refrescar los ItemsControls de productos SIN recargar desde DatosEjemplo
+                    RefrescarProductos();
                 }
             }
+        }
+
+        /// <summary>
+        /// Refresca todos los ItemsControls de productos sin recargar desde DatosEjemplo
+        /// </summary>
+        private void RefrescarProductos()
+        {
+            // Vincular productos por categoría
+            itemsBebidas.ItemsSource = null;
+            itemsBebidas.ItemsSource = listaProductos.Where(p => p.Categoria == "Bebidas").ToList();
+            
+            itemsPostres.ItemsSource = null;
+            itemsPostres.ItemsSource = listaProductos.Where(p => p.Categoria == "Postres").ToList();
+            
+            itemsPlatos.ItemsSource = null;
+            itemsPlatos.ItemsSource = listaProductos.Where(p => p.Categoria == "Platos").ToList();
+
+            // Vincular productos por subcategoría de Entrantes
+            itemsEnsaladas.ItemsSource = null;
+            itemsEnsaladas.ItemsSource = listaProductos.Where(p => p.Subcategoria == "Ensaladas").ToList();
+            
+            itemsHuevos.ItemsSource = null;
+            itemsHuevos.ItemsSource = listaProductos.Where(p => p.Subcategoria == "Huevos").ToList();
+            
+            itemsArrocesPastas.ItemsSource = null;
+            itemsArrocesPastas.ItemsSource = listaProductos.Where(p => p.Subcategoria == "Arroces y Pastas").ToList();
+            
+            itemsAsados.ItemsSource = null;
+            itemsAsados.ItemsSource = listaProductos.Where(p => p.Subcategoria == "Asados").ToList();
+            
+            itemsPescados.ItemsSource = null;
+            itemsPescados.ItemsSource = listaProductos.Where(p => p.Subcategoria == "Pescados").ToList();
         }
 
         private void txtClientes_KeyDown(object sender, KeyEventArgs e)
