@@ -26,11 +26,38 @@ namespace TPV_Hosteleria
         public AñadirProducto()
         {
             InitializeComponent();
+            
+            // Desactivar subcategoría por defecto
+            cbxSubcategoriaProducto.IsEnabled = false;
         }
 
         private void cargarImagen(object sender, RoutedEventArgs e)
         {
             // Funcionalidad de cargar imagen (opcional, se puede dejar vacío por ahora)
+        }
+
+        /// <summary>
+        /// Evento que se dispara cuando se cambia la selección de categoría
+        /// Habilita o deshabilita el ComboBox de subcategoría según la categoría seleccionada
+        /// </summary>
+        private void cbxCategoriaProducto_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbxCategoriaProducto.SelectedItem != null)
+            {
+                ComboBoxItem categoriaSeleccionada = (ComboBoxItem)cbxCategoriaProducto.SelectedItem;
+                string categoria = categoriaSeleccionada.Content.ToString();
+                
+                // Habilitar subcategoría solo si es "Entrantes"
+                if (categoria.Contains("Entrantes"))
+                {
+                    cbxSubcategoriaProducto.IsEnabled = true;
+                }
+                else
+                {
+                    cbxSubcategoriaProducto.IsEnabled = false;
+                    cbxSubcategoriaProducto.SelectedIndex = -1; // Limpiar selección
+                }
+            }
         }
 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
