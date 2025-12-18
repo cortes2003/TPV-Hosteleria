@@ -373,5 +373,23 @@ namespace TPV_Hosteleria
             }
         }
 
+        /// <summary>
+        /// Evento para abrir la ventana de añadir producto
+        /// </summary>
+        private void btnAñadirNuevoProducto_Click(object sender, RoutedEventArgs e)
+        {
+            // Crear y mostrar la ventana de añadir producto
+            AñadirProducto ventanaAñadirProducto = new AñadirProducto();
+            ventanaAñadirProducto.ShowDialog();
+            
+            // Si se guardó un producto, refrescar la lista
+            if (ventanaAñadirProducto.ProductoGuardado != null)
+            {
+                listaProductos.Add(ventanaAñadirProducto.ProductoGuardado);
+                // Refrescar los ItemsControls de productos
+                RefrescarProductos();
+            }
+        }
+
     }
 }

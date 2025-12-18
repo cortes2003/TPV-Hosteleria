@@ -516,7 +516,7 @@
                                                 </ItemsControl>
 
                                                 <!-- Botón añadir -->
-                                                <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand">
+                                                <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand" Click="btnAñadirNuevoProducto_Click">
                                                     <Button.Template>
                                                         <ControlTemplate TargetType="{x:Type Button}">
                                                             <Grid>
@@ -600,7 +600,7 @@
                                                 </ItemsControl>
 
                                                 <!-- Botón añadir -->
-                                                <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand">
+                                                <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand" Click="btnAñadirNuevoProducto_Click">
                                                     <Button.Template>
                                                         <ControlTemplate TargetType="{x:Type Button}">
                                                             <Grid>
@@ -684,7 +684,7 @@
                                                 </ItemsControl>
 
                                                 <!-- Botón añadir -->
-                                                <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand">
+                                                <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand" Click="btnAñadirNuevoProducto_Click">
                                                     <Button.Template>
                                                         <ControlTemplate TargetType="{x:Type Button}">
                                                             <Grid>
@@ -768,7 +768,7 @@
                                                 </ItemsControl>
 
                                                 <!-- Botón añadir -->
-                                                <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand">
+                                                <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand" Click="btnAñadirNuevoProducto_Click">
                                                     <Button.Template>
                                                         <ControlTemplate TargetType="{x:Type Button}">
                                                             <Grid>
@@ -852,7 +852,7 @@
                                                 </ItemsControl>
 
                                                 <!-- Botón añadir -->
-                                                <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand">
+                                                <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand" Click="btnAñadirNuevoProducto_Click">
                                                     <Button.Template>
                                                         <ControlTemplate TargetType="{x:Type Button}">
                                                             <Grid>
@@ -942,7 +942,7 @@
                                         </ItemsControl>
 
                                         <!-- Botón añadir -->
-                                        <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand">
+                                        <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand" Click="btnAñadirNuevoProducto_Click">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="{x:Type Button}">
                                                     <Grid>
@@ -1030,7 +1030,7 @@
                                         </ItemsControl>
 
                                         <!-- Botón añadir -->
-                                        <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand">
+                                        <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand" Click="btnAñadirNuevoProducto_Click">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="{x:Type Button}">
                                                     <Grid>
@@ -1118,7 +1118,7 @@
                                         </ItemsControl>
 
                                         <!-- Botón añadir -->
-                                        <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand">
+                                        <Button Width="240" Height="160" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand" Click="btnAñadirNuevoProducto_Click">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="{x:Type Button}">
                                                     <Grid>
