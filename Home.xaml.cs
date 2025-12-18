@@ -332,5 +332,27 @@ namespace TPV_Hosteleria
             }
         }
 
+        private void btnEfectivo_Click(object sender, RoutedEventArgs e)
+        {
+            btnEfectivo.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF6F00"));
+            btnEfectivo.Foreground = Brushes.White;
+            btnEfectivo.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF6F00"));
+            
+            btnTarjeta.Background = Brushes.White;
+            btnTarjeta.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333333"));
+            btnTarjeta.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DDDDDD"));
+        }
+
+        private void btnTarjeta_Click(object sender, RoutedEventArgs e)
+        {
+            btnTarjeta.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF6F00"));
+            btnTarjeta.Foreground = Brushes.White;
+            btnTarjeta.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF6F00"));
+            
+            btnEfectivo.Background = Brushes.White;
+            btnEfectivo.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333333"));
+            btnEfectivo.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DDDDDD"));
+        }
+
     }
 }
