@@ -131,6 +131,9 @@ namespace TPV_Hosteleria
 
             // Vincular la lista de clientes al ItemsControl
             itemsClientes.ItemsSource = listaClientes;
+
+            // Vincular productos por categoría
+            itemsBebidas.ItemsSource = listaProductos.Where(p => p.Categoria == "Bebidas").ToList();
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -213,7 +216,6 @@ namespace TPV_Hosteleria
         private void btnEliminarP6_Click(object sender, RoutedEventArgs e) => EliminarElemento(sender);
         private void btnEliminarP7_Click(object sender, RoutedEventArgs e) => EliminarElemento(sender);
         private void btnEliminarP8_Click(object sender, RoutedEventArgs e) => EliminarElemento(sender);
-        private void btnEliminarP9_Click(object sender, RoutedEventArgs e) => EliminarElemento(sender);
         
         /// <summary>
         /// Evento para eliminar un cliente desde la tarjeta generada dinámicamente
@@ -234,6 +236,57 @@ namespace TPV_Hosteleria
                     // Refrescar el ItemsControl
                     itemsClientes.ItemsSource = null;
                     itemsClientes.ItemsSource = listaClientes;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Evento genérico para añadir un producto al ticket desde tarjeta dinámica
+        /// </summary>
+        private void btnAñadirProducto_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn != null && btn.Tag is Producto producto)
+            {
+                // Comprobar si el producto ya está en el ticket
+                foreach (var item in productosTicket)
+                {
+                    if (item.Nombre == producto.Nombre)
+                    {
+                        item.Cantidad++;
+                        return;
+                    }
+                }
+                
+                // Si no está, añadirlo
+                ProductoTicket productoNuevo = new ProductoTicket
+                {
+                    Cantidad = 1,
+                    Nombre = producto.Nombre,
+                    PrecioUnitario = producto.Precio
+                };
+                productosTicket.Add(productoNuevo);
+            }
+        }
+
+        /// <summary>
+        /// Evento genérico para eliminar un producto desde tarjeta dinámica
+        /// </summary>
+        private void btnEliminarProducto_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn != null && btn.Tag is Producto producto)
+            {
+                // Mostrar ventana de confirmación
+                VentanaEliminar ventanaEliminar = new VentanaEliminar();
+                ventanaEliminar.ShowDialog();
+                
+                // Si el usuario confirmó la eliminación, remover de la lista
+                if (ventanaEliminar.Confirmado)
+                {
+                    listaProductos.Remove(producto);
+                    // Refrescar los ItemsControls de productos
+                    CargarDatosEjemplo();
                 }
             }
         }
@@ -451,29 +504,6 @@ namespace TPV_Hosteleria
             {
                 Cantidad = 1,
                 Nombre = txtNombreP8.Text, //Binding
-                PrecioUnitario = decimal.Parse(precioLimpio)
-            };
-            productosTicket.Add(productoNuevo);
-            lstTicket.ItemsSource = productosTicket;
-        }
-
-        private void btnAñadirP9_Click(object sender, RoutedEventArgs e)
-        {
-            string textoCompleto = txtPrecioP9.Text;
-            string precioLimpio = textoCompleto.Replace(" €", ""); //He tenido que hacer esto, porque no puedo hacer decimal.Parse si tengo el símbolo de euro
-            //Esto es para comprobar que el producto ya esta en la lista o no
-            foreach (var producto in productosTicket)
-            {
-                if (producto.Nombre == txtNombreP9.Text)
-                {
-                    producto.Cantidad++;
-                    return;
-                }
-            }
-            ProductoTicket productoNuevo = new ProductoTicket
-            {
-                Cantidad = 1,
-                Nombre = txtNombreP9.Text, //Binding
                 PrecioUnitario = decimal.Parse(precioLimpio)
             };
             productosTicket.Add(productoNuevo);
