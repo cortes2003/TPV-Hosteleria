@@ -129,9 +129,8 @@ namespace TPV_Hosteleria
             listaProductos = DatosEjemplo.ObtenerProductos();
             listaClientes = DatosEjemplo.ObtenerClientes();
 
-            // Aquí podrías usar los datos para poblar controles dinámicamente
-            // Por ejemplo, usar data binding o generar tarjetas programáticamente
-            // Por ahora, los datos están disponibles para ser usados cuando se necesiten
+            // Vincular la lista de clientes al ItemsControl
+            itemsClientes.ItemsSource = listaClientes;
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -216,10 +215,28 @@ namespace TPV_Hosteleria
         private void btnEliminarP8_Click(object sender, RoutedEventArgs e) => EliminarElemento(sender);
         private void btnEliminarP9_Click(object sender, RoutedEventArgs e) => EliminarElemento(sender);
         
-        // Eventos de eliminación de clientes
-        private void btnEliminarC1_Click(object sender, RoutedEventArgs e) => EliminarElemento(sender);
-        private void btnEliminarC2_Click(object sender, RoutedEventArgs e) => EliminarElemento(sender);
-        private void btnEliminarC3_Click(object sender, RoutedEventArgs e) => EliminarElemento(sender);
+        /// <summary>
+        /// Evento para eliminar un cliente desde la tarjeta generada dinámicamente
+        /// </summary>
+        private void btnEliminarCliente_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn != null && btn.Tag is Cliente cliente)
+            {
+                // Mostrar ventana de confirmación
+                VentanaEliminar ventanaEliminar = new VentanaEliminar();
+                ventanaEliminar.ShowDialog();
+                
+                // Si el usuario confirmó la eliminación, remover de la lista
+                if (ventanaEliminar.Confirmado)
+                {
+                    listaClientes.Remove(cliente);
+                    // Refrescar el ItemsControl
+                    itemsClientes.ItemsSource = null;
+                    itemsClientes.ItemsSource = listaClientes;
+                }
+            }
+        }
 
         private void txtClientes_KeyDown(object sender, KeyEventArgs e)
         {
