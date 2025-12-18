@@ -58,6 +58,9 @@
     <Compile Include="AñadirCliente.xaml.cs">
       <DependentUpon>AñadirCliente.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\DatosEjemplo.cs" />
+    <Compile Include="Models\Producto.cs" />
     <Compile Include="VentanaEliminar.xaml.cs">
       <DependentUpon>VentanaEliminar.xaml</DependentUpon>
     </Compile>
@@ -121,6 +124,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Models\README.md" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

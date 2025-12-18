@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TPV_Hosteleria.Models;
 
 namespace TPV_Hosteleria
 {
@@ -98,6 +99,8 @@ namespace TPV_Hosteleria
     public partial class Home : Window
     {
         private ObservableCollection<ProductoTicket> productosTicket;
+        private List<Producto> listaProductos;
+        private List<Cliente> listaClientes;
 
         public Home(string nombreUsuario)
         {
@@ -113,6 +116,22 @@ namespace TPV_Hosteleria
 
             // Asignar el ItemsSource del ListView
             lstTicket.ItemsSource = productosTicket;
+
+            // Cargar datos de ejemplo desde las clases del modelo
+            CargarDatosEjemplo();
+        }
+
+        /// <summary>
+        /// Carga los datos de ejemplo de productos y clientes desde las clases del modelo
+        /// </summary>
+        private void CargarDatosEjemplo()
+        {
+            listaProductos = DatosEjemplo.ObtenerProductos();
+            listaClientes = DatosEjemplo.ObtenerClientes();
+
+            // Aquí podrías usar los datos para poblar controles dinámicamente
+            // Por ejemplo, usar data binding o generar tarjetas programáticamente
+            // Por ahora, los datos están disponibles para ser usados cuando se necesiten
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
