@@ -158,69 +158,190 @@ namespace TPV_Hosteleria
             }
         }
         
-        private void mostrarVentanaEliminar()
+        private void mostrarVentanaEliminar(UIElement elementoAEliminar)
         {
             VentanaEliminar ventanaEliminar = new VentanaEliminar();
             ventanaEliminar.ShowDialog();
+            
+            // Si el usuario confirmó la eliminación
+            if (ventanaEliminar.Confirmado)
+            {
+                // Ocultar el elemento (producto o cliente)
+                if (elementoAEliminar != null)
+                {
+                    elementoAEliminar.Visibility = Visibility.Collapsed;
+                }
+            }
         }
+        
         private void btnEliminarP1_Click(object sender, RoutedEventArgs e)
         {
-            mostrarVentanaEliminar();
+            // Buscar el Border padre que contiene toda la tarjeta del producto
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                // Navegar hacia arriba en el árbol visual para encontrar el Border
+                DependencyObject parent = VisualTreeHelper.GetParent(btn);
+                while (parent != null && !(parent is Border))
+                {
+                    parent = VisualTreeHelper.GetParent(parent);
+                }
+                mostrarVentanaEliminar(parent as UIElement);
+            }
         }
 
         private void btnEliminarP2_Click(object sender, RoutedEventArgs e)
         {
-            mostrarVentanaEliminar();
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                DependencyObject parent = VisualTreeHelper.GetParent(btn);
+                while (parent != null && !(parent is Border))
+                {
+                    parent = VisualTreeHelper.GetParent(parent);
+                }
+                mostrarVentanaEliminar(parent as UIElement);
+            }
         }
 
         private void btnEliminarC1_Click(object sender, RoutedEventArgs e)
         {
-            mostrarVentanaEliminar();
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                DependencyObject parent = VisualTreeHelper.GetParent(btn);
+                while (parent != null && !(parent is Border))
+                {
+                    parent = VisualTreeHelper.GetParent(parent);
+                }
+                mostrarVentanaEliminar(parent as UIElement);
+            }
         }
 
         private void btnEliminarC2_Click(object sender, RoutedEventArgs e)
         {
-            mostrarVentanaEliminar();
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                DependencyObject parent = VisualTreeHelper.GetParent(btn);
+                while (parent != null && !(parent is Border))
+                {
+                    parent = VisualTreeHelper.GetParent(parent);
+                }
+                mostrarVentanaEliminar(parent as UIElement);
+            }
         }
 
         private void btnEliminarC3_Click(object sender, RoutedEventArgs e)
         {
-            mostrarVentanaEliminar();
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                DependencyObject parent = VisualTreeHelper.GetParent(btn);
+                while (parent != null && !(parent is Border))
+                {
+                    parent = VisualTreeHelper.GetParent(parent);
+                }
+                mostrarVentanaEliminar(parent as UIElement);
+            }
         }
 
         private void btnEliminarP3_Click(object sender, RoutedEventArgs e)
         {
-            mostrarVentanaEliminar();
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                DependencyObject parent = VisualTreeHelper.GetParent(btn);
+                while (parent != null && !(parent is Border))
+                {
+                    parent = VisualTreeHelper.GetParent(parent);
+                }
+                mostrarVentanaEliminar(parent as UIElement);
+            }
         }
 
         private void btnEliminarP4_Click(object sender, RoutedEventArgs e)
         {
-            mostrarVentanaEliminar();
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                DependencyObject parent = VisualTreeHelper.GetParent(btn);
+                while (parent != null && !(parent is Border))
+                {
+                    parent = VisualTreeHelper.GetParent(parent);
+                }
+                mostrarVentanaEliminar(parent as UIElement);
+            }
         }
 
         private void btnEliminarP5_Click(object sender, RoutedEventArgs e)
         {
-            mostrarVentanaEliminar();
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                DependencyObject parent = VisualTreeHelper.GetParent(btn);
+                while (parent != null && !(parent is Border))
+                {
+                    parent = VisualTreeHelper.GetParent(parent);
+                }
+                mostrarVentanaEliminar(parent as UIElement);
+            }
         }
 
         private void btnEliminarP6_Click(object sender, RoutedEventArgs e)
         {
-            mostrarVentanaEliminar();
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                DependencyObject parent = VisualTreeHelper.GetParent(btn);
+                while (parent != null && !(parent is Border))
+                {
+                    parent = VisualTreeHelper.GetParent(parent);
+                }
+                mostrarVentanaEliminar(parent as UIElement);
+            }
         }
 
         private void btnEliminarP7_Click(object sender, RoutedEventArgs e)
         {
-            mostrarVentanaEliminar();
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                DependencyObject parent = VisualTreeHelper.GetParent(btn);
+                while (parent != null && !(parent is Border))
+                {
+                    parent = VisualTreeHelper.GetParent(parent);
+                }
+                mostrarVentanaEliminar(parent as UIElement);
+            }
         }
 
         private void btnEliminarP8_Click(object sender, RoutedEventArgs e)
         {
-            mostrarVentanaEliminar();
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                DependencyObject parent = VisualTreeHelper.GetParent(btn);
+                while (parent != null && !(parent is Border))
+                {
+                    parent = VisualTreeHelper.GetParent(parent);
+                }
+                mostrarVentanaEliminar(parent as UIElement);
+            }
         }
 
         private void btnEliminarP9_Click(object sender, RoutedEventArgs e)
         {
-            mostrarVentanaEliminar();
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                DependencyObject parent = VisualTreeHelper.GetParent(btn);
+                while (parent != null && !(parent is Border))
+                {
+                    parent = VisualTreeHelper.GetParent(parent);
+                }
+                mostrarVentanaEliminar(parent as UIElement);
+            }
         }
 
         private void txtClientes_KeyDown(object sender, KeyEventArgs e)

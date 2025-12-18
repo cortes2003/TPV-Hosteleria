@@ -1079,7 +1079,7 @@
                                     </Grid>
                                     <Grid Grid.Row="1" Margin="15,0,15,15">
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                            <Button x:Name="btnEditarC1" Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" ToolTip="Editar cliente"/>
+                                            <Button x:Name="btnVerC1" Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" ToolTip="Ver/Editar cliente"/>
                                             <Button x:Name="btnEliminarC1" Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" ToolTip="Eliminar cliente" Click="btnEliminarC1_Click"/>
                                         </StackPanel>
                                     </Grid>
@@ -1117,7 +1117,7 @@
                                     </Grid>
                                     <Grid Grid.Row="1" Margin="15,0,15,15">
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                            <Button x:Name="btnEditarC2" Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" ToolTip="Editar cliente"/>
+                                            <Button x:Name="btnVerC2" Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" ToolTip="Ver/Editar cliente"/>
                                             <Button x:Name="btnEliminarC2" Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" ToolTip="Eliminar cliente" Click="btnEliminarC2_Click"/>
                                         </StackPanel>
                                     </Grid>
@@ -1159,7 +1159,7 @@
                                     </Grid>
                                     <Grid Grid.Row="1" Margin="15,0,15,15">
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                            <Button x:Name="btnEditarC3" Content="✏️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" ToolTip="Editar cliente"/>
+                                            <Button x:Name="btnVerC3" Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" ToolTip="Ver/Editar cliente"/>
                                             <Button x:Name="btnEliminarC3" Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" ToolTip="Eliminar cliente" Click="btnEliminarC3_Click"/>
                                         </StackPanel>
                                     </Grid>
