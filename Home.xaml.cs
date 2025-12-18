@@ -354,5 +354,24 @@ namespace TPV_Hosteleria
             btnEfectivo.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DDDDDD"));
         }
 
+        /// <summary>
+        /// Evento para abrir la ventana de añadir cliente
+        /// </summary>
+        private void btnAñadirCliente_Click(object sender, RoutedEventArgs e)
+        {
+            // Crear y mostrar la ventana de añadir cliente
+            AñadirCliente ventanaAñadirCliente = new AñadirCliente();
+            ventanaAñadirCliente.ShowDialog();
+            
+            // Si se guardó un cliente, refrescar la lista
+            if (ventanaAñadirCliente.ClienteGuardado != null)
+            {
+                listaClientes.Add(ventanaAñadirCliente.ClienteGuardado);
+                // Refrescar el ItemsControl
+                itemsClientes.ItemsSource = null;
+                itemsClientes.ItemsSource = listaClientes;
+            }
+        }
+
     }
 }

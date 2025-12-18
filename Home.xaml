@@ -1265,7 +1265,7 @@
                             </ItemsControl>
 
                             <!-- Botón añadir cliente -->
-                            <Button Width="240" Height="200" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand" ToolTip="Añadir nuevo cliente">
+                            <Button Width="240" Height="200" Margin="10" Background="White" BorderBrush="#DDDDDD" Cursor="Hand" ToolTip="Añadir nuevo cliente" Click="btnAñadirCliente_Click">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
                                         <Grid>
