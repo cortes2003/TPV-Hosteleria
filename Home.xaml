@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TPV_Hosteleria"
         mc:Ignorable="d"
-        Title="Home" Height="768" Width="1197"
+        Title="Home" Height="768" Width="1229"
         WindowState="Maximized"
         Background="#F4F7F6">
 
@@ -273,12 +273,13 @@
 
     <Grid Background="#FFF4F7F6">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition Width="872*"/>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="344*"/>
         </Grid.ColumnDefinitions>
 
         <!-- Zona izquierda: productos, pedidos y clientes -->
-        <Grid Grid.Column="0" Margin="10,10,10,10">
+        <Grid Grid.Column="0" Margin="10,10,4,10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -286,7 +287,7 @@
         </Grid>
 
         <!-- Zona derecha: ticket y pago -->
-        <Border Grid.Column="1" Background="White">
+        <Border Grid.Column="2" Background="White">
             <Border.Effect>
                 <DropShadowEffect Color="#000000" Direction="180" ShadowDepth="5" BlurRadius="20" Opacity="0.05"/>
             </Border.Effect>
@@ -427,7 +428,7 @@
 
             </Grid>
         </Border>
-        <TabControl x:Name="tabContolHome" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10" BorderBrush="#FFF4F7F6" BorderThickness="0">
+        <TabControl x:Name="tabContolHome" Margin="10,10,4,10" BorderBrush="#FFF4F7F6" BorderThickness="0">
             <TabItem x:Name="ventanaProductos" Header="Productos">
                 <Grid Background="#FFF4F7F6">
                     <TabControl Margin="0,10,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent" BorderThickness="0">
@@ -1146,26 +1147,39 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Grid  Margin="0,10,0,10" Grid.ColumnSpan="2">
+                    <Grid  Margin="0,10,10,10">
 
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
+                        <Border Background="White" 
+        BorderBrush="#DCDCDC" 
+        BorderThickness="1" 
+        CornerRadius="15" 
+        Padding="20,5" Margin="43,16,677,70" Width="128" Height="37">
 
-                        <Button Content="Fecha" 
-                                Grid.Row="0" Grid.Column="0"
-                                Style="{StaticResource SubCatButtonStyle}"
-                                Foreground="Black" Margin="10,14,646,52" Height="37.62" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" Width="128.428571428571"/>
+                            <TextBlock Text="Fecha" 
+               Foreground="#333333" 
+               FontSize="14" 
+               VerticalAlignment="Center" 
+               HorizontalAlignment="Center"/>
+                        </Border>
 
-                        <DatePicker Margin="163,14,440,55" Height="34.62" Padding="0,0,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Width="181.428571428571"/>
+                        <DatePicker Margin="180,18,474,64" Height="34.62" Padding="0,0,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Width="181.428571428571"/>
 
                         <Button Content="Cliente" 
                                 Grid.Row="0"
                                 Style="{StaticResource SubCatButtonStyle}"
-                                Margin="409,13,0,58" HorizontalAlignment="Left" Width="120" Height="36.62" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0,0,0,0"/>
+                                Margin="408,20,318,63" Width="124" Height="36.62" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
 
-                        <TextBox x:Name="txtClientePedidos" Grid.Row="0" FontSize="16" BorderBrush="Black" BorderThickness="1" Margin="584,15,71,60" Height="33.62"/>
+                        <TextBox x:Name="txtClientePedidos" Grid.Row="0" FontSize="16" BorderBrush="Black" BorderThickness="1" Margin="581,22,33,67" Height="33.62" Width="234" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
-                        <Button Content="Estado" Style="{StaticResource SubCatButtonStyle}" Margin="10,56,646,11" Height="36.62" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" Width="128.428571428571"/>
-                        <ComboBox x:Name="cmbxEstadoPedido" Margin="163,55,474,10" Height="38.62" Padding="0,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Visible" Width="147.428571428571">
+                        <Button Content="Estado" Style="{StaticResource SubCatButtonStyle}" Margin="36,66,670,15" Height="36.62" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" Width="128.428571428571"/>
+                        <ComboBox x:Name="cmbxEstadoPedido" Margin="180,66,474,14" Width="181" Height="38.62" Padding="0,0,0,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock>
@@ -1177,8 +1191,8 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        <Button Content="Tipo de Entrega" Style="{StaticResource SubCatButtonStyle}" Margin="409,56,0,11" HorizontalAlignment="Left" Width="137" Height="41.62" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0,0,0,0" />
-                        <ComboBox Margin="558,62,10,10" Padding="0,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="33.62" Width="215.428571428571">
+                        <Button Content="Tipo de Entrega" Style="{StaticResource SubCatButtonStyle}" Margin="400,71,308,10" Width="140" Height="41.62" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="0,0,0,0" ScrollViewer.VerticalScrollBarVisibility="Disabled" />
+                        <ComboBox Margin="581,70,33,19" Padding="0,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="33.62" Width="234">
                             <ComboBoxItem Content="🍽️ Para tomar aquí"/>
                             <ComboBoxItem Content="🛒 Para recoger en el establecimiento"/>
                             <ComboBoxItem Content="🏠 A Domicilio" IsSelected="True"/>
