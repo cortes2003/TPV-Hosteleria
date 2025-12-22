@@ -116,7 +116,16 @@ namespace TPV_Hosteleria
 
             // Asignar el ItemsSource del ListView
             lstTicket.ItemsSource = productosTicket;
-
+            //Lista de estados de los pedidos
+            List<EstadosPedido> listaEstados = new List<EstadosPedido>
+            {
+                new EstadosPedido{estado="En elaboración", colorCirculo="#FFAA00"},
+                new EstadosPedido{estado="Entregado", colorCirculo="#00FF2F"},
+                new EstadosPedido{estado="Recogido", colorCirculo="#0C6122"},
+                new EstadosPedido{estado="Pagado", colorCirculo="#00BBFF"},
+                new EstadosPedido{estado="Pendiente de pago", colorCirculo="#FF0000"}
+            };
+            cmbxEstadoPedido.ItemsSource = listaEstados;//Carga de los estados de los pedidos en su combobox correspondiente
             // Cargar datos de ejemplo desde las clases del modelo
             CargarDatosEjemplo();
         }
@@ -390,6 +399,5 @@ namespace TPV_Hosteleria
                 RefrescarProductos();
             }
         }
-
     }
 }

@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\DatosEjemplo.cs" />
+    <Compile Include="Models\EstadosPedido.cs" />
     <Compile Include="Models\Producto.cs" />
     <Compile Include="VentanaEliminar.xaml.cs">
       <DependentUpon>VentanaEliminar.xaml</DependentUpon>
