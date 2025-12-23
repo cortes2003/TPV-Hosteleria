@@ -1165,20 +1165,20 @@
                             <TextBlock Text="Fecha" Foreground="#333333" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
 
-                        <DatePicker Grid.Row="0" Grid.Column="1" Height="36" Width="200" Margin="0,0,35,20" VerticalAlignment="Center"/>
+                        <DatePicker x:Name="dtpFechaPedidos" Grid.Row="0" Grid.Column="1" Height="36" Width="200" Margin="0,0,35,20" VerticalAlignment="Center" SelectedDateChanged="filtrar_changed"/>
 
                         <Border Grid.Row="0" Grid.Column="2" Background="White" BorderBrush="#DCDCDC" BorderThickness="1" CornerRadius="15" Padding="20,8" Margin="0,0,20,20">
                             <TextBlock Text="Cliente" Foreground="#333333" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
 
-                        <TextBox x:Name="txtClientePedidos" Grid.Row="0" Grid.Column="3" Height="36" Width="200" FontSize="14" BorderBrush="#DCDCDC" BorderThickness="1" Margin="0,0,0,20" VerticalAlignment="Center" Padding="10,0"/>
+                        <TextBox x:Name="txtClientePedidos" Grid.Row="0" Grid.Column="3" Height="36" Width="200" FontSize="14" BorderBrush="#DCDCDC" BorderThickness="1" Margin="0,0,0,20" VerticalAlignment="Center" Padding="10,0" TextChanged="filtrar_changed"/>
 
                         <!-- Fila 2 -->
                         <Border Grid.Row="1" Grid.Column="0" Background="White" BorderBrush="#DCDCDC" BorderThickness="1" CornerRadius="15" Padding="20,8" Margin="0,0,20,0">
                             <TextBlock Text="Estado" Foreground="#333333" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
-                        
-                        <ComboBox x:Name="cmbxEstadoPedido" Grid.Row="1" Grid.Column="1" Width="200" Height="36" Margin="0,0,35,0" VerticalAlignment="Center">
+
+                        <ComboBox x:Name="cmbxEstadoPedido" Grid.Row="1" Grid.Column="1" Width="200" Height="36" Margin="0,0,35,0" VerticalAlignment="Center" SelectionChanged="filtrar_changed">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock>
@@ -1189,22 +1189,22 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        
+
                         <Border Grid.Row="1" Grid.Column="2" Background="White" BorderBrush="#DCDCDC" BorderThickness="1" CornerRadius="15" Padding="20,8" Margin="0,0,20,0">
                             <TextBlock Text="Tipo de Entrega" Foreground="#333333" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
-                        
-                        <ComboBox Grid.Row="1" Grid.Column="3" Width="200" Height="36" VerticalAlignment="Center">
+
+                        <ComboBox x:Name="cmbxTipoEntrega" Grid.Row="1" Grid.Column="3" Width="200" Height="36" VerticalAlignment="Center" SelectionChanged="filtrar_changed">
                             <ComboBoxItem Content="🍽 Para tomar aquí"/>
                             <ComboBoxItem Content="🛍 Para recoger"/>
-                            <ComboBoxItem Content="🏠 A Domicilio" IsSelected="True"/>
+                            <ComboBoxItem Content="🏠 A Domicilio"/>
                         </ComboBox>
                     </Grid>
 
                     <!-- Grid de tarjetas de pedidos -->
                     <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="10,0,10,10">
                         <WrapPanel Orientation="Horizontal">
-                            
+
                             <!-- ItemsControl para generar tarjetas de pedidos dinámicamente -->
                             <ItemsControl x:Name="itemsPedidos">
                                 <ItemsControl.ItemsPanel>
@@ -1224,7 +1224,7 @@
                                                     <RowDefinition Height="*"/>
                                                     <RowDefinition Height="Auto"/>
                                                 </Grid.RowDefinitions>
-                                                
+
                                                 <!-- Header -->
                                                 <StackPanel Grid.Row="0">
                                                     <TextBlock FontWeight="Bold" FontSize="18" Foreground="{Binding ColorTexto}">
@@ -1233,7 +1233,7 @@
                                                     <TextBlock Text="{Binding FechaFormateada, Mode=OneWay}" FontSize="12" Foreground="{Binding ColorTexto}" Opacity="0.9" Margin="0,2,0,0"/>
                                                     <Separator Background="{Binding ColorTexto}" Opacity="0.3" Margin="0,8,0,8"/>
                                                 </StackPanel>
-                                                
+
                                                 <!-- Contenido -->
                                                 <StackPanel Grid.Row="1">
                                                     <TextBlock FontSize="13" Foreground="{Binding ColorTexto}" FontWeight="SemiBold" Margin="0,0,0,5">
@@ -1261,10 +1261,10 @@
                                                             </Style>
                                                         </TextBlock.Style>
                                                     </TextBlock>
-                                                    
+
                                                     <TextBlock Text="👤 Cliente:" FontSize="12" Foreground="{Binding ColorTexto}" FontWeight="SemiBold" Margin="0,0,0,2"/>
                                                     <TextBlock Text="{Binding NombreCliente, Mode=OneWay}" FontSize="12" Foreground="{Binding ColorTexto}" Margin="0,0,0,8"/>
-                                                    
+
                                                     <TextBlock Text="🛒 Productos:" FontSize="12" Foreground="{Binding ColorTexto}" FontWeight="SemiBold" Margin="0,0,0,2"/>
                                                     <ItemsControl ItemsSource="{Binding Productos}" Margin="0,0,0,8">
                                                         <ItemsControl.ItemTemplate>
@@ -1278,12 +1278,12 @@
                                                             </DataTemplate>
                                                         </ItemsControl.ItemTemplate>
                                                     </ItemsControl>
-                                                    
+
                                                     <TextBlock FontSize="12" Foreground="{Binding ColorTexto}" FontWeight="SemiBold">
                                                         <Run Text="{Binding IconoPago, Mode=OneWay}"/><Run Text=" "/><Run Text="{Binding MetodoPago, Mode=OneWay}"/>
                                                     </TextBlock>
                                                 </StackPanel>
-                                                
+
                                                 <!-- Footer -->
                                                 <StackPanel Grid.Row="2">
                                                     <Separator Background="{Binding ColorTexto}" Opacity="0.3" Margin="0,8,0,8"/>
@@ -1300,6 +1300,17 @@
 
                         </WrapPanel>
                     </ScrollViewer>
+
+                    <Button x:Name="btnLimpiarBusqueda" Content="LIMPIAR" Height="55" Background="{StaticResource PrimaryColor}" Foreground="White" FontSize="18" FontWeight="Bold" BorderThickness="0" Cursor="Hand" Margin="731,29,29,44" Click="btnLimpiarBusqueda_Click">
+                        <Button.Effect>
+                            <DropShadowEffect Color="#FF6F00" BlurRadius="15" ShadowDepth="5" Opacity="0.3"/>
+                        </Button.Effect>
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="8"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
                 </Grid>
             </TabItem>
             <TabItem x:Name="ventanaClientes" Header="Clientes">

@@ -10,5 +10,6 @@ namespace TPV_Hosteleria.Models
     {
         public String estado { get; set; }
         public String colorCirculo { get; set; }
+        public String textoCompleto => $"{estado} &#x25CF;";
     }
 }

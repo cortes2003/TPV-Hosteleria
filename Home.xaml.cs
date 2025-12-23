@@ -102,7 +102,7 @@ namespace TPV_Hosteleria
         private List<Producto> listaProductos;
         private List<Cliente> listaClientes;
         private List<Pedido> listaPedidos;
-
+        private ICollectionView vistaFiltrada;
         public Home(string nombreUsuario)
         {
             InitializeComponent();
@@ -129,6 +129,7 @@ namespace TPV_Hosteleria
             cmbxEstadoPedido.ItemsSource = listaEstados;//Carga de los estados de los pedidos en su combobox correspondiente
             // Cargar datos de ejemplo desde las clases del modelo
             CargarDatosEjemplo();
+            FiltrarPedidos();
         }
 
         /// <summary>
@@ -401,7 +402,33 @@ namespace TPV_Hosteleria
                 RefrescarProductos();
             }
         }
+        private void FiltrarPedidos()
+        {
+            vistaFiltrada = CollectionViewSource.GetDefaultView(listaPedidos);
+            vistaFiltrada.Filter = (obj) =>
+            {
+                var pedido = obj as Pedido;
+                if (pedido == null) return false;
+                bool coincideFecha = dtpFechaPedidos.SelectedDate == null || pedido.Fecha.Date == dtpFechaPedidos.SelectedDate.Value.Date;
+                EstadosPedido est = (EstadosPedido) cmbxEstadoPedido.SelectedItem;
+                bool coincideEstado = cmbxEstadoPedido.SelectedItem == null || est.estado==pedido.Estado;
+                bool coincideCliente= string.IsNullOrEmpty(txtClientePedidos.Text)||pedido.NombreCliente.ToLower().Contains(txtClientePedidos.Text.ToLower());
+                bool coincideTipoEntrega=cmbxTipoEntrega.SelectedItem == null || cmbxTipoEntrega.SelectedItem.ToString().Contains(pedido.TipoEntrega);
+                return coincideFecha && coincideEstado && coincideCliente && coincideTipoEntrega; 
+            };
+        }
+        private void filtrar_changed(object sender, EventArgs e)
+        {
+            vistaFiltrada?.Refresh();
+        }
 
-       
+        private void btnLimpiarBusqueda_Click(object sender, RoutedEventArgs e)
+        {
+            dtpFechaPedidos.SelectedDate = null;
+            cmbxEstadoPedido.SelectedItem = null;
+            txtClientePedidos.Text = null;
+            cmbxTipoEntrega.SelectedItem = null;
+            vistaFiltrada?.Refresh();
+        }
     }
 }
