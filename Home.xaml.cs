@@ -122,9 +122,9 @@ namespace TPV_Hosteleria
             {
                 new EstadosPedido{estado="En elaboración", colorCirculo="#FFAA00"},
                 new EstadosPedido{estado="Entregado", colorCirculo="#00FF2F"},
-                new EstadosPedido{estado="Recogido", colorCirculo="#0C6122"},
+                new EstadosPedido{estado="Recogido", colorCirculo="#AF76E8"},
                 new EstadosPedido{estado="Pagado", colorCirculo="#00BBFF"},
-                new EstadosPedido{estado="Pendiente de pago", colorCirculo="#FF0000"}
+                new EstadosPedido{estado="Pendiente de pago", colorCirculo="#FF4B1A"}
             };
             cmbxEstadoPedido.ItemsSource = listaEstados;//Carga de los estados de los pedidos en su combobox correspondiente
             // Cargar datos de ejemplo desde las clases del modelo

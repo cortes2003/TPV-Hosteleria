@@ -210,7 +210,7 @@ namespace TPV_Hosteleria.Models
                     MetodoPago = "Tarjeta",
                     Total = 35.70m,
                     Estado = "Recogido",
-                    ColorEstado = "#0C6122"
+                    ColorEstado = "#AF76E8"
                 },
                 new Pedido
                 {
@@ -238,7 +238,7 @@ namespace TPV_Hosteleria.Models
                     MetodoPago = "Efectivo",
                     Total = 42.00m,
                     Estado = "Pendiente de pago",
-                    ColorEstado = "#FF0000"
+                    ColorEstado = "#FF4B1A"
                 }
             };
         }
