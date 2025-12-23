@@ -101,6 +101,7 @@ namespace TPV_Hosteleria
         private ObservableCollection<ProductoTicket> productosTicket;
         private List<Producto> listaProductos;
         private List<Cliente> listaClientes;
+        private List<Pedido> listaPedidos;
 
         public Home(string nombreUsuario)
         {
@@ -137,9 +138,13 @@ namespace TPV_Hosteleria
         {
             listaProductos = DatosEjemplo.ObtenerProductos();
             listaClientes = DatosEjemplo.ObtenerClientes();
+            listaPedidos = DatosEjemplo.ObtenerPedidos();
 
             // Vincular la lista de clientes al ItemsControl
             itemsClientes.ItemsSource = listaClientes;
+
+            // Vincular la lista de pedidos al ItemsControl
+            itemsPedidos.ItemsSource = listaPedidos;
 
             // Vincular productos por categoría
             itemsBebidas.ItemsSource = listaProductos.Where(p => p.Categoria == "Bebidas").ToList();
@@ -196,9 +201,6 @@ namespace TPV_Hosteleria
                 }
             }
         }
-        
-        // Métodos obsoletos de eliminación de productos eliminados
-        // Los productos ahora usan btnEliminarProducto_Click genérico
         
         /// <summary>
         /// Evento para eliminar un cliente desde la tarjeta generada dinámicamente
