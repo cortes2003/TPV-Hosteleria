@@ -159,10 +159,37 @@ namespace TPV_Hosteleria
             itemsAsados.ItemsSource = listaProductos.Where(p => p.Subcategoria == "Asados").ToList();
             itemsPescados.ItemsSource = listaProductos.Where(p => p.Subcategoria == "Pescados").ToList();
         }
-
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void recalcularPrecioTicket()
         {
+            //Esto para actualizar el precio del subtotal
+            decimal subtotal = 0;
+            decimal total = 0;
+            foreach (var producto in productosTicket)
+            {
+                subtotal += producto.PrecioTotal;
+            }
+            total = subtotal;
 
+            decimal descuentoPuntos = 5; //Hemos dicho que son 5 euros de descuento si usa puntos
+            if (cbPuntos.IsChecked==true)
+            {
+                if (total <= descuentoPuntos)
+                {
+                    total = 0;
+                } else
+                {
+                    total = total - descuentoPuntos;
+                }
+            }
+
+            decimal costeDomicilio = 3; //Hemos dicho que el coste de llevarlo a domicilio es 3 euros
+            if (cbDomicilio.IsChecked == true)
+            {
+                total = total + costeDomicilio;
+            }
+
+            txtPrecioSubTotal.Text = $"{subtotal:F2} €";
+            txtPrecioTotalTicket.Text = $"{total:F2} €";
         }
 
         private void btnAyuda_Click(object sender, RoutedEventArgs e)
@@ -182,6 +209,7 @@ namespace TPV_Hosteleria
             {
                 producto.Cantidad++;
             }
+            recalcularPrecioTicket();
         }
 
         /// <summary>
@@ -201,6 +229,7 @@ namespace TPV_Hosteleria
                     productosTicket.Remove(producto);
                 }
             }
+            recalcularPrecioTicket();
         }
         
         /// <summary>
@@ -253,6 +282,7 @@ namespace TPV_Hosteleria
                 };
                 productosTicket.Add(productoNuevo);
             }
+            recalcularPrecioTicket();
         }
 
         /// <summary>
@@ -323,6 +353,9 @@ namespace TPV_Hosteleria
             {
                 cbRecoger.IsChecked = false;
                 cbDomicilio.IsChecked = false;
+                txtEnvio.Visibility = Visibility.Hidden;
+                txtPrecioEnvio.Visibility = Visibility.Hidden;
+                recalcularPrecioTicket();
             }
         }
 
@@ -332,6 +365,9 @@ namespace TPV_Hosteleria
             {
                 cbTomarAqui.IsChecked = false;
                 cbDomicilio.IsChecked = false;
+                txtEnvio.Visibility = Visibility.Hidden;
+                txtPrecioEnvio.Visibility = Visibility.Hidden;
+                recalcularPrecioTicket();
             }
         }
 
@@ -341,7 +377,16 @@ namespace TPV_Hosteleria
             {
                 cbTomarAqui.IsChecked = false;
                 cbRecoger.IsChecked = false;
+                recalcularPrecioTicket();
+                txtEnvio.Visibility = Visibility.Visible;
+                txtPrecioEnvio.Visibility = Visibility.Visible;
             }
+        }
+        private void cbDomicilio_Unchecked(object sender, RoutedEventArgs e)
+        {
+            recalcularPrecioTicket();
+            txtEnvio.Visibility = Visibility.Hidden;
+            txtPrecioEnvio.Visibility = Visibility.Hidden;
         }
 
         private void btnEfectivo_Click(object sender, RoutedEventArgs e)
@@ -429,6 +474,16 @@ namespace TPV_Hosteleria
             txtClientePedidos.Text = null;
             cmbxTipoEntrega.SelectedItem = null;
             vistaFiltrada?.Refresh();
+        }
+
+        private void cbPuntos_Checked(object sender, RoutedEventArgs e)
+        {
+            recalcularPrecioTicket();
+        }
+
+        private void cbPuntos_Unchecked(object sender, RoutedEventArgs e)
+        {
+            recalcularPrecioTicket();
         }
     }
 }
