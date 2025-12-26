@@ -395,7 +395,7 @@
                         <Button x:Name="btnEfectivo" Content="💶 Efectivo" Grid.Column="0" HorizontalAlignment="Stretch" Margin="0,0,5,0" Height="36" Style="{StaticResource BotonPagoStyle}" Click="btnEfectivo_Click"/>
                         <Button x:Name="btnTarjeta" Content="💳 Tarjeta" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,0,0,0" Height="36" Style="{StaticResource BotonPagoStyle}" Click="btnTarjeta_Click"/>
                     </Grid>
-                    <CheckBox x:Name ="cbPuntos" Content="Canjear 150 puntos (-5.00€)" FontSize="13" Foreground="{StaticResource DarkText}" Margin="5,5,0,0" Checked="cbPuntos_Checked" Unchecked="cbPuntos_Unchecked"/>
+                    <CheckBox x:Name ="cbPuntos" Content="Canjear puntos (-3.00€)" FontSize="13" Foreground="{StaticResource DarkText}" Margin="5,5,0,0" IsEnabled="False" Checked="cbPuntos_Checked" Unchecked="cbPuntos_Unchecked"/>
                 </StackPanel>
 
                 <!-- Total y botón cobrar -->
@@ -408,6 +408,10 @@
                     <Grid Margin="0,0,0,5">
                         <TextBlock x:Name="txtEnvio" Text="Envío" Foreground="{StaticResource LightText}" Visibility="Hidden"/>
                         <TextBlock x:Name ="txtPrecioEnvio" Text="+ 3.00 €" HorizontalAlignment="Right" Foreground="{StaticResource DarkText}" Visibility="Hidden"/>
+                    </Grid>
+                    <Grid Margin="0,0,0,5">
+                        <TextBlock x:Name="txtDescuentoPuntos" Text="Descuento Puntos" Foreground="{StaticResource LightText}" Visibility="Hidden"/>
+                        <TextBlock x:Name="txtPrecioDescuentoPuntos" Text="- 3.00 €" HorizontalAlignment="Right" Foreground="{StaticResource DarkText}" Visibility="Hidden"/>
                     </Grid>
                     <Grid Margin="0,0,0,15">
                         <TextBlock Text="TOTAL" FontSize="20" FontWeight="Bold" Foreground="{StaticResource DarkText}"/>

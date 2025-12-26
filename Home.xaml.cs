@@ -170,22 +170,38 @@ namespace TPV_Hosteleria
             }
             total = subtotal;
 
-            decimal descuentoPuntos = 5; //Hemos dicho que son 5 euros de descuento si usa puntos
-            if (cbPuntos.IsChecked==true)
-            {
-                if (total <= descuentoPuntos)
-                {
-                    total = 0;
-                } else
-                {
-                    total = total - descuentoPuntos;
-                }
-            }
-
+            // Manejar coste de domicilio
             decimal costeDomicilio = 3; //Hemos dicho que el coste de llevarlo a domicilio es 3 euros
             if (cbDomicilio.IsChecked == true)
             {
                 total = total + costeDomicilio;
+            }
+
+            // Manejar descuento por puntos (solo disponible con envío a domicilio)
+            decimal descuentoPuntos = 3; //Descuento de 3 euros si usa puntos
+            if (cbPuntos.IsChecked == true && cbDomicilio.IsChecked == true)
+            {
+                decimal descuentoAplicado = descuentoPuntos;
+                if (total <= descuentoPuntos)
+                {
+                    descuentoAplicado = total;
+                    total = 0;
+                } 
+                else
+                {
+                    total = total - descuentoPuntos;
+                }
+                
+                // Mostrar la línea de descuento
+                txtDescuentoPuntos.Visibility = Visibility.Visible;
+                txtPrecioDescuentoPuntos.Visibility = Visibility.Visible;
+                txtPrecioDescuentoPuntos.Text = $"- {descuentoAplicado:F2} €";
+            }
+            else
+            {
+                // Ocultar la línea de descuento
+                txtDescuentoPuntos.Visibility = Visibility.Hidden;
+                txtPrecioDescuentoPuntos.Visibility = Visibility.Hidden;
             }
 
             txtPrecioSubTotal.Text = $"{subtotal:F2} €";
@@ -355,6 +371,11 @@ namespace TPV_Hosteleria
                 cbDomicilio.IsChecked = false;
                 txtEnvio.Visibility = Visibility.Hidden;
                 txtPrecioEnvio.Visibility = Visibility.Hidden;
+                
+                // Deshabilitar checkbox de puntos
+                cbPuntos.IsChecked = false;
+                cbPuntos.IsEnabled = false;
+                
                 recalcularPrecioTicket();
             }
         }
@@ -367,6 +388,11 @@ namespace TPV_Hosteleria
                 cbDomicilio.IsChecked = false;
                 txtEnvio.Visibility = Visibility.Hidden;
                 txtPrecioEnvio.Visibility = Visibility.Hidden;
+                
+                // Deshabilitar checkbox de puntos
+                cbPuntos.IsChecked = false;
+                cbPuntos.IsEnabled = false;
+                
                 recalcularPrecioTicket();
             }
         }
@@ -380,6 +406,9 @@ namespace TPV_Hosteleria
                 recalcularPrecioTicket();
                 txtEnvio.Visibility = Visibility.Visible;
                 txtPrecioEnvio.Visibility = Visibility.Visible;
+                
+                // Habilitar checkbox de puntos solo para domicilio
+                cbPuntos.IsEnabled = true;
             }
         }
         private void cbDomicilio_Unchecked(object sender, RoutedEventArgs e)
@@ -387,6 +416,10 @@ namespace TPV_Hosteleria
             recalcularPrecioTicket();
             txtEnvio.Visibility = Visibility.Hidden;
             txtPrecioEnvio.Visibility = Visibility.Hidden;
+            
+            // Deshabilitar checkbox de puntos si se desmarca domicilio
+            cbPuntos.IsChecked = false;
+            cbPuntos.IsEnabled = false;
         }
 
         private void btnEfectivo_Click(object sender, RoutedEventArgs e)
