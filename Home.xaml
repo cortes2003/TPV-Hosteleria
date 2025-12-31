@@ -403,7 +403,7 @@
                     <Separator Background="#EEEEEE" Margin="0,0,0,15"/>
                     <Grid Margin="0,0,0,5">
                         <TextBlock Text="Subtotal" Foreground="{StaticResource LightText}"/>
-                        <TextBlock x:Name ="txtPrecioSubTotal" Text="00.00 €" HorizontalAlignment="Right" Foreground="{StaticResource DarkText}"/>
+                        <TextBlock x:Name ="txtPrecioSubTotal" Text="0.00 €" HorizontalAlignment="Right" Foreground="{StaticResource DarkText}"/>
                     </Grid>
                     <Grid Margin="0,0,0,5">
                         <TextBlock x:Name="txtEnvio" Text="Envío" Foreground="{StaticResource LightText}" Visibility="Hidden"/>
@@ -1374,7 +1374,7 @@
                                                 </Grid>
                                                 <Grid Grid.Row="1" Margin="15,0,15,15">
                                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                                        <Button Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" ToolTip="Ver/Editar cliente" Tag="{Binding}"/>
+                                                        <Button Content="👁️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#757575" ToolTip="Ver/Editar cliente" Tag="{Binding}" Click="btnVisualizarCliente_Click"/>
                                                         <Button Content="🗑️" Style="{StaticResource ActionIconButtonStyle}" Foreground="#D32F2F" ToolTip="Eliminar cliente" Tag="{Binding}" Click="btnEliminarCliente_Click"/>
                                                     </StackPanel>
                                                 </Grid>

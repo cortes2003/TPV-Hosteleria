@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TPV_Hosteleria"
         mc:Ignorable="d"
-        Title="VentanaVerCliente" Height="450" Width="800">
+        Title="Gestión de clientes" Height="520" Width="700"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#F4F7F6">
 
     <Window.Resources>
         <SolidColorBrush x:Key="PrimaryColor" Color="#FF6F00"/>
@@ -212,8 +215,8 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button x:Name="btnEfectivo" Content="💶 Efectivo" Grid.Column="0" HorizontalAlignment="Stretch" Margin="0,0,5,0" Height="36" Style="{StaticResource BotonPagoStyle}" Click="btnEfectivo_Click"/>
-            <Button x:Name="btnTarjeta" Content="💳 Tarjeta" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,0,0,0" Height="36" Style="{StaticResource BotonPagoStyle}" Click="btnTarjeta_Click"/>
+            <Button x:Name="btnEfectivo" Content="💶 Efectivo" Grid.Column="0" HorizontalAlignment="Stretch" Margin="0,0,5,0" Height="36" Style="{StaticResource BotonPagoStyle}"/>
+            <Button x:Name="btnTarjeta" Content="💳 Tarjeta" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,0,0,0" Height="36" Style="{StaticResource BotonPagoStyle}"/>
         </Grid>
 
         <!-- Puntos acumulados -->
@@ -234,7 +237,7 @@
         <CheckBox x:Name="chkFrutosSecos" Content="Frutos secos" HorizontalAlignment="Left" Margin="225,410,0,0" VerticalAlignment="Top" FontSize="14" Foreground="{StaticResource DarkText}" VerticalContentAlignment="Center"/>
         <CheckBox x:Name="chkLacteos" Content="Lácteos" HorizontalAlignment="Left" Margin="330,410,0,0" VerticalAlignment="Top" FontSize="14" Foreground="{StaticResource DarkText}" VerticalContentAlignment="Center"/>
         <!-- Botones de acción -->
-        <Button x:Name="btnCancelar" Content="CANCELAR" Width="120" Height="50" FontSize="18" FontWeight="Bold" BorderThickness="0" Cursor="Hand" Click="btnCancelar_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,143,10" Foreground="White" Background="{StaticResource PrimaryColor}">
+        <Button x:Name="btnCancelar" Content="CANCELAR" Width="120" Height="50" FontSize="18" FontWeight="Bold" BorderThickness="0" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,143,10" Foreground="White" Background="{StaticResource PrimaryColor}">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="8"/>
@@ -244,7 +247,7 @@
                 <DropShadowEffect Color="#FF6F00" BlurRadius="15" ShadowDepth="5" Opacity="0.3"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnGuardar" Content="GUARDAR" Width="120" Height="50" FontSize="18" FontWeight="Bold" BorderThickness="0" Cursor="Hand" Click="btnGuardar_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Foreground="White" Background="{StaticResource PrimaryColor}">
+        <Button x:Name="btnGuardar" Content="GUARDAR" Width="120" Height="50" FontSize="18" FontWeight="Bold" BorderThickness="0" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Foreground="White" Background="{StaticResource PrimaryColor}">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="8"/>

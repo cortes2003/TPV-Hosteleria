@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TPV_Hosteleria.Models;
 
 namespace TPV_Hosteleria
 {
@@ -19,9 +20,11 @@ namespace TPV_Hosteleria
     /// </summary>
     public partial class VentanaVerCliente : Window
     {
-        public VentanaVerCliente()
+        public VentanaVerCliente(Cliente cliente)
         {
             InitializeComponent();
+            //Aqui hay que inicializar cada texto dependiendo de lo que haya en el home de clientes, tambien hace falta crear la clase cliente igual que producto en home
+            
         }
     }
 }
