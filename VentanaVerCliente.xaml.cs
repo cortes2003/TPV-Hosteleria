@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace TPV_Hosteleria
 {
     /// <summary>
-    /// Lógica de interacción para VisualizarCliente.xaml
+    /// Lógica de interacción para VentanaVerCliente.xaml
     /// </summary>
-    public partial class VisualizarCliente : Window
+    public partial class VentanaVerCliente : Window
     {
-        public VisualizarCliente()
+        public VentanaVerCliente()
         {
             InitializeComponent();
         }

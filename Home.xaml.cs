@@ -329,7 +329,7 @@ namespace TPV_Hosteleria
             Button btn = sender as Button;
             if (btn != null && btn.Tag is Cliente cliente)
             {
-                VentanaEliminar ventanaEliminar = new VentanaEliminar();
+                 ventanaEliminar = new VentanaEliminar();
                 ventanaEliminar.ShowDialog();
 
             }
