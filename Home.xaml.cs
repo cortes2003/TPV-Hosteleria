@@ -319,7 +319,19 @@ namespace TPV_Hosteleria
                     listaProductos.Remove(producto);
                     // Refrescar los ItemsControls de productos SIN recargar desde DatosEjemplo
                     RefrescarProductos();
+                    productosTicket.Remove(productosTicket.FirstOrDefault(p => p.Nombre == producto.Nombre)); //Si el producto que borramos estaba en el ticket, tambien lo borro del ticket
                 }
+            }
+        }
+
+        private void btnVisualizarCliente_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn != null && btn.Tag is Cliente cliente)
+            {
+                VentanaEliminar ventanaEliminar = new VentanaEliminar();
+                ventanaEliminar.ShowDialog();
+
             }
         }
 
