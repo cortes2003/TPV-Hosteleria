@@ -23,8 +23,11 @@ namespace TPV_Hosteleria
         public VentanaVerCliente(Cliente cliente)
         {
             InitializeComponent();
-            //Aqui hay que inicializar cada texto dependiendo de lo que haya en el home de clientes, tambien hace falta crear la clase cliente igual que producto en home
-            
+            txtNombreApellidosCliente.Text = cliente.Nombre;
+            txtTelefonosCliente.Text = cliente.Telefono;
+            txtEmailsCliente.Text = cliente.Email;
+            txtDireccionCliente.Text = cliente.Direccion;
+            txtPuntosCliente.Text = cliente.PuntosAcumulados.ToString();
         }
     }
 }

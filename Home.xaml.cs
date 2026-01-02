@@ -85,6 +85,9 @@ namespace TPV_Hosteleria
             get { return $"{PrecioTotal:F2} €"; }
         }
 
+        public string Categoria { get; set; }
+        public string Subcategoria { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)
@@ -489,6 +492,23 @@ namespace TPV_Hosteleria
                 listaProductos.Add(ventanaAñadirProducto.ProductoGuardado);
                 // Refrescar los ItemsControls de productos
                 RefrescarProductos();
+            }
+        }
+
+        private void btnVerProducto_Click(Object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn != null && btn.Tag is Producto producto)
+            {
+                Producto productoLista = new Producto
+                {
+                    Nombre = producto.Nombre,
+                    Precio = producto.Precio,
+                    Categoria = producto.Categoria,
+                    Subcategoria = producto.Subcategoria
+                };
+                VentanaVerProducto ventanaVerProducto = new VentanaVerProducto(productoLista);
+                ventanaVerProducto.ShowDialog();
             }
         }
         private void FiltrarPedidos()
