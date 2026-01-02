@@ -72,6 +72,9 @@
     <Compile Include="VentanaVerCliente.xaml.cs">
       <DependentUpon>VentanaVerCliente.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VentanaVerProducto.xaml.cs">
+      <DependentUpon>VentanaVerProducto.xaml</DependentUpon>
+    </Compile>
     <Page Include="AñadirCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -111,6 +114,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="VentanaVerCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaVerProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
