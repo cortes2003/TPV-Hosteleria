@@ -28,6 +28,34 @@ namespace TPV_Hosteleria
             txtEmailsCliente.Text = cliente.Email;
             txtDireccionCliente.Text = cliente.Direccion;
             txtPuntosCliente.Text = cliente.PuntosAcumulados.ToString();
+            
+            // Marcar los checkboxes de alergias según el cliente
+            if (cliente.Alergias != null)
+            {
+                chkPescado.IsChecked = cliente.Alergias.Contains("Pescado");
+                chkGluten.IsChecked = cliente.Alergias.Contains("Gluten");
+                chkHuevos.IsChecked = cliente.Alergias.Contains("Huevos");
+                chkMaiz.IsChecked = cliente.Alergias.Contains("Maíz");
+                chkFrutosSecos.IsChecked = cliente.Alergias.Contains("Frutos Secos");
+                chkLacteos.IsChecked = cliente.Alergias.Contains("Lácteos");
+            }
+            
+            // Establecer el método de pago preferido
+            if (!string.IsNullOrEmpty(cliente.MetodoPagoPreferido))
+            {
+                if (cliente.MetodoPagoPreferido == "Efectivo")
+                {
+                    btnEfectivo.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF6F00"));
+                    btnEfectivo.Foreground = Brushes.White;
+                    btnEfectivo.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF6F00"));
+                }
+                else if (cliente.MetodoPagoPreferido == "Tarjeta")
+                {
+                    btnTarjeta.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF6F00"));
+                    btnTarjeta.Foreground = Brushes.White;
+                    btnTarjeta.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF6F00"));
+                }
+            }
         }
     }
 }

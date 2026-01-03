@@ -46,6 +46,17 @@ namespace TPV_Hosteleria
                     imgProducto.Source = null;
                 }
             }
+            
+            // Marcar los checkboxes de alérgenos según el producto
+            if (producto.Alergenos != null)
+            {
+                chkPescado.IsChecked = producto.Alergenos.Contains("Pescado");
+                chkGluten.IsChecked = producto.Alergenos.Contains("Gluten");
+                chkHuevos.IsChecked = producto.Alergenos.Contains("Huevos");
+                chkMaiz.IsChecked = producto.Alergenos.Contains("Maíz");
+                chkFrutosSecos.IsChecked = producto.Alergenos.Contains("Frutos Secos");
+                chkLacteos.IsChecked = producto.Alergenos.Contains("Lácteos");
+            }
         }
 
         public void btnCancelar_Click(object sender, RoutedEventArgs e)
