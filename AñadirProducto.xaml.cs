@@ -162,18 +162,21 @@ namespace TPV_Hosteleria
             {
                 string rutaImagen = buscarImagen.FileName;
                 rutaArchivo = System.IO.Path.GetFileName(rutaImagen);
-                BitmapImage bitmap = new BitmapImage(new Uri(rutaImagen));
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(rutaImagen);
+                bitmap.EndInit();
                 imgProducto.Source = bitmap;
             }
             if (!string.IsNullOrEmpty(rutaArchivo))
             {
-                string carpetaDestino = "C:\\Users\\jmarq\\Source\\Repos\\TPV-Hosteleria\\Imagenes\\";
+                string carpetaDestino = "../../Imagenes/";
 
                 string rutaDestino = System.IO.Path.Combine(carpetaDestino, rutaArchivo);
 
                 if (!System.IO.File.Exists(rutaDestino))
                 {
-                    System.IO.File.Copy(buscarImagen.FileName, rutaDestino);
+                    System.IO.File.Copy(buscarImagen.FileName, rutaDestino, true);
                 }
             }
         }
