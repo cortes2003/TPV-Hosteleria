@@ -20,9 +20,13 @@ namespace TPV_Hosteleria
     /// </summary>
     public partial class VentanaVerProducto : Window
     {
+        private Producto productoOriginal;
+        public Producto ProductoActualizado { get; private set; }
+        
         public VentanaVerProducto(Producto producto)
         {
             InitializeComponent();
+            productoOriginal = producto;
             txtNombreProducto.Text = producto.Nombre;
             txtIngredientes.Text = producto.Descripcion;
             txtPrecio.Text = producto.Precio.ToString();
@@ -95,19 +99,14 @@ namespace TPV_Hosteleria
             if (chkFrutosSecos.IsChecked == true) alergenos.Add("Frutos Secos");
             if (chkLacteos.IsChecked == true) alergenos.Add("Lácteos");
 
-            // Obtener ingredientes (descripción)
-            string descripcion = txtIngredientes.Text.Trim();
-
-            // Crear el nuevo producto
-            Producto producto = new Producto
-            {
-                Nombre = txtNombreProducto.Text.Trim(),
-                Precio = precio,
-                Categoria = txtCategoriaProducto.Text,
-                Subcategoria = txtSubcategoriaProducto.Text,
-                Descripcion = descripcion,
-                Alergenos = alergenos,
-            };
+            // Actualizar el producto original con los nuevos valores
+            productoOriginal.Nombre = txtNombreProducto.Text.Trim();
+            productoOriginal.Precio = precio;
+            productoOriginal.Descripcion = txtIngredientes.Text.Trim();
+            productoOriginal.Alergenos = alergenos;
+            
+            // Guardar referencia al producto actualizado
+            ProductoActualizado = productoOriginal;
 
             // Cerrar la ventana
             this.Close();

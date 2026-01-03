@@ -334,6 +334,13 @@ namespace TPV_Hosteleria
             {
                 VentanaVerCliente ventanaCliente = new VentanaVerCliente(cliente);
                 ventanaCliente.ShowDialog();
+                
+                // Si se guardaron cambios, refrescar la vista de clientes
+                if (ventanaCliente.ClienteActualizado != null)
+                {
+                    itemsClientes.ItemsSource = null;
+                    itemsClientes.ItemsSource = listaClientes;
+                }
             }
         }
 
@@ -503,6 +510,12 @@ namespace TPV_Hosteleria
                 // Pasar el producto completo con todas sus propiedades
                 VentanaVerProducto ventanaVerProducto = new VentanaVerProducto(producto);
                 ventanaVerProducto.ShowDialog();
+                
+                // Si se guardaron cambios, refrescar la vista de productos
+                if (ventanaVerProducto.ProductoActualizado != null)
+                {
+                    RefrescarProductos();
+                }
             }
         }
         private void FiltrarPedidos()

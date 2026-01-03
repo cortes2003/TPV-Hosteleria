@@ -237,7 +237,7 @@
         <CheckBox x:Name="chkFrutosSecos" Content="Frutos secos" HorizontalAlignment="Left" Margin="225,410,0,0" VerticalAlignment="Top" FontSize="14" Foreground="{StaticResource DarkText}" VerticalContentAlignment="Center"/>
         <CheckBox x:Name="chkLacteos" Content="Lácteos" HorizontalAlignment="Left" Margin="330,410,0,0" VerticalAlignment="Top" FontSize="14" Foreground="{StaticResource DarkText}" VerticalContentAlignment="Center"/>
         <!-- Botones de acción -->
-        <Button x:Name="btnCancelar" Content="CANCELAR" Width="120" Height="50" FontSize="18" FontWeight="Bold" BorderThickness="0" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,143,10" Foreground="White" Background="{StaticResource PrimaryColor}">
+        <Button x:Name="btnCancelar" Content="CANCELAR" Width="120" Height="50" FontSize="18" FontWeight="Bold" BorderThickness="0" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,143,10" Foreground="White" Background="{StaticResource PrimaryColor}" Click="btnCancelar_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="8"/>
@@ -247,7 +247,7 @@
                 <DropShadowEffect Color="#FF6F00" BlurRadius="15" ShadowDepth="5" Opacity="0.3"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="btnGuardar" Content="GUARDAR" Width="120" Height="50" FontSize="18" FontWeight="Bold" BorderThickness="0" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Foreground="White" Background="{StaticResource PrimaryColor}">
+        <Button x:Name="btnGuardar" Content="GUARDAR" Width="120" Height="50" FontSize="18" FontWeight="Bold" BorderThickness="0" Cursor="Hand" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Foreground="White" Background="{StaticResource PrimaryColor}" Click="btnGuardar_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="8"/>
