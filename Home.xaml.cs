@@ -587,7 +587,8 @@ namespace TPV_Hosteleria
             else if(rbDomicilio.IsChecked == true)
             {
                 tipoEntrega += "A domicilio";
-                direccion = listaClientes[0].Direccion;
+                direccion = listaClientes[0].Direccion; //Hemos cogido la direccion del primer cliente, pero lo correcto seria coger
+                                                        //la direccion concreta del cliente que esta haciendo el pedido
             }
             List<string> productosPedidos = new List<string>();
             foreach(var producto in productosTicket)
@@ -604,7 +605,7 @@ namespace TPV_Hosteleria
                 metodoDePago += "Tarjeta";
             }
             string precio = txtPrecioTotalTicket.Text.Replace(" €", "").Trim();
-            decimal precioSinSimbolo = decimal.Parse(precio, CultureInfo.InvariantCulture);
+            decimal precioSinSimbolo = decimal.Parse(precio);
             Pedido pedidoHecho = new Pedido
             {
                 NumeroPedido = $"#{numero}",
@@ -638,8 +639,8 @@ namespace TPV_Hosteleria
             btnTarjeta.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DDDDDD"));
             botonEfectivoPulsado = false;
             metodoDePago = "";
-            txtPrecioTotalTicket.Text="0.00 €";
-            txtPrecioSubTotal.Text = "0.00 €";
+            txtPrecioTotalTicket.Text="0,00 €";
+            txtPrecioSubTotal.Text = "0,00 €";
             cbPuntos.IsChecked = false;
             txtPedido.Text = $"Pedido Actual #{numero++}";
         }
