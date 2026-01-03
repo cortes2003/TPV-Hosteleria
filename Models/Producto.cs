@@ -15,6 +15,7 @@ namespace TPV_Hosteleria.Models
         public string Categoria { get; set; }
         public string Subcategoria { get; set; }
         public List<string> Alergenos { get; set; }
+        public string Imagen { get; set; }
 
         public Producto()
         {
@@ -27,6 +28,19 @@ namespace TPV_Hosteleria.Models
         public string PrecioFormateado
         {
             get { return $"{Precio:F2} €"; }
+        }
+
+        /// <summary>
+        /// Devuelve la ruta completa de la imagen para el binding
+        /// </summary>
+        public string RutaImagen
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Imagen))
+                    return null;
+                return $"/Imagenes/{Imagen}";
+            }
         }
     }
 }

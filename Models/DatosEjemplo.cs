@@ -24,7 +24,8 @@ namespace TPV_Hosteleria.Models
                     Emoji = "??",
                     Categoria = "Entrantes",
                     Subcategoria = "Ensaladas",
-                    Alergenos = new List<string> { "Gluten" }
+                    Alergenos = new List<string> { "Gluten" },
+                    Imagen = "Ensalada_Cesar.png"
                 },
 
                 // ENTRANTES - Huevos
@@ -36,7 +37,8 @@ namespace TPV_Hosteleria.Models
                     Emoji = "??",
                     Categoria = "Entrantes",
                     Subcategoria = "Huevos",
-                    Alergenos = new List<string>()
+                    Alergenos = new List<string>(),
+                    Imagen = "huevos-rotos-con-jamon.png"
                 },
 
                 // ENTRANTES - Arroces y Pastas
@@ -48,7 +50,8 @@ namespace TPV_Hosteleria.Models
                     Emoji = "??",
                     Categoria = "Entrantes",
                     Subcategoria = "Arroces y Pastas",
-                    Alergenos = new List<string> { "Pescado" }
+                    Alergenos = new List<string> { "Pescado" },
+                    Imagen = "paella-valenciana.jpg"
                 },
                 new Producto
                 {
@@ -58,7 +61,8 @@ namespace TPV_Hosteleria.Models
                     Emoji = "??",
                     Categoria = "Entrantes",
                     Subcategoria = "Arroces y Pastas",
-                    Alergenos = new List<string> { "Gluten", "Huevos" }
+                    Alergenos = new List<string> { "Gluten", "Huevos" },
+                    Imagen = "espaguetis-a-la-carbonara.jpg"
                 },
 
                 // ENTRANTES - Asados
@@ -70,7 +74,8 @@ namespace TPV_Hosteleria.Models
                     Emoji = "??",
                     Categoria = "Entrantes",
                     Subcategoria = "Asados",
-                    Alergenos = new List<string>()
+                    Alergenos = new List<string>(),
+                    Imagen = "Pollo_Asado.jpg"
                 },
 
                 // ENTRANTES - Pescados
@@ -82,7 +87,8 @@ namespace TPV_Hosteleria.Models
                     Emoji = "??",
                     Categoria = "Entrantes",
                     Subcategoria = "Pescados",
-                    Alergenos = new List<string> { "Pescado" }
+                    Alergenos = new List<string> { "Pescado" },
+                    Imagen = "bacalao-al-pil-pil.jpg"
                 },
 
                 // PLATOS
@@ -94,7 +100,8 @@ namespace TPV_Hosteleria.Models
                     Emoji = "??",
                     Categoria = "Platos",
                     Subcategoria = "",
-                    Alergenos = new List<string> { "Gluten" }
+                    Alergenos = new List<string> { "Gluten" },
+                    Imagen = "Cocido.jpg"
                 },
 
                 // POSTRES
@@ -106,7 +113,8 @@ namespace TPV_Hosteleria.Models
                     Emoji = "??",
                     Categoria = "Postres",
                     Subcategoria = "",
-                    Alergenos = new List<string> { "Lácteos", "Gluten" }
+                    Alergenos = new List<string> { "Lácteos", "Gluten" },
+                    Imagen = "tarta-queso.jpg"
                 },
 
                 // BEBIDAS
@@ -118,7 +126,8 @@ namespace TPV_Hosteleria.Models
                     Emoji = "??",
                     Categoria = "Bebidas",
                     Subcategoria = "",
-                    Alergenos = new List<string> { "Gluten" }
+                    Alergenos = new List<string> { "Gluten" },
+                    Imagen = "cerveza.jpg"
                 }
             };
         }

@@ -480,7 +480,7 @@
                                                                             <ColumnDefinition Width="*"/>
                                                                         </Grid.ColumnDefinitions>
                                                                         <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                                                            <TextBlock Text="{Binding Emoji}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                            <Image Source="{Binding RutaImagen}" Width="80" Height="80" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                                         </Border>
                                                                         <StackPanel Grid.Column="1" Margin="15,0,0,0">
                                                                             <TextBlock Text="{Binding Nombre}" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
@@ -564,7 +564,7 @@
                                                                             <ColumnDefinition Width="*"/>
                                                                         </Grid.ColumnDefinitions>
                                                                         <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                                                            <TextBlock Text="{Binding Emoji}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                            <Image Source="{Binding RutaImagen}" Width="80" Height="80" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                                         </Border>
                                                                         <StackPanel Grid.Column="1" Margin="15,0,0,0">
                                                                             <TextBlock Text="{Binding Nombre}" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
@@ -648,7 +648,7 @@
                                                                             <ColumnDefinition Width="*"/>
                                                                         </Grid.ColumnDefinitions>
                                                                         <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                                                            <TextBlock Text="{Binding Emoji}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                            <Image Source="{Binding RutaImagen}" Width="80" Height="80" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                                         </Border>
                                                                         <StackPanel Grid.Column="1" Margin="15,0,0,0">
                                                                             <TextBlock Text="{Binding Nombre}" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
@@ -732,7 +732,7 @@
                                                                             <ColumnDefinition Width="*"/>
                                                                         </Grid.ColumnDefinitions>
                                                                         <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                                                            <TextBlock Text="{Binding Emoji}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                            <Image Source="{Binding RutaImagen}" Width="80" Height="80" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                                         </Border>
                                                                         <StackPanel Grid.Column="1" Margin="15,0,0,0">
                                                                             <TextBlock Text="{Binding Nombre}" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
@@ -816,7 +816,7 @@
                                                                             <ColumnDefinition Width="*"/>
                                                                         </Grid.ColumnDefinitions>
                                                                         <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                                                            <TextBlock Text="{Binding Emoji}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                            <Image Source="{Binding RutaImagen}" Width="80" Height="80" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                                         </Border>
                                                                         <StackPanel Grid.Column="1" Margin="15,0,0,0">
                                                                             <TextBlock Text="{Binding Nombre}" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
@@ -905,7 +905,7 @@
                                                                     <ColumnDefinition Width="*"/>
                                                                 </Grid.ColumnDefinitions>
                                                                 <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                                                    <TextBlock Text="{Binding Emoji}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                    <Image Source="{Binding RutaImagen}" Width="80" Height="80" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                                 </Border>
                                                                 <StackPanel Grid.Column="1" Margin="15,0,0,0">
                                                                     <TextBlock Text="{Binding Nombre}" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
@@ -993,7 +993,7 @@
                                                                     <ColumnDefinition Width="*"/>
                                                                 </Grid.ColumnDefinitions>
                                                                 <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                                                    <TextBlock Text="{Binding Emoji}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                    <Image Source="{Binding RutaImagen}" Width="80" Height="80" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                                 </Border>
                                                                 <StackPanel Grid.Column="1" Margin="15,0,0,0">
                                                                     <TextBlock Text="{Binding Nombre}" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>
@@ -1081,7 +1081,7 @@
                                                                     <ColumnDefinition Width="*"/>
                                                                 </Grid.ColumnDefinitions>
                                                                 <Border Grid.Column="0" CornerRadius="8" Background="#F0F0F0">
-                                                                    <TextBlock Text="{Binding Emoji}" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                    <Image Source="{Binding RutaImagen}" Width="80" Height="80" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                                 </Border>
                                                                 <StackPanel Grid.Column="1" Margin="15,0,0,0">
                                                                     <TextBlock Text="{Binding Nombre}" FontWeight="Bold" FontSize="16" TextWrapping="Wrap" Foreground="{StaticResource DarkText}"/>

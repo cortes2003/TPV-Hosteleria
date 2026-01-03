@@ -158,5 +158,18 @@
   <ItemGroup>
     <Folder Include="Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Ensalada_Cesar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\bacalao-al-pil-pil.jpg" />
+    <Resource Include="Imagenes\cerveza.jpg" />
+    <Resource Include="Imagenes\Cocido.jpg" />
+    <Resource Include="Imagenes\espaguetis-a-la-carbonara.jpg" />
+    <Resource Include="Imagenes\huevos-rotos-con-jamon.png" />
+    <Resource Include="Imagenes\paella-valenciana.jpg" />
+    <Resource Include="Imagenes\Pollo_Asado.jpg" />
+    <Resource Include="Imagenes\tarta-queso.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
