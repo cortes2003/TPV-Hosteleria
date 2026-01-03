@@ -46,7 +46,7 @@ Background="#F4F7F6">
             <ComboBoxItem Content="Asados"/>
             <ComboBoxItem Content="Pescados"/>
         </ComboBox>
-        <Label x:Name="lblPrecio" Content="Precio:" HorizontalAlignment="Left" Margin="0,241,0,0" VerticalAlignment="Top" Width="70" FontSize="16" Foreground="{StaticResource DarkText}" FontWeight="SemiBold"/>
+        <Label x:Name="lblPrecio" Content="Precio:" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Width="70" FontSize="16" Foreground="{StaticResource DarkText}" FontWeight="SemiBold"/>
         <TextBox x:Name="txtPrecio" HorizontalAlignment="Left" Margin="75,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" BorderBrush="#DDDDDD" Background="#F5F5F5" Height="31" FontSize="16" Foreground="{StaticResource DarkText}"/>
         <Label x:Name="lblEuros" Content="€" HorizontalAlignment="Left" Margin="168,241,0,0" VerticalAlignment="Top" FontSize="16" Foreground="{StaticResource PrimaryColor}" FontWeight="Bold"/>
 
@@ -103,7 +103,7 @@ Background="#F4F7F6">
             </Button.Effect>
         </Button>
         <Canvas>
-            <Button x:Name="btnCargarImagen" Content="✏️" Background="{DynamicResource PrimaryColor}" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="16" Cursor="Hand" ToolTip="Añadir imagen del producto" Height="35" Width="38" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" Canvas.Left="133" Canvas.Top="198">
+            <Button x:Name="btnCargarImagen" Content="✏️" Background="{DynamicResource PrimaryColor}" Foreground="White" BorderThickness="0" FontWeight="Bold" FontSize="16" Cursor="Hand" ToolTip="Añadir imagen del producto" Height="35" Width="38" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center" Canvas.Left="133" Canvas.Top="198" Click="btnCargarImagen_click">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="8"/>

@@ -40,7 +40,7 @@ namespace TPV_Hosteleria
                 {
                     BitmapImage bitmap = new BitmapImage();
                     bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(producto.RutaImagen, UriKind.Relative);
+                    bitmap.UriSource = new Uri(producto.RutaImagen);
                     bitmap.EndInit();
                     imgProducto.Source = bitmap;
                 }

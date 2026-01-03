@@ -106,6 +106,9 @@ namespace TPV_Hosteleria
         private List<Cliente> listaClientes;
         private List<Pedido> listaPedidos;
         private ICollectionView vistaFiltrada;
+        private int numero = 1024;
+        private Boolean botonEfectivoPulsado;
+        private Boolean botonTarjetaPulsado;
         public Home(string nombreUsuario)
         {
             InitializeComponent();
@@ -175,14 +178,14 @@ namespace TPV_Hosteleria
 
             // Manejar coste de domicilio
             decimal costeDomicilio = 3; //Hemos dicho que el coste de llevarlo a domicilio es 3 euros
-            if (cbDomicilio.IsChecked == true)
+            if (rbDomicilio.IsChecked == true)
             {
                 total = total + costeDomicilio;
             }
 
             // Manejar descuento por puntos (solo disponible con envío a domicilio)
             decimal descuentoPuntos = 3; //Descuento de 3 euros si usa puntos
-            if (cbPuntos.IsChecked == true && cbDomicilio.IsChecked == true)
+            if (cbPuntos.IsChecked == true && rbDomicilio.IsChecked == true)
             {
                 decimal descuentoAplicado = descuentoPuntos;
                 if (total <= descuentoPuntos)
@@ -380,16 +383,16 @@ namespace TPV_Hosteleria
         {
             if (e.Key == Key.Return) 
             { 
-              txtClientes.Text = "Iván Jesús Mora García"; //Esto simula que se elige un cliente haciendo una busqueda
+              txtClientes.Text = "Iván Jesús Mora"; //Esto simula que se elige un cliente haciendo una busqueda
             } 
         }
 
-        private void cbTomarAqui_Checked(object sender, RoutedEventArgs e)
+        private void rbTomarAqui_Checked(object sender, RoutedEventArgs e)
         {
-            if (cbTomarAqui.IsChecked == true)
+            if (rbTomarAqui.IsChecked == true)
             {
-                cbRecoger.IsChecked = false;
-                cbDomicilio.IsChecked = false;
+                rbRecoger.IsChecked = false;
+                rbDomicilio.IsChecked = false;
                 txtEnvio.Visibility = Visibility.Hidden;
                 txtPrecioEnvio.Visibility = Visibility.Hidden;
                 
@@ -401,12 +404,12 @@ namespace TPV_Hosteleria
             }
         }
 
-        private void cbRecoger_Checked(object sender, RoutedEventArgs e)
+        private void rbRecoger_Checked(object sender, RoutedEventArgs e)
         {
-            if (cbRecoger.IsChecked == true)
+            if (rbRecoger.IsChecked == true)
             {
-                cbTomarAqui.IsChecked = false;
-                cbDomicilio.IsChecked = false;
+                rbTomarAqui.IsChecked = false;
+                rbDomicilio.IsChecked = false;
                 txtEnvio.Visibility = Visibility.Hidden;
                 txtPrecioEnvio.Visibility = Visibility.Hidden;
                 
@@ -418,12 +421,12 @@ namespace TPV_Hosteleria
             }
         }
 
-        private void cbDomicilio_Checked(object sender, RoutedEventArgs e)
+        private void rbDomicilio_Checked(object sender, RoutedEventArgs e)
         {
-            if (cbDomicilio.IsChecked == true)
+            if (rbDomicilio.IsChecked == true)
             {
-                cbTomarAqui.IsChecked = false;
-                cbRecoger.IsChecked = false;
+                rbTomarAqui.IsChecked = false;
+                rbRecoger.IsChecked = false;
                 recalcularPrecioTicket();
                 txtEnvio.Visibility = Visibility.Visible;
                 txtPrecioEnvio.Visibility = Visibility.Visible;
@@ -432,7 +435,7 @@ namespace TPV_Hosteleria
                 cbPuntos.IsEnabled = true;
             }
         }
-        private void cbDomicilio_Unchecked(object sender, RoutedEventArgs e)
+        private void rbDomicilio_Unchecked(object sender, RoutedEventArgs e)
         {
             recalcularPrecioTicket();
             txtEnvio.Visibility = Visibility.Hidden;
@@ -442,7 +445,6 @@ namespace TPV_Hosteleria
             cbPuntos.IsChecked = false;
             cbPuntos.IsEnabled = false;
         }
-
         private void btnEfectivo_Click(object sender, RoutedEventArgs e)
         {
             btnEfectivo.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF6F00"));
@@ -452,6 +454,7 @@ namespace TPV_Hosteleria
             btnTarjeta.Background = Brushes.White;
             btnTarjeta.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333333"));
             btnTarjeta.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DDDDDD"));
+            botonEfectivoPulsado = true;
         }
 
         private void btnTarjeta_Click(object sender, RoutedEventArgs e)
@@ -463,6 +466,7 @@ namespace TPV_Hosteleria
             btnEfectivo.Background = Brushes.White;
             btnEfectivo.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333333"));
             btnEfectivo.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DDDDDD"));
+            botonTarjetaPulsado = true;
         }
 
         /// <summary>
@@ -555,6 +559,75 @@ namespace TPV_Hosteleria
         private void cbPuntos_Unchecked(object sender, RoutedEventArgs e)
         {
             recalcularPrecioTicket();
+        }
+
+        private void btnCobrar_click(object sender, RoutedEventArgs e)
+        {
+            string tipoEntrega="";
+            string direccion="";
+            if (rbTomarAqui.IsChecked==true)
+            {
+                tipoEntrega += "Para tomar aquí";
+            }
+            else if(rbRecoger.IsChecked==true)
+            {
+                tipoEntrega += "Para recoger";
+            }
+            else if(rbRecoger.IsChecked == true)
+            {
+                tipoEntrega += "A domicilio";
+                direccion += listaClientes[1].Direccion;
+            }
+            List<string> productosPedidos = new List<string>();
+            foreach(var producto in productosTicket)
+            {
+                productosPedidos.Add(producto.ToString());
+            }
+            string metodoDePago = "";
+            if (botonEfectivoPulsado == true)
+            {
+                metodoDePago += "Efectivo";
+            }
+            else if(botonTarjetaPulsado==true)
+            {
+                metodoDePago += "Tarjeta";
+            }
+            Pedido pedidoHecho = new Pedido
+            {
+                NumeroPedido = $"#{numero}",
+                Fecha = DateTime.Now.Date,
+                TipoEntrega = tipoEntrega,
+                HoraEntrega = DateTime.Now.TimeOfDay.ToString(),
+                NombreCliente = txtClientes.Text,
+                Direccion = direccion,
+                Productos = productosPedidos,
+                MetodoPago = metodoDePago,
+                Total=Decimal.Parse(txtPrecioTotalTicket.Text),
+                Estado="Pagado",
+                ColorEstado="#00BBFF"
+            };
+            listaPedidos.Add(pedidoHecho);
+            tipoEntrega = "";
+            direccion = "";
+            productosPedidos.Clear();
+            rbTomarAqui.IsChecked = false;
+            rbRecoger.IsChecked = false;
+            rbDomicilio.IsChecked = false;
+            txtClientes.Text = "";
+            lstTicket.Items.Clear();
+            btnEfectivo.Background = Brushes.White;
+            btnEfectivo.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333333"));
+            btnEfectivo.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DDDDDD"));
+            botonTarjetaPulsado = false;
+            btnTarjeta.Background = Brushes.White;
+            btnTarjeta.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333333"));
+            btnTarjeta.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DDDDDD"));
+            botonEfectivoPulsado = false;
+            metodoDePago = "";
+            txtPrecioTotalTicket.Text="0.00 €";
+            txtPrecioSubTotal.Text = "0.00 €";
+            cbPuntos.IsChecked = false;
+            txtPedido.Text = $"Pedido Actual #{numero++}";
         }
     }
 }

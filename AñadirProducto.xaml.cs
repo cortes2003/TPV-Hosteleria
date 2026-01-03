@@ -22,7 +22,7 @@ namespace TPV_Hosteleria
     {
         // Propiedad pública para que Home.xaml.cs pueda acceder al producto guardado
         public Producto ProductoGuardado { get; private set; }
-
+        public string rutaArchivo = "";
         public AñadirProducto()
         {
             InitializeComponent();
@@ -131,7 +131,6 @@ namespace TPV_Hosteleria
                     emoji = "🥤";
                     break;
             }
-
             // Crear el nuevo producto
             ProductoGuardado = new Producto
             {
@@ -141,9 +140,9 @@ namespace TPV_Hosteleria
                 Subcategoria = subcategoria,
                 Descripcion = descripcion,
                 Alergenos = alergenos,
-                Emoji = emoji
+                Emoji = emoji,
+                Imagen = rutaArchivo
             };
-
             // Cerrar la ventana
             this.Close();
         }
@@ -153,6 +152,30 @@ namespace TPV_Hosteleria
             // No guardar nada, simplemente cerrar la ventana
             ProductoGuardado = null;
             this.Close();
+        }
+
+        private void btnCargarImagen_click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.OpenFileDialog buscarImagen = new System.Windows.Forms.OpenFileDialog();
+            buscarImagen.Filter = "Archivos de Imagen (*.png;*.jpg;*.jpeg;*.bmp)|*.png;*.jpg;*.jpeg;*.bmp|Todos los archivos (*.*)|*.*";
+            if (buscarImagen.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string rutaImagen = buscarImagen.FileName;
+                rutaArchivo = System.IO.Path.GetFileName(rutaImagen);
+                BitmapImage bitmap = new BitmapImage(new Uri(rutaImagen));
+                imgProducto.Source = bitmap;
+            }
+            if (!string.IsNullOrEmpty(rutaArchivo))
+            {
+                string carpetaDestino = "C:\\Users\\jmarq\\Source\\Repos\\TPV-Hosteleria\\Imagenes\\";
+
+                string rutaDestino = System.IO.Path.Combine(carpetaDestino, rutaArchivo);
+
+                if (!System.IO.File.Exists(rutaDestino))
+                {
+                    System.IO.File.Copy(buscarImagen.FileName, rutaDestino);
+                }
+            }
         }
     }
 }

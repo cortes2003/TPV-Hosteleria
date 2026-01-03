@@ -316,7 +316,7 @@
                         </Button>
                     </Grid>
                     <Separator Margin="0,15" Background="#EEEEEE"/>
-                    <TextBlock Text="Pedido Actual #1024" FontWeight="Bold" FontSize="18" Foreground="{StaticResource PrimaryColor}"/>
+                    <TextBlock x:Name="txtPedido" Text="Pedido Actual #1024" FontWeight="Bold" FontSize="18" Foreground="{StaticResource PrimaryColor}"/>
                 </StackPanel>
 
                 <!-- Lista ticket -->
@@ -373,9 +373,9 @@
                 <!-- Configuración -->
                 <StackPanel Grid.Row="2" Margin="0,15">
                     <Label Content="Tipo de Entrega" FontSize="12" Foreground="{StaticResource LightText}"/>
-                    <CheckBox x:Name="cbTomarAqui" Content="🍽️ Para tomar aquí" Checked="cbTomarAqui_Checked" FontSize="12"/>
-                    <CheckBox x:Name="cbRecoger" Content="🛍️ Para recoger en el establecimiento" Checked="cbRecoger_Checked" FontSize="12"/>
-                    <CheckBox x:Name="cbDomicilio" Content="🏠 A Domicilio (+3.00€)" Checked="cbDomicilio_Checked" FontSize="12" Unchecked="cbDomicilio_Unchecked"/>
+                    <RadioButton x:Name="rbTomarAqui" Content="🍽️ Para tomar aquí" Checked="rbTomarAqui_Checked" FontSize="12"/>
+                    <RadioButton x:Name="rbRecoger" Content="🛍️ Para recoger en el establecimiento" Checked="rbRecoger_Checked" FontSize="12"/>
+                    <RadioButton x:Name="rbDomicilio" Content="🏠 A Domicilio (+3.00€)" Checked="rbDomicilio_Checked" FontSize="12" Unchecked="rbDomicilio_Unchecked"/>
                     <Label Content="Cliente" FontSize="12" Foreground="{StaticResource LightText}"/>
                     <Grid Margin="0,0,0,10">
                         <Grid.ColumnDefinitions>
@@ -418,7 +418,7 @@
                         <TextBlock x:Name ="txtPrecioTotalTicket" Text="0.00 €" FontSize="20" FontWeight="Bold" HorizontalAlignment="Right" Foreground="{StaticResource PrimaryColor}"/>
                     </Grid>
 
-                    <Button Content="COBRAR" Height="55" Background="{StaticResource PrimaryColor}" Foreground="White" FontSize="18" FontWeight="Bold" BorderThickness="0" Cursor="Hand">
+                    <Button x:Name="btnCobrar" Content="COBRAR" Height="55" Background="{StaticResource PrimaryColor}" Foreground="White" FontSize="18" FontWeight="Bold" BorderThickness="0" Cursor="Hand" Click="btnCobrar_click">
                         <Button.Effect>
                             <DropShadowEffect Color="#FF6F00" BlurRadius="15" ShadowDepth="5" Opacity="0.3"/>
                         </Button.Effect>

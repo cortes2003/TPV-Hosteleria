@@ -39,7 +39,7 @@ namespace TPV_Hosteleria.Models
             {
                 if (string.IsNullOrEmpty(Imagen))
                     return null;
-                return $"/Imagenes/{Imagen}";
+                return $"C:\\Users\\jmarq\\Source\\Repos\\TPV-Hosteleria\\Imagenes\\{Imagen}";
             }
         }
     }
