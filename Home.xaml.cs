@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -172,7 +173,15 @@ namespace TPV_Hosteleria
             decimal total = 0;
             foreach (var producto in productosTicket)
             {
-                subtotal += producto.PrecioTotal;
+                if (producto.Cantidad > 1)
+                {
+                    subtotal += producto.PrecioTotal;
+                } else
+                {
+                    subtotal += producto.PrecioTotal;
+                }
+                
+                
             }
             total = subtotal;
 
@@ -291,6 +300,7 @@ namespace TPV_Hosteleria
                     if (item.Nombre == producto.Nombre)
                     {
                         item.Cantidad++;
+                        recalcularPrecioTicket();
                         return;
                     }
                 }
@@ -326,6 +336,7 @@ namespace TPV_Hosteleria
                     // Refrescar los ItemsControls de productos SIN recargar desde DatosEjemplo
                     RefrescarProductos();
                     productosTicket.Remove(productosTicket.FirstOrDefault(p => p.Nombre == producto.Nombre)); //Si el producto que borramos estaba en el ticket, tambien lo borro del ticket
+                    recalcularPrecioTicket();
                 }
             }
         }
@@ -573,10 +584,10 @@ namespace TPV_Hosteleria
             {
                 tipoEntrega += "Para recoger";
             }
-            else if(rbRecoger.IsChecked == true)
+            else if(rbDomicilio.IsChecked == true)
             {
                 tipoEntrega += "A domicilio";
-                direccion += listaClientes[1].Direccion;
+                direccion = listaClientes[0].Direccion;
             }
             List<string> productosPedidos = new List<string>();
             foreach(var producto in productosTicket)
@@ -592,6 +603,8 @@ namespace TPV_Hosteleria
             {
                 metodoDePago += "Tarjeta";
             }
+            string precio = txtPrecioTotalTicket.Text.Replace(" €", "").Trim();
+            decimal precioSinSimbolo = decimal.Parse(precio, CultureInfo.InvariantCulture);
             Pedido pedidoHecho = new Pedido
             {
                 NumeroPedido = $"#{numero}",
@@ -602,11 +615,12 @@ namespace TPV_Hosteleria
                 Direccion = direccion,
                 Productos = productosPedidos,
                 MetodoPago = metodoDePago,
-                Total=Decimal.Parse(txtPrecioTotalTicket.Text),
+                Total=precioSinSimbolo,
                 Estado="Pagado",
                 ColorEstado="#00BBFF"
             };
             listaPedidos.Add(pedidoHecho);
+            itemsPedidos.ItemsSource = listaPedidos;
             tipoEntrega = "";
             direccion = "";
             productosPedidos.Clear();
@@ -614,7 +628,7 @@ namespace TPV_Hosteleria
             rbRecoger.IsChecked = false;
             rbDomicilio.IsChecked = false;
             txtClientes.Text = "";
-            lstTicket.Items.Clear();
+            productosTicket.Clear();
             btnEfectivo.Background = Brushes.White;
             btnEfectivo.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333333"));
             btnEfectivo.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DDDDDD"));

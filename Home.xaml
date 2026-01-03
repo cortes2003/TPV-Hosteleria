@@ -375,7 +375,7 @@
                     <Label Content="Tipo de Entrega" FontSize="12" Foreground="{StaticResource LightText}"/>
                     <RadioButton x:Name="rbTomarAqui" Content="🍽️ Para tomar aquí" Checked="rbTomarAqui_Checked" FontSize="12"/>
                     <RadioButton x:Name="rbRecoger" Content="🛍️ Para recoger en el establecimiento" Checked="rbRecoger_Checked" FontSize="12"/>
-                    <RadioButton x:Name="rbDomicilio" Content="🏠 A Domicilio (+3.00€)" Checked="rbDomicilio_Checked" FontSize="12" Unchecked="rbDomicilio_Unchecked"/>
+                    <RadioButton x:Name="rbDomicilio" Content="🏠 A Domicilio (+3,00€)" Checked="rbDomicilio_Checked" FontSize="12" Unchecked="rbDomicilio_Unchecked"/>
                     <Label Content="Cliente" FontSize="12" Foreground="{StaticResource LightText}"/>
                     <Grid Margin="0,0,0,10">
                         <Grid.ColumnDefinitions>
@@ -403,19 +403,19 @@
                     <Separator Background="#EEEEEE" Margin="0,0,0,15"/>
                     <Grid Margin="0,0,0,5">
                         <TextBlock Text="Subtotal" Foreground="{StaticResource LightText}"/>
-                        <TextBlock x:Name ="txtPrecioSubTotal" Text="0.00 €" HorizontalAlignment="Right" Foreground="{StaticResource DarkText}"/>
+                        <TextBlock x:Name ="txtPrecioSubTotal" Text="0,00 €" HorizontalAlignment="Right" Foreground="{StaticResource DarkText}"/>
                     </Grid>
                     <Grid Margin="0,0,0,5">
                         <TextBlock x:Name="txtEnvio" Text="Envío" Foreground="{StaticResource LightText}" Visibility="Hidden"/>
-                        <TextBlock x:Name ="txtPrecioEnvio" Text="+ 3.00 €" HorizontalAlignment="Right" Foreground="{StaticResource DarkText}" Visibility="Hidden"/>
+                        <TextBlock x:Name ="txtPrecioEnvio" Text="+ 3,00 €" HorizontalAlignment="Right" Foreground="{StaticResource DarkText}" Visibility="Hidden"/>
                     </Grid>
                     <Grid Margin="0,0,0,5">
                         <TextBlock x:Name="txtDescuentoPuntos" Text="Descuento Puntos" Foreground="{StaticResource LightText}" Visibility="Hidden"/>
-                        <TextBlock x:Name="txtPrecioDescuentoPuntos" Text="- 3.00 €" HorizontalAlignment="Right" Foreground="{StaticResource DarkText}" Visibility="Hidden"/>
+                        <TextBlock x:Name="txtPrecioDescuentoPuntos" Text="- 3,00 €" HorizontalAlignment="Right" Foreground="{StaticResource DarkText}" Visibility="Hidden"/>
                     </Grid>
                     <Grid Margin="0,0,0,15">
                         <TextBlock Text="TOTAL" FontSize="20" FontWeight="Bold" Foreground="{StaticResource DarkText}"/>
-                        <TextBlock x:Name ="txtPrecioTotalTicket" Text="0.00 €" FontSize="20" FontWeight="Bold" HorizontalAlignment="Right" Foreground="{StaticResource PrimaryColor}"/>
+                        <TextBlock x:Name ="txtPrecioTotalTicket" Text="0,00 €" FontSize="20" FontWeight="Bold" HorizontalAlignment="Right" Foreground="{StaticResource PrimaryColor}"/>
                     </Grid>
 
                     <Button x:Name="btnCobrar" Content="COBRAR" Height="55" Background="{StaticResource PrimaryColor}" Foreground="White" FontSize="18" FontWeight="Bold" BorderThickness="0" Cursor="Hand" Click="btnCobrar_click">

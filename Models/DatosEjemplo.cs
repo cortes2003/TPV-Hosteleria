@@ -185,7 +185,7 @@ namespace TPV_Hosteleria.Models
                     Fecha = new DateTime(2024, 1, 15, 14, 30, 0),
                     TipoEntrega = "Para tomar aquí",
                     HoraEntrega = "15:00",
-                    NombreCliente = "Juan Pérez",
+                    NombreCliente = "Ivan Jesús Mora",
                     Direccion = "",
                     Productos = new List<string> { "2x Paella Valenciana", "1x Ensalada César", "3x Coca-Cola" },
                     MetodoPago = "Tarjeta",
@@ -199,7 +199,7 @@ namespace TPV_Hosteleria.Models
                     Fecha = new DateTime(2024, 1, 15, 13, 15, 0),
                     TipoEntrega = "A Domicilio",
                     HoraEntrega = "14:00",
-                    NombreCliente = "María García",
+                    NombreCliente = "Alberto Cortés",
                     Direccion = "Calle Mayor 15, 3ºB",
                     Productos = new List<string> { "1x Pizza Margarita", "1x Pasta Carbonara", "2x Agua Mineral" },
                     MetodoPago = "Efectivo",
@@ -213,41 +213,13 @@ namespace TPV_Hosteleria.Models
                     Fecha = new DateTime(2024, 1, 15, 12, 45, 0),
                     TipoEntrega = "Para recoger",
                     HoraEntrega = "13:30",
-                    NombreCliente = "Carlos Ruiz",
+                    NombreCliente = "Jesús Márquez",
                     Direccion = "",
                     Productos = new List<string> { "3x Hamburguesa Completa", "3x Patatas Fritas", "3x Fanta Naranja" },
                     MetodoPago = "Tarjeta",
                     Total = 35.70m,
                     Estado = "Recogido",
                     ColorEstado = "#AF76E8"
-                },
-                new Pedido
-                {
-                    NumeroPedido = "#1021",
-                    Fecha = new DateTime(2024, 1, 15, 11, 20, 0),
-                    TipoEntrega = "Para tomar aquí",
-                    HoraEntrega = "12:00",
-                    NombreCliente = "Ana Martínez",
-                    Direccion = "",
-                    Productos = new List<string> { "1x Menú del Día", "1x Tarta de Queso", "1x Café Solo" },
-                    MetodoPago = "Tarjeta",
-                    Total = 16.50m,
-                    Estado = "Pagado",
-                    ColorEstado = "#00BBFF"
-                },
-                new Pedido
-                {
-                    NumeroPedido = "#1020",
-                    Fecha = new DateTime(2024, 1, 15, 10, 30, 0),
-                    TipoEntrega = "A Domicilio",
-                    HoraEntrega = "11:30",
-                    NombreCliente = "Pedro Sánchez",
-                    Direccion = "Av. Libertad 45, 1ºA",
-                    Productos = new List<string> { "2x Sushi Variado", "1x Edamame", "2x Té Verde" },
-                    MetodoPago = "Efectivo",
-                    Total = 42.00m,
-                    Estado = "Pendiente de pago",
-                    ColorEstado = "#FF4B1A"
                 }
             };
         }

@@ -172,6 +172,7 @@ namespace TPV_Hosteleria
             {
                 string carpetaDestino = "../../Imagenes/";
 
+
                 string rutaDestino = System.IO.Path.Combine(carpetaDestino, rutaArchivo);
 
                 if (!System.IO.File.Exists(rutaDestino))
