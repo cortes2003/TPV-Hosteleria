@@ -593,7 +593,8 @@ namespace TPV_Hosteleria
             List<string> productosPedidos = new List<string>();
             foreach(var producto in productosTicket)
             {
-                productosPedidos.Add(producto.ToString());
+                string cadena = producto.Categoria+"x "+producto.Nombre;
+                productosPedidos.Add(cadena);
             }
             string metodoDePago = "";
             if (botonEfectivoPulsado == true)
@@ -606,12 +607,20 @@ namespace TPV_Hosteleria
             }
             string precio = txtPrecioTotalTicket.Text.Replace(" €", "").Trim();
             decimal precioSinSimbolo = decimal.Parse(precio);
+            DateTime fechaActual = new DateTime(
+                DateTime.Now.Year,
+                DateTime.Now.Month,
+                DateTime.Now.Day,
+                DateTime.Now.Hour,
+                DateTime.Now.Minute,
+                0
+            );
             Pedido pedidoHecho = new Pedido
             {
                 NumeroPedido = $"#{numero}",
-                Fecha = DateTime.Now.Date,
+                Fecha = fechaActual,
                 TipoEntrega = tipoEntrega,
-                HoraEntrega = DateTime.Now.TimeOfDay.ToString(),
+                HoraEntrega = fechaActual.ToString(),
                 NombreCliente = txtClientes.Text,
                 Direccion = direccion,
                 Productos = productosPedidos,
