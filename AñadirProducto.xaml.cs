@@ -153,7 +153,7 @@ namespace TPV_Hosteleria
             ProductoGuardado = null;
             this.Close();
         }
-
+        //Boton de carga de la imagen en el producto (Falta que se guarde en la iterfaz)
         private void btnCargarImagen_click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.OpenFileDialog buscarImagen = new System.Windows.Forms.OpenFileDialog();
