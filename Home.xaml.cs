@@ -500,14 +500,8 @@ namespace TPV_Hosteleria
             Button btn = sender as Button;
             if (btn != null && btn.Tag is Producto producto)
             {
-                Producto productoLista = new Producto
-                {
-                    Nombre = producto.Nombre,
-                    Precio = producto.Precio,
-                    Categoria = producto.Categoria,
-                    Subcategoria = producto.Subcategoria
-                };
-                VentanaVerProducto ventanaVerProducto = new VentanaVerProducto(productoLista);
+                // Pasar el producto completo con todas sus propiedades
+                VentanaVerProducto ventanaVerProducto = new VentanaVerProducto(producto);
                 ventanaVerProducto.ShowDialog();
             }
         }

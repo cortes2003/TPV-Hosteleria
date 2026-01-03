@@ -28,6 +28,24 @@ namespace TPV_Hosteleria
             txtPrecio.Text = producto.Precio.ToString();
             txtCategoriaProducto.Text = producto.Categoria;
             txtSubcategoriaProducto.Text = producto.Subcategoria;
+            
+            // Cargar la imagen del producto
+            if (!string.IsNullOrEmpty(producto.RutaImagen))
+            {
+                try
+                {
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.UriSource = new Uri(producto.RutaImagen, UriKind.Relative);
+                    bitmap.EndInit();
+                    imgProducto.Source = bitmap;
+                }
+                catch
+                {
+                    // Si no se puede cargar la imagen, dejar el espacio vacío
+                    imgProducto.Source = null;
+                }
+            }
         }
 
         public void btnCancelar_Click(object sender, RoutedEventArgs e)
