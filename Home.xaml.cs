@@ -632,7 +632,6 @@ namespace TPV_Hosteleria
             };
             listaPedidos.Add(pedidoHecho);
             itemsPedidos.ItemsSource = listaPedidos;
-            tipoEntrega = "";
             direccion = "";
             productosPedidos.Clear();
             rbTomarAqui.IsChecked = false;
