@@ -181,7 +181,7 @@ namespace TPV_Hosteleria.Models
             {
                 new Pedido
                 {
-                    NumeroPedido = "#1024",
+                    NumeroPedido = "#1023",
                     Fecha = new DateTime(2024, 1, 15, 14, 30, 0),
                     TipoEntrega = "Para tomar aquí",
                     HoraEntrega = "15:00",
@@ -195,7 +195,7 @@ namespace TPV_Hosteleria.Models
                 },
                 new Pedido
                 {
-                    NumeroPedido = "#1023",
+                    NumeroPedido = "#1022",
                     Fecha = new DateTime(2024, 1, 15, 13, 15, 0),
                     TipoEntrega = "A Domicilio",
                     HoraEntrega = "14:00",
@@ -209,7 +209,7 @@ namespace TPV_Hosteleria.Models
                 },
                 new Pedido
                 {
-                    NumeroPedido = "#1022",
+                    NumeroPedido = "#1021",
                     Fecha = new DateTime(2024, 1, 15, 12, 45, 0),
                     TipoEntrega = "Para recoger",
                     HoraEntrega = "13:30",

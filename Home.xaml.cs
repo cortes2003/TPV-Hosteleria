@@ -591,9 +591,10 @@ namespace TPV_Hosteleria
                                                         //la direccion concreta del cliente que esta haciendo el pedido
             }
             List<string> productosPedidos = new List<string>();
-            foreach(var producto in productosTicket)
+            string cadena = "";
+            foreach (var producto in productosTicket)
             {
-                string cadena = producto.Categoria+"x "+producto.Nombre;
+                cadena = producto.Categoria+"x "+producto.Nombre;
                 productosPedidos.Add(cadena);
             }
             string metodoDePago = "";
@@ -651,7 +652,8 @@ namespace TPV_Hosteleria
             txtPrecioTotalTicket.Text="0,00 €";
             txtPrecioSubTotal.Text = "0,00 €";
             cbPuntos.IsChecked = false;
-            txtPedido.Text = $"Pedido Actual #{numero++}";
+            numero = numero + 1;
+            txtPedido.Text = $"Pedido Actual #{numero}";
         }
     }
 }
