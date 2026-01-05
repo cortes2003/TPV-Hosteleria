@@ -310,7 +310,9 @@ namespace TPV_Hosteleria
                 {
                     Cantidad = 1,
                     Nombre = producto.Nombre,
-                    PrecioUnitario = producto.Precio
+                    PrecioUnitario = producto.Precio,
+                    Categoria = producto.Categoria,
+                    Subcategoria = producto.Subcategoria
                 };
                 productosTicket.Add(productoNuevo);
             }
@@ -590,13 +592,14 @@ namespace TPV_Hosteleria
                 direccion = listaClientes[0].Direccion; //Hemos cogido la direccion del primer cliente, pero lo correcto seria coger
                                                         //la direccion concreta del cliente que esta haciendo el pedido
             }
+            
             List<string> productosPedidos = new List<string>();
-            string cadena = "";
             foreach (var producto in productosTicket)
             {
-                cadena = producto.Categoria+"x "+producto.Nombre;
+                string cadena = producto.Cantidad + "x " + producto.Nombre;
                 productosPedidos.Add(cadena);
             }
+            
             string metodoDePago = "";
             if (botonEfectivoPulsado == true)
             {
@@ -631,9 +634,10 @@ namespace TPV_Hosteleria
                 ColorEstado="#00BBFF"
             };
             listaPedidos.Add(pedidoHecho);
+            itemsPedidos.ItemsSource = null;
             itemsPedidos.ItemsSource = listaPedidos;
-            direccion = "";
-            productosPedidos.Clear();
+            vistaFiltrada?.Refresh();
+            
             rbTomarAqui.IsChecked = false;
             rbRecoger.IsChecked = false;
             rbDomicilio.IsChecked = false;
@@ -647,7 +651,6 @@ namespace TPV_Hosteleria
             btnTarjeta.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333333"));
             btnTarjeta.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#DDDDDD"));
             botonEfectivoPulsado = false;
-            metodoDePago = "";
             txtPrecioTotalTicket.Text="0,00 €";
             txtPrecioSubTotal.Text = "0,00 €";
             cbPuntos.IsChecked = false;
