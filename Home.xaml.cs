@@ -588,7 +588,7 @@ namespace TPV_Hosteleria
             }
             else if(rbDomicilio.IsChecked == true)
             {
-                tipoEntrega += "A domicilio";
+                tipoEntrega += "A Domicilio";
                 direccion = listaClientes[0].Direccion; //Hemos cogido la direccion del primer cliente, pero lo correcto seria coger
                                                         //la direccion concreta del cliente que esta haciendo el pedido
             }
